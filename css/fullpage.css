@@ -87,10 +87,11 @@ html.fp-enabled,
     -webkit-transition: none !important;
     transition: none !important;
 }
+/*aqui se modifica la posicion del navbar*/
 #fp-nav {
     position: fixed;
     z-index: 100;
-    top: 50%;
+    top: 30%;
     opacity: 1;
     transform: translateY(-50%);
     -ms-transform: translateY(-50%);
