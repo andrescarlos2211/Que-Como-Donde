@@ -91,7 +91,7 @@ html.fp-enabled,
 #fp-nav {
     position: fixed;
     z-index: 100;
-    top: 30%;
+    top: 50%;
     opacity: 1;
     transform: translateY(-50%);
     -ms-transform: translateY(-50%);
@@ -163,7 +163,7 @@ html.fp-enabled,
     height: 4px;
     width: 4px;
     border: 0;
-    background: #333;
+    background: #e5d2ab;
     left: 50%;
     top: 50%;
     margin: -2px 0 0 -2px;
@@ -181,7 +181,7 @@ html.fp-enabled,
 #fp-nav ul li .fp-tooltip {
     position: absolute;
     top: -2px;
-    color: #fff;
+    color: #e5d2ab;
     font-size: 14px;
     font-family: arial, helvetica, sans-serif;
     white-space: nowrap;

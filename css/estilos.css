@@ -14,13 +14,14 @@ body {
     font-size: 18px;
 }
 
-/* .contenedor-texto {
+.contenedor-texto {
     display: flex;
     flex-direction: column;
     margin-left: 10%;
     width: 75%;
-    height: 80%;
-} */
+    height: 75%;
+    font-size: 120%;
+}
 
 .caja-de-texto {
     min-height: 80vh;
@@ -83,7 +84,7 @@ h6 {
     transform: translate(-50%, -50%);
     background:#977528;
     padding: 10px;
-    height: 80px;
+    height: 10%;
     border-radius: 40px;
 }
 
@@ -105,7 +106,6 @@ input,
     width: 0;
 }
 
-
 .boton {
     width: 40px;
     height: 40px;
@@ -113,15 +113,29 @@ input,
     color: #e5d2ab;
     font-size: 30px;
 }
-
-/*fin barra busqueda*/
-@media screen and (min-width:480px) {
-    .buscar:hover>.buscar_texto {
-        width: 190px;
+@media (hover: hover){
+    .buscar:hover>.buscar_texto{
+        width: 500px;
     }
 }
 
-@media screen and (min-width:768px) {
+
+
+#map {
+    height: 180px;
+}
+
+/* @media screen and (max-width:1000px) {
+    .buscar: >.buscar_texto {
+        width: 70%;
+    }
+} */
+/* 
+.buscar:hover, .buscar:active{
+    width: 80%;
+} */
+
+/*@media screen and (min-width:768px) {
     .buscar:hover>.buscar_texto {
         width: 300px;
     }
@@ -131,12 +145,8 @@ input,
     .buscar:hover>.buscar_texto {
         width: 500px;
     }
-}
-
-#map {
-    height: 180px;
-}
-
+} */
+/*fin barra busqueda*/
 
 /* barra de navegación lateral*/
 
