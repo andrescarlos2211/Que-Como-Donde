@@ -19,7 +19,7 @@ body {
 
 }
 
- /* .contenedor-texto {
+/* .contenedor-texto {
     display: flex;
     flex-direction: column;
     margin-left: 10%;
@@ -32,19 +32,16 @@ body {
     position: relative;
     color: #e5d2ab;
 }
-.caja-de-texto .item{
-    width: 60%;
+
+.caja-de-texto .item {
+    width: 75%;
     height: 60%;
     text-align: justify;
     position: absolute;
     top: 20%;
-    left: 20%;
+    left: 12%;
     color: #e5d2ab;
 }
-
-
-
-
 
 .section header {
     display: flex;
