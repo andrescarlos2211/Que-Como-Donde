@@ -54,6 +54,7 @@ body {
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
+    filter:blur(5px);
   }
   
   /* Add some content at the bottom of the video/page */
