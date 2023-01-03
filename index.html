@@ -26,16 +26,17 @@
 			href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Oswald&display=swap"
 			rel="stylesheet">
 			<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-
-		<link rel="stylesheet" href="css/estilos.css">
-		<link rel="stylesheet" href="./img/estilo.css">
+		<link rel="stylesheet" href="/css/estilos.css">
+		<link rel="stylesheet" href="/img/estilo.css">
 		<link rel="stylesheet" href="/css/fullpage.css">
+		<link rel="stylesheet" href="/css/style.css">
+		<script src="/js/main.js" defer></script>
 
 
 	</head>
 
 	<body>
-		<nav class="nav">
+		<!-- <nav class="nav">
 		<a href="#inicio" class="marca"><img class="logonav" src="/img/Logo/Logo colores.png" alt="HTML tutorial"></a></a>
 		<ul id="menu" class="menu">
 			<li data-menuanchor="inicio" class="active">
@@ -51,16 +52,73 @@
 				<a href="#discusión">Discusión</a>
 			</li>
 		</ul>
-		</nav>
+		</nav> -->
+<!-- 
+navburger -->
+
+		<header class="sticky top-0 z-10 bg-teal-700 text-white">
+			<section class="nav mx-auto flex max-w-4xl items-center justify-between p-4">
+				<div><a href="#inicio"><img class="loguito" src="/img/Logo/Logo colores.png" alt="HTML tutorial"></a></div>
+			  <div>
+				<button
+				  id="hamburger-button"
+				  class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
+				  <!-- &#9776; -->
+				  <div
+					class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4 before:-translate-y-3 before:rounded before:bg-white before:transition-all before:duration-500 before:content-[''] after:absolute after:h-1 after:w-8 after:-translate-x-4 after:translate-y-3 after:rounded after:bg-white after:transition-all after:duration-500 after:content-['']"
+				  ></div>
+				</button>
+				<nav class="hidden space-x-8 text-xl md:block" aria-label="main">
+				  <a href="#nosotros" class="hover:opacity-90">Nosotros</a>
+				  <a href="#blog" class="hover:opacity-90">Blog</a>
+				  <a href="#discusion" class="hover:opacity-90">Discusión</a>
+				</nav>
+			  </div>
+			</section>
+			<section
+			  id="mobile-menu"
+			  class="top-68 justify-content-center absolute hidden w-full origin-top animate-open-menu flex-col bg-black text-5xl"
+			>
+			  <!-- <button class="text-8xl self-end px-6">
+					  &times;
+				  </button> -->
+			  <nav
+				class="flex min-h-screen flex-col items-center py-8"
+				aria-label="mobile"
+			  >
+				<a href="#inicio" class="w-full py-6 text-center hover:opacity-90"
+				  >Inicio</a
+				>
+				<a href="#nosotros" class="w-full py-6 text-center hover:opacity-90"
+				  >Nosotros</a
+				>
+				<a
+				  href="#blog"
+				  class="w-full py-6 text-center hover:opacity-90"
+				  >Blog</a
+				>
+				<a href="#discusion" class="w-full py-6 text-center hover:opacity-90"
+				  >Discusión</a
+				>
+				<a href="#contacto" class="w-full py-6 text-center hover:opacity-90"
+				  >Contactanos</a
+				>
+			  </nav>
+			</section>
+		  </header>
+<!-- /navburguer  -->
+
+
+
 
 	<main id="fullpage">
 		<section class="section">
-			<video autoplay muted loop id="myVideo">
+			<video autoplay muted id="myVideo">
 				<source src="/media/videobg.mp4" type="video/mp4">
 				  </video>
 			<div class="contenedor-texto">
-			<h1 class="texto-color1">Encuentra productos saludables en tu localidad</h1>
-			<h2 class="texto-color2"> ... e infórmate</h2>
+			<h1 class="texto-color1">Encuentra productos artesanales en tu localidad</h1>
+			<h2 class="texto-color2">e infórmate</h2>
 			</div>
 
 			<div class="buscar">
@@ -73,7 +131,7 @@
 			
 			<section class="section">
 				<div class="contenedor-texto">
-				<h1 class="texto-color1">Somos un equipo apasionado por la salud y
+				<h1 class="texto-color3">Somos un equipo apasionado por la salud y
 					el buen vivir. Creemos que todos merecemos tener acceso 
 					a opciones de comida saludable, y es por eso que hemos creado 
 					este buscador de comida saludable. Nuestro objetivo es ayudarte 

@@ -40,14 +40,6 @@ body {
     color: #e5d2ab;
 }
 
-/* video{
-    display: flex;
-    height: 80vh;
-    justify-content: flex-end ;
-
-
-} */
-
 #myVideo {
     position: fixed;
     right: 0;
@@ -63,7 +55,7 @@ body {
     text-align: justify;
     bottom: 0;
     right: 20%;
-    background: #97762885;
+    background: #1d1d1fb8;
     color: #f1f1f1;
     width: 60%;
     padding: 20px;
@@ -86,18 +78,21 @@ h5 {
 
 .texto-color1 {
     font-weight: 300;
-    color: #000000;
-    background: #97762876;
+    font-size: 5vmin;
+    color: #e5d2ab;
+    background: #1d1d1fb8;
 }
 
 .texto-color2 {
     font-weight: 700;
-    color: #e5d2ab;
-    background: #97762876;
+    font-size: 7vmin;
+    color: #c3af87;
+    background: #1d1d1fb8;
 }
 
 .texto-color3 {
-    color: #977528;
+    font-weight: 900;
+    font-size: 5vmin;
 }
 
 /* Estilo barra busqueda */
@@ -111,7 +106,7 @@ h5 {
     top: 70%;
     color: #e5d2ab;
     transform: translate(-50%, -50%);
-    background:#97762876;
+    background:#1d1d1fb8;
     padding: 10px;
     height: 10%;
     border-radius: 40px;
@@ -127,7 +122,6 @@ input,
     background: none;
     outline: none;
     color: #e5d2ab;
-
     font-size: 20px;
     float: left;
     line-height: 60px;
@@ -155,32 +149,6 @@ input,
     height: 180px;
 }
 
-/* @media screen and (max-width:1000px) {
-    .buscar: >.buscar_texto {
-        width: 70%;
-    }
-} */
-/* 
-.buscar:hover, .buscar:active{
-    width: 80%;
-} */
-
-/*@media screen and (min-width:768px) {
-    .buscar:hover>.buscar_texto {
-        width: 300px;
-    }
-}
-
-@media screen and (min-width:1024px) {
-    .buscar:hover>.buscar_texto {
-        width: 500px;
-    }
-} */
-/*fin barra busqueda*/
-
-/* barra de navegación lateral*/
-
-/*menu de navegación*/
 .nav {
     position: fixed;
     display: flex;
@@ -190,42 +158,11 @@ input,
     width: 100%;
     margin: 0;
     padding: 10px 20px;
+    background: #1d1d1fb8;
 }
 
-
-
-/*  Hamburguesa
-.nav li,
-.nav a {
-    display: inline-block;
-    margin: 10px;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-family: serif;
-    font-size: 19px;
-    color: #e5d2ab;
-    transition: .5s ease;
+.loguito {
+    width: 30%;
 
 }
-.nav li.active {
-    border-bottom: 2px solid #977528;
-}
 
-.menu li a {
-    transition: .5s ease;
-    margin: 0;
-    padding: 0;
-}
-
-@media screen and (min-width:480px) {
-    .logonav {
-    width:40%;
-    height:40%;
-    }}
-    
-@media screen and (max-width:479px) {
-    .logonav {
-        width:80%;
-        height:80%;
-    }
-} */
