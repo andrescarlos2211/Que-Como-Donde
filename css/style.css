@@ -827,7 +827,7 @@ video {
 
 .py-8 {
   padding-top: 8rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 .py-6 {
@@ -909,7 +909,7 @@ video {
 
 .text-white {
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: #e5d2ab;
 }
 
 .text-slate-900 {
