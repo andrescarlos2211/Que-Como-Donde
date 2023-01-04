@@ -28,6 +28,7 @@ body {
     align-items: center;
     position: relative;
     color: #e5d2ab;
+    z-index: 100;
 }
 
 .caja-de-texto .item {
@@ -40,15 +41,34 @@ body {
     color: #e5d2ab;
 }
 
-#myVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    filter:blur(5px);
-  }
-  
+/* #myVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: -3;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  } */
+
+
+.contenedor-video{
+    position: relative;
+    height: 100vh;
+}
+
+.contenedor-video video{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    filter:blur(10px);
+}
+
   /* Add some content at the bottom of the video/page */
   .content {
     position: fixed;
