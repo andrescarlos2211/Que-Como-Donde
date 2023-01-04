@@ -11,15 +11,13 @@ const seccionesPagina = new fullpage('#fullpage', {
     // ──────────────────────────────────────────────────
     //   :::::: Barra de navegación
     // ──────────────────────────────────────────────────
-    navigation: true, // Muesta la barra de navegación.
+    navigation: false, // Muesta la barra de navegación.
     menu: '#menu', // Menu de navegación.
 
     // menu de navegacion
-    navigation: true, // Muesta la barra de navegación.
-    menu: '#menu', // Menu de navegación.
     anchors: ['inicio', 'nosotros', 'blog', 'discusión'], // Anclas, las usamos para identificar cada seccion y poder acceder a ellas con el menu.
     navigationTooltips: ['Inicio', 'Nosotros', 'Blog', 'Discusión'], // Tooltips que mostrara por cada boton.
     showActiveTooltip: false, // Mostrar tooltip activa
-    sectionsColor : ['#556B2F', '#452F6B', '#556B2F'], // Color de fondo de cada seccion.
+    sectionsColor : ['#556B2F', '#452F6B', '#556B2F', '452F6B' ], // Color de fondo de cada seccion.
      })
      
