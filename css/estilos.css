@@ -220,6 +220,9 @@ input,
 .text-white{
     color: #e5d2ab!important;
 }
-.contenedor-texto{
-    width: 100%;
+
+.form-control{
+    background-color: #e5d2ab!important;
 }
+
+
