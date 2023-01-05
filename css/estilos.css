@@ -245,4 +245,14 @@ input,
     background-color: #e5d2ab!important;
 }
 
+#map{
+    display: flex;
+    margin-top: 1vh;
+    width: 35vw; 
+    height: 25vh;
+    margin: 2em auto;
+}
 
+.fp-table{
+    justify-content: flex-end!important;
+}
