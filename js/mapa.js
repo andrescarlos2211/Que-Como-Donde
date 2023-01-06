@@ -56,7 +56,7 @@ map.addLayer({
 'source': 'point', // reference the data source
 'layout': {
 'icon-image': 'cat', // reference the image
-'icon-size': 0.25
+'icon-size': 0.1
 }
 });
 }
