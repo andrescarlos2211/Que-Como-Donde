@@ -164,11 +164,6 @@ input,
 }
 
 
-
-#map {
-    height: 180px;
-}
-
 .nav {
     position: fixed;
     display: flex;
