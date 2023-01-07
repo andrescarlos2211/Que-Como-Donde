@@ -115,55 +115,6 @@ h5 {
     font-size: 5vmin;
 }
 
-/* Estilo barra busqueda */
-
-.buscar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 50%;
-    top: 70%;
-    color: #e5d2ab;
-    transform: translate(-50%, -50%);
-    background:#1d1d1fb8;
-    padding: 10px;
-    height: 10%;
-    border-radius: 40px;
-}
-
-input,
-::placeholder {
-    color: #e5d2ab;
-}
-
-.buscar_texto {
-    border: none;
-    background: none;
-    outline: none;
-    color: #e5d2ab;
-    font-size: 20px;
-    float: left;
-    line-height: 60px;
-    transition: .3s;
-    width: 0;
-}
-
-
-.boton {
-    width: 40px;
-    height: 40px;
-    text-decoration: none;
-    color: #e5d2ab;
-    font-size: 30px;
-}
-@media (hover: hover){
-    .buscar:hover>.buscar_texto{
-        width: 500px;
-    }
-}
-
-
 .nav {
     position: fixed;
     display: flex;
