@@ -11,7 +11,7 @@ const seccionesPagina = new fullpage('#fullpage', {
     // ──────────────────────────────────────────────────
     //   :::::: Barra de navegación
     // ──────────────────────────────────────────────────
-    navigation: false, // Muesta la barra de navegación.
+    navigation: true, // Muesta la barra de navegación.
     menu: '#menu', // Menu de navegación.
 
     // menu de navegacion
@@ -19,4 +19,3 @@ const seccionesPagina = new fullpage('#fullpage', {
     navigationTooltips: ['Inicio', 'Nosotros', 'Blog', 'Discusión'], // Tooltips que mostrara por cada boton.
     showActiveTooltip: false, // Mostrar tooltip activa
      })
-     

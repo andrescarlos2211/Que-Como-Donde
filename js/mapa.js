@@ -18,6 +18,8 @@ var map = new mapboxgl.Map({
 
 map.addControl(new mapboxgl.AttributionControl(), 'top-left');
 
+
+
 map.addControl(
     new mapboxgl.GeolocateControl({
     positionOptions: {
@@ -30,6 +32,7 @@ map.addControl(
     })
     );
 
+    map.scrollZoom.enable();
 map.on('load', () => {
 // Load an image from an external URL.
 map.loadImage(
