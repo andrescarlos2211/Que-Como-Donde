@@ -196,10 +196,15 @@ h5 {
     }
 }
 
-.element.style {
-    background-color: transparent!important;
-    overflow: hidden!important;
-    }
+
+.texto-flotante{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+}
+
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
 
@@ -209,7 +214,7 @@ h5 {
 position: absolute;
 display: block;
 color:#e5d2ab;
-top: 3em;
+top: 7em;
 width: 70%;
 font-size: 2em;
 animation-duration: 25s;
