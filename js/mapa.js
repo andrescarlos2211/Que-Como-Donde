@@ -8,6 +8,14 @@ var map = new mapboxgl.Map({
 
 });
 
+// setTimeout( 
+//   function(){
+  
+// map.resize();
+//   }
+//   ,3000);
+
+
 map.addControl(new mapboxgl.AttributionControl(), 'top-left');
 
 map.addControl(
