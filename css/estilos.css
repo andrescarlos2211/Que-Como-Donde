@@ -40,35 +40,6 @@ body {
     left: 12%;
     color: #e5d2ab;
 }
-
-/* #myVideo {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    z-index: -3;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  } */
-
-
-.contenedor-video{
-    position: relative;
-    height: 100vh;
-}
-
-.contenedor-video video{
-    position: relative;
-    top: 50%;
-    left: 50%;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    filter:blur(10px);
-}
-
   /* Add some content at the bottom of the video/page */
   .content {
     position: fixed;
@@ -113,6 +84,7 @@ h5 {
 .texto-color3 {
     font-weight: 900;
     font-size: 5vmin;
+    color: #e5d2ab;
 }
 
 .nav {
@@ -201,4 +173,74 @@ h5 {
 
 .fp-table{
     justify-content: flex-end!important;
+}
+
+.videobg{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    filter: blur(10px);
+}
+@media (min-aspect-ratio: 16/9){
+    .videobg{
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9){
+    .videobg{
+        width: auto;
+        height: 100%;
+    }
+}
+
+.element.style {
+    background-color: transparent!important;
+    overflow: hidden!important;
+    }
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+.nosotros1,
+.nosotros2,
+.nosotros3{
+position: absolute;
+display: block;
+color:#e5d2ab;
+top: 3em;
+width: 70%;
+font-size: 2em;
+animation-duration: 25s;
+animation-timing-function: ease-in-out;
+animation-iteration-count: infinite;
+background-color: #1d1d1fb8;
+}
+
+.nosotros1{
+    animation-name: anim-1;
+}
+.nosotros2{
+    animation-name: anim-2;
+}
+.nosotros3{
+    animation-name: anim-3;
+}
+
+@keyframes anim-1 {
+    0%, 8.3%{left: -100%; opacity: 0;}
+    8.3%,25%{left:25%; opacity: 1;}
+    33.33%,100%{left:110%; opacity:0;}
+    
+}
+@keyframes anim-2{
+    0%,33.33%{left:-100%;opacity: 0;}
+    41.63%,58.29%{left:25%; opacity: 1;}
+    66.66%,100%{left:110%; opacity:0;}
+}
+@keyframes anim-3{
+    0%,66.66%{left:-100%;opacity: 0;}
+    74.96%,91.62%{left:25%; opacity: 1;}
+    100%{left:110%; opacity:0;}
 }
