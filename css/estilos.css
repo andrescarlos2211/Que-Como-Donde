@@ -280,8 +280,9 @@ h5 {
   color: #e5d2ab;
   bottom: 5%;
   right: 15%;
-  width: 35%;
+  width: 35vw;
   font-size: 2.5em;
+  flex-wrap: nowrap;
 }
 
 
