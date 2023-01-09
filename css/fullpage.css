@@ -284,7 +284,7 @@ Not supports in Firefox and IE */
 }
 .fp-warning,
 .fp-watermark{
-    z-index: 9999999;
+    z-index: 1;
     position: absolute;
     bottom: 0;
 }
@@ -294,7 +294,7 @@ Not supports in Firefox and IE */
     color: #000;
     background: rgba(255,255,255,0.6);
     padding: 5px 8px;
-    font-size: 14px;
+    font-size: 5px;
     font-family: arial;
     color: black;
     display: inline-block;
