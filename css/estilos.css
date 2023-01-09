@@ -272,19 +272,11 @@ h5 {
   }
 }
 
+.loguito111{
+  margin: 0 auto;
+  width: 20%;
 
-
-.nosotros4 {
-  position: absolute;
-  display: block;
-  color: #e5d2ab;
-  bottom: 5%;
-  right: 15%;
-  width: 35vw;
-  font-size: 2.5em;
-  flex-wrap: nowrap;
 }
-
 
 
 /* Estilo de blog*/
