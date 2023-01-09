@@ -1,4 +1,4 @@
-# Qué Como Cuándo
+# Qué Como Dónde
 ## _Sitio Web creado para bootcamp de JavaScript_
 
 
@@ -7,5 +7,5 @@
 
 
 
-- Proyecto HTML con CSS, Comandos JavaScript, Bootstrap, J-query, Fullpage.js Tailwind y Mapbox, credito a los respectivos autores.
+- Proyecto HTML con CSS, Comandos JavaScript, Bootstrap, Fullpage.js Tailwind y Mapbox, credito a los respectivos autores.
 - Creado por Carlos González
