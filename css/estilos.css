@@ -272,6 +272,20 @@ h5 {
   }
 }
 
+
+
+.nosotros4 {
+  position: absolute;
+  display: block;
+  color: #e5d2ab;
+  top: 13em;
+  right: 15%;
+  width: 28%;
+  font-size: 2.5em;
+}
+
+
+
 /* Estilo de blog*/
 
 /* Header/Blog Title */
