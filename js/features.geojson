@@ -1,0 +1,524 @@
+{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.572365,
+          -33.119994
+        ],
+        "type": "Point"
+      },
+      "id": "00f44e324cc39cc29447c1591657d2f7"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.409029,
+          -33.050688
+        ],
+        "type": "Point"
+      },
+      "id": "0e55f82a8e69aaac0ed38ffc0523fdce"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.401891,
+          -33.060542
+        ],
+        "type": "Point"
+      },
+      "id": "106894b5a6aa0ca203923f84c2fecb5c"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.463883,
+          -33.049124
+        ],
+        "type": "Point"
+      },
+      "id": "1e94220ec2b725d13c649d46fce945f8"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.425404,
+          -33.070747
+        ],
+        "type": "Point"
+      },
+      "id": "297c06026533ffbe9181d7a4bd485fcd"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.441334,
+          -33.099628
+        ],
+        "type": "Point"
+      },
+      "id": "2e272eb0d4942d8bc108869263058c65"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.544907,
+          -33.012857
+        ],
+        "type": "Point"
+      },
+      "id": "3df20e0dc89824be5ad29bbc26996470"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.55641,
+          -33.128434
+        ],
+        "type": "Point"
+      },
+      "id": "47d2c44f4e7d00175c21bd34abc86456"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.436321,
+          -33.013374
+        ],
+        "type": "Point"
+      },
+      "id": "4a757b6ba41da5f1bd7c061f4bb2c552"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.563888,
+          -33.049758
+        ],
+        "type": "Point"
+      },
+      "id": "4c999bbd0fa485c81cc010f99a609b39"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Douglas Park",
+        "description": "A large park near in Chicago's North Lawndale neighborhood"
+      },
+      "geometry": {
+        "coordinates": [
+          -87.699329,
+          41.860092
+        ],
+        "type": "Point"
+      },
+      "id": "4ca5607acc79db8e25271c05665d2aba"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.506105,
+          -33.035019
+        ],
+        "type": "Point"
+      },
+      "id": "4e745ac7e3153fc8844a37542540c2fa"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.551371,
+          -33.033089
+        ],
+        "type": "Point"
+      },
+      "id": "4e8e9dc882cc4756c78aa765f598c44d"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.489873,
+          -32.992938
+        ],
+        "type": "Point"
+      },
+      "id": "540afc0014329c15e72d2a4ef3b457dd"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.396432,
+          -33.057727
+        ],
+        "type": "Point"
+      },
+      "id": "5c2c379e012223530cedef4241957c08"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Lincoln Park",
+        "description": "A northside park that is home to the Lincoln Park Zoo"
+      },
+      "geometry": {
+        "coordinates": [
+          -87.637596,
+          41.940403
+        ],
+        "type": "Point"
+      },
+      "id": "61c37bc9faaf8e99daab0a62b06fbd92"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.469913,
+          -33.046465
+        ],
+        "type": "Point"
+      },
+      "id": "68845bc127471cc3f9c21c7b8403d57c"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.340587,
+          -33.050336
+        ],
+        "type": "Point"
+      },
+      "id": "749b0548b7c411ee7522b1c147c9de4a"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.428344,
+          -33.053856
+        ],
+        "type": "Point"
+      },
+      "id": "76a9a25a3142a0b2d4f9ddd0e2d2ed77"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Humboldt Park",
+        "description": "A large park on Chicago's northwest side"
+      },
+      "geometry": {
+        "coordinates": [
+          -87.70199,
+          41.905423
+        ],
+        "type": "Point"
+      },
+      "id": "77effb4e5f2adf054bc7299b7b73b38d"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.574393,
+          -33.035792
+        ],
+        "type": "Point"
+      },
+      "id": "85edc75537e694bb2ea6ad34242e9d0d"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.55431,
+          -33.015839
+        ],
+        "type": "Point"
+      },
+      "id": "86ba63c84b01b568714be17218242432"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Calumet Park",
+        "description": "A park on the Illinois-Indiana border featuring a historic fieldhouse"
+      },
+      "geometry": {
+        "coordinates": [
+          -87.530221,
+          41.715515
+        ],
+        "type": "Point"
+      },
+      "id": "8eab7bff5924e0946aa389497a16115b"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.385935,
+          -33.047521
+        ],
+        "type": "Point"
+      },
+      "id": "9080272c28c47a1e795965d462bdc97a"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Jackson Park",
+        "description": "A lakeside park that was the site of the 1893 World's Fair"
+      },
+      "geometry": {
+        "coordinates": [
+          -87.580389,
+          41.783185
+        ],
+        "type": "Point"
+      },
+      "id": "949ed57eb12208db88ef39c070391db2"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.543232,
+          -33.047224
+        ],
+        "type": "Point"
+      },
+      "id": "9f90100178e0d77d9ebe7d5fd0f06783"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.510975,
+          -33.008707
+        ],
+        "type": "Point"
+      },
+      "id": "a2926c09df7df0aed1dc54aea6906c6d"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.548037,
+          -33.023225
+        ],
+        "type": "Point"
+      },
+      "id": "a38e16948d0264c6f5e9f45644bfb574"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Millennium Park",
+        "description": "A downtown park known for its art installations and unique architecture"
+      },
+      "geometry": {
+        "coordinates": [
+          -87.622554,
+          41.882534
+        ],
+        "type": "Point"
+      },
+      "id": "ac5c36ae199300b60ea6470af361e51c"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.584165,
+          -33.041776
+        ],
+        "type": "Point"
+      },
+      "id": "addf281d13a0a258d8ad6f21682b9788"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Burnham Park",
+        "description": "A lakefront park on Chicago's south side"
+      },
+      "geometry": {
+        "coordinates": [
+          -87.603735,
+          41.829985
+        ],
+        "type": "Point"
+      },
+      "id": "b1231ecb20ddc2f7aff6e56c6d2dd9b8"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.336361,
+          -33.117566
+        ],
+        "type": "Point"
+      },
+      "id": "b6c24dd26701c6191fd5c34358c63291"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.375018,
+          -33.064061
+        ],
+        "type": "Point"
+      },
+      "id": "b79d731c7848611a22ac2821ba74d972"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.36452,
+          -33.049984
+        ],
+        "type": "Point"
+      },
+      "id": "b975056c945a9e080cb694756dc4b074"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.373758,
+          -33.039777
+        ],
+        "type": "Point"
+      },
+      "id": "bb61688c88f0f30bcce60d05a5f870c9"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.461095,
+          -33.020416
+        ],
+        "type": "Point"
+      },
+      "id": "c5abe31f6ce0bad2e7635efee26b62d0"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Grant Park",
+        "description": "A downtown park that is the site of many of Chicago's favorite festivals and events"
+      },
+      "geometry": {
+        "coordinates": [
+          -87.619185,
+          41.876367
+        ],
+        "type": "Point"
+      },
+      "id": "cc8dd06e2f98afe546b39c02d9c4be94"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.567327,
+          -33.122104
+        ],
+        "type": "Point"
+      },
+      "id": "d63eb53798ac2e00736a0785c657712c"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.449021,
+          -33.056092
+        ],
+        "type": "Point"
+      },
+      "id": "db5fe87d4801ad80efffbb507d5c3c27"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -71.430443,
+          -33.044705
+        ],
+        "type": "Point"
+      },
+      "id": "e892c12a1b6c22f1dff1b981f2c94ba7"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Columbus Park",
+        "description": "A large park in Chicago's Austin neighborhood"
+      },
+      "geometry": {
+        "coordinates": [
+          -87.769775,
+          41.873683
+        ],
+        "type": "Point"
+      },
+      "id": "f1f07c92eacc3191d7ecc3de440a8885"
+    }
+  ],
+  "type": "FeatureCollection"
+}
