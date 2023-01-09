@@ -8,4 +8,4 @@
 
 
 - Proyecto HTML con CSS, Comandos JavaScript, Bootstrap, Fullpage.js Tailwind y Mapbox, credito a los respectivos autores.
-- Creado por Carlos González
+- Diseñado por Carlos González
