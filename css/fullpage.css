@@ -92,7 +92,7 @@ html.fp-enabled,
     position: fixed;
     z-index: 100;
     top: 50%;
-    opacity: 1;
+    opacity: 0.7;
     transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -webkit-transform: translate3d(0,-50%,0);
