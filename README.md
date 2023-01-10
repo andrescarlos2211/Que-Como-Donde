@@ -8,5 +8,5 @@
 
 
 - Proyecto HTML con CSS, Comandos JavaScript, Bootstrap, Fullpage.js Tailwind y Mapbox, credito a los respectivos autores.
-- Diseñado por Carlos González
+- Diseñado por Carlos Andrés González
 
