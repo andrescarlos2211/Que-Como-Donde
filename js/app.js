@@ -1,6 +1,6 @@
 const seccionesPagina = new fullpage('#fullpage', {
     licenseKey: 'gplv3-license',
-    autoScrolling: false, // Se activa el scroll.
+    autoScrolling: true, // Se activa el scroll.
     fitToSection: false, // Acomoda el scroll automaticamente para que la seccion se muestre en pantalla.
     fitToSectionDelay: 300, // Delay antes de acomodar la seccion automaticamente.
     easing: 'easeInOutCubic', // Funcion de tiempo de la animacion.
@@ -8,6 +8,8 @@ const seccionesPagina = new fullpage('#fullpage', {
     css3: true, // Si usara CSS3 o javascript.
     easingcss3: 'ease-out', // Curva de velocidad del efecto.
     loopBottom: true, // Regresa a la primera seccion siempre y cuando se ya haya llegado a la ultima sección y el ususario siga scrolleando.
+    normalScrollElements: '.map',
+
     // ──────────────────────────────────────────────────
     //   :::::: Barra de navegación
     // ──────────────────────────────────────────────────
