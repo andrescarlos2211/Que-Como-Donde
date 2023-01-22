@@ -155,6 +155,7 @@ h5 {
 
 #map {
   display: flex;
+  overflow: hidden;
   margin-top: 1vh;
   width: 30vw;
   height: 25vh;
