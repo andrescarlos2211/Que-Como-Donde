@@ -1,55 +1,41 @@
-let suggestions=["php","diseñador web", "programacion"]
+const contenido = [
+    {nombre:"Manzanas",slug:"catalogo.html"},
+    {nombre:"Queso",slug:"catalogo.html"},
+    {nombre:"Champiñones",slug:"catalogo.html"},
+    {nombre:"Maceteros",slug:"catalogo.html"},
+    {nombre:"Colaciones",slug:"catalogo.html"},
+    {nombre:"Lechugas",slug:"catalogo.html"},
+    {nombre:"Fitocosmetica",slug:"catalogo.html"},
+    {nombre:"Verduras a domicilio",slug:"catalogo.html"},
+    {nombre:"Frutos secos",slug:"catalogo.html"},
+    {nombre:"Almendras",slug:"catalogo.html"},
+    {nombre:"Dátiles",slug:"catalogo.html"},
+    {nombre:"Nueces",slug:"catalogo.html"},
+    {nombre:"te organico",slug:"catalogo.html"},
+    {nombre:"Pan de masa madre",slug:"catalogo.html"},
+    {nombre:"kombucha",slug:"catalogo.html"},
+    {nombre:"Merken",slug:"catalogo.html"},
+    {nombre:"Muebleria",slug:"catalogo.html"},
+    {nombre:"Queque de oregano",slug:"catalogo.html"},
+    {nombre:"Chocolate Vegano",slug:"catalogo.html"},
+    {nombre:"Empanadas caseras",slug:"catalogo.html"},
+    {nombre:"Aloe vera",slug:"catalogo.html"},
+    {nombre:"Zuelas de cañamo",slug:"catalogo.html"},
+    {nombre:"Seitan",slug:"catalogo.html"},
+    {nombre:"Romero",slug:"rocatalogo.htmlmero"}
 
-const searchwrapper = document.querySelector(".search-input");
-const inputBox = searchwrapper.querySelector("input");
-const suggBox = searchwrapper.querySelector(".autocom-box");
-const icon = searchwrapper.querySelector(".icon");
-let linkTag = searchwrapper.querySelector("a")
-let webLink;
-inputBox.onkeyup =(e)=>{
-    let userData=e.target.value;
-    let emptyArray= [];
-    if(userData){
-        icon.onclick = () =>{
-            webLink = `www.google.cl/search?q=${userData}`;
-            linkTag.setAttribute("href",webLink);
-            linkTag.click()
-        }
-        emptyArray=suggestions.filter((data)=>{
-            
-            data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
-            return
-        });
-        emptyArray=emptyArray.map((data)=>{
-            return data=`<li>${data}</li>`;
-        });
-        searchwrapper.classList.add("active");
-        showSuggestions(emptyArray);
-        let  AllList = suggBox.querySelector("li");
-        for (let i=0; i< AllList.length;i++){
-            AllList[i].setAttribute("onclick","select(this)");
-        }}else{
-            searchwrapper.classList.remove("active");
-        }}
-        function select(element){
-            let selectData = element.textContent;
-            inputBox.value=selectData;
-            icon.onclick=()=>{
-                webLink="www.google.cl/search?q=${userData}";
-                linkTag.setAttribute("href",webLink);
-                linkTag.click();
-            }
-            searchwrapper.classList.remove("active")
-    
+]
+
+function autocompletado () {            
+    var pal = document.getElementById("buscar-pal").value;
+    document.getElementById("demo").innerHTML = '';
+    if(pal.length>0){                
+        var html='';
+        contenido.forEach(function(element) {
+            let posicion = element.nombre.toLowerCase().indexOf(pal.toLowerCase());
+            if (posicion !== -1)
+                html += "<li class='list-group-item'><a href='/"+element.slug+"'>"+element.nombre+"</a></li>";
+        })
+        document.getElementById("demo").innerHTML = html ;
     }
-function showSuggestions(list){
-    let listData;
-    if(!list.length){
-        userValue=inputBox.value;
-        listData=`<li>${userValue}</li>`;
-    }
-    else{
-        listData=lisy.join("");
-    }
-    suggBox.innerHTML=listData;
 }
