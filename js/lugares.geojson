@@ -2,7 +2,10 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Queso de cabra",
+        "description": "Traido directamente desde Titirilquen, consulte por ofertas al por mayor"
+      },
       "geometry": {
         "coordinates": [
           -71.572365,
@@ -14,7 +17,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Chocolates veganos",
+        "description": "Chocolate 100% vegano, sin azucar y sin maltrato animal, buscanos en instagram como Soylacomadreja"
+      },
       "geometry": {
         "coordinates": [
           -71.409029,
@@ -26,11 +32,14 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Lechugas organicas",
+        "description": "Hechas en hidroponia, tambien cambio por otros vegetales"
+      },
       "geometry": {
         "coordinates": [
           -71.401891,
-          -33.060542
+          -33.060541
         ],
         "type": "Point"
       },
@@ -38,7 +47,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Maceteros de materiales reciclados",
+        "description": "De distintos materiales 100% a mano"
+      },
       "geometry": {
         "coordinates": [
           -71.463883,
@@ -50,11 +62,14 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Paltas chilenas",
+        "description": "Directo desde mi patio"
+      },
       "geometry": {
         "coordinates": [
           -71.425404,
-          -33.070747
+          -33.070746
         ],
         "type": "Point"
       },
@@ -62,7 +77,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Prueba La Birra de Carlitos",
+        "description": "Amber ale, IPA, Imperial Stout"
+      },
       "geometry": {
         "coordinates": [
           -71.441334,
@@ -74,11 +92,14 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Colaciones Veganas",
+        "description": "Deliciosas, todos los dias y libres de sufrimiento animal"
+      },
       "geometry": {
         "coordinates": [
           -71.544907,
-          -33.012857
+          -33.012856
         ],
         "type": "Point"
       },
@@ -86,7 +107,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Hierbas varias",
+        "description": "Cedron, menta, Matico, lo que busques"
+      },
       "geometry": {
         "coordinates": [
           -71.55641,
@@ -98,7 +122,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Hongos comestibles",
+        "description": "Encuentra aqui tus champiñones, melena de leon, Shiitake o Porcini"
+      },
       "geometry": {
         "coordinates": [
           -71.436321,
@@ -110,11 +137,14 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Tomates frescos",
+        "description": "Se entregan a domicilio o en mi casa"
+      },
       "geometry": {
         "coordinates": [
           -71.563888,
-          -33.049758
+          -33.049757
         ],
         "type": "Point"
       },
@@ -123,21 +153,9 @@
     {
       "type": "Feature",
       "properties": {
-        "title": "Douglas Park",
-        "description": "A large park near in Chicago's North Lawndale neighborhood"
+        "title": "Frutas variadas a domicilio",
+        "description": "Los dias Jueves y Domingo"
       },
-      "geometry": {
-        "coordinates": [
-          -87.699329,
-          41.860092
-        ],
-        "type": "Point"
-      },
-      "id": "4ca5607acc79db8e25271c05665d2aba"
-    },
-    {
-      "type": "Feature",
-      "properties": {},
       "geometry": {
         "coordinates": [
           -71.506105,
@@ -149,11 +167,14 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Fitocosmetica",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.551371,
-          -33.033089
+          -33.033088
         ],
         "type": "Point"
       },
@@ -161,7 +182,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.489873,
@@ -173,7 +197,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.396432,
@@ -186,25 +213,13 @@
     {
       "type": "Feature",
       "properties": {
-        "title": "Lincoln Park",
-        "description": "A northside park that is home to the Lincoln Park Zoo"
+        "title": "",
+        "description": ""
       },
-      "geometry": {
-        "coordinates": [
-          -87.637596,
-          41.940403
-        ],
-        "type": "Point"
-      },
-      "id": "61c37bc9faaf8e99daab0a62b06fbd92"
-    },
-    {
-      "type": "Feature",
-      "properties": {},
       "geometry": {
         "coordinates": [
           -71.469913,
-          -33.046465
+          -33.046464
         ],
         "type": "Point"
       },
@@ -212,7 +227,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.340587,
@@ -224,7 +242,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.428344,
@@ -237,21 +258,9 @@
     {
       "type": "Feature",
       "properties": {
-        "title": "Humboldt Park",
-        "description": "A large park on Chicago's northwest side"
+        "title": "",
+        "description": ""
       },
-      "geometry": {
-        "coordinates": [
-          -87.70199,
-          41.905423
-        ],
-        "type": "Point"
-      },
-      "id": "77effb4e5f2adf054bc7299b7b73b38d"
-    },
-    {
-      "type": "Feature",
-      "properties": {},
       "geometry": {
         "coordinates": [
           -71.574393,
@@ -263,7 +272,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.55431,
@@ -276,21 +288,9 @@
     {
       "type": "Feature",
       "properties": {
-        "title": "Calumet Park",
-        "description": "A park on the Illinois-Indiana border featuring a historic fieldhouse"
+        "title": "",
+        "description": ""
       },
-      "geometry": {
-        "coordinates": [
-          -87.530221,
-          41.715515
-        ],
-        "type": "Point"
-      },
-      "id": "8eab7bff5924e0946aa389497a16115b"
-    },
-    {
-      "type": "Feature",
-      "properties": {},
       "geometry": {
         "coordinates": [
           -71.385935,
@@ -303,21 +303,9 @@
     {
       "type": "Feature",
       "properties": {
-        "title": "Jackson Park",
-        "description": "A lakeside park that was the site of the 1893 World's Fair"
+        "title": "",
+        "description": ""
       },
-      "geometry": {
-        "coordinates": [
-          -87.580389,
-          41.783185
-        ],
-        "type": "Point"
-      },
-      "id": "949ed57eb12208db88ef39c070391db2"
-    },
-    {
-      "type": "Feature",
-      "properties": {},
       "geometry": {
         "coordinates": [
           -71.543232,
@@ -329,7 +317,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.510975,
@@ -341,11 +332,14 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.548037,
-          -33.023225
+          -33.023224
         ],
         "type": "Point"
       },
@@ -354,21 +348,9 @@
     {
       "type": "Feature",
       "properties": {
-        "title": "Millennium Park",
-        "description": "A downtown park known for its art installations and unique architecture"
+        "title": "",
+        "description": ""
       },
-      "geometry": {
-        "coordinates": [
-          -87.622554,
-          41.882534
-        ],
-        "type": "Point"
-      },
-      "id": "ac5c36ae199300b60ea6470af361e51c"
-    },
-    {
-      "type": "Feature",
-      "properties": {},
       "geometry": {
         "coordinates": [
           -71.584165,
@@ -381,25 +363,13 @@
     {
       "type": "Feature",
       "properties": {
-        "title": "Burnham Park",
-        "description": "A lakefront park on Chicago's south side"
+        "title": "",
+        "description": ""
       },
-      "geometry": {
-        "coordinates": [
-          -87.603735,
-          41.829985
-        ],
-        "type": "Point"
-      },
-      "id": "b1231ecb20ddc2f7aff6e56c6d2dd9b8"
-    },
-    {
-      "type": "Feature",
-      "properties": {},
       "geometry": {
         "coordinates": [
           -71.336361,
-          -33.117566
+          -33.117565
         ],
         "type": "Point"
       },
@@ -407,7 +377,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.375018,
@@ -419,7 +392,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.36452,
@@ -431,7 +407,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.373758,
@@ -443,11 +422,14 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.461095,
-          -33.020416
+          -33.020415
         ],
         "type": "Point"
       },
@@ -456,21 +438,9 @@
     {
       "type": "Feature",
       "properties": {
-        "title": "Grant Park",
-        "description": "A downtown park that is the site of many of Chicago's favorite festivals and events"
+        "title": "",
+        "description": ""
       },
-      "geometry": {
-        "coordinates": [
-          -87.619185,
-          41.876367
-        ],
-        "type": "Point"
-      },
-      "id": "cc8dd06e2f98afe546b39c02d9c4be94"
-    },
-    {
-      "type": "Feature",
-      "properties": {},
       "geometry": {
         "coordinates": [
           -71.567327,
@@ -482,7 +452,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "",
+        "description": ""
+      },
       "geometry": {
         "coordinates": [
           -71.449021,
@@ -494,7 +467,10 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "title": "Tomates organicos a la venta",
+        "description": "Se venden tomates organicos de mi huerto, tambien de permuta"
+      },
       "geometry": {
         "coordinates": [
           -71.430443,
@@ -503,21 +479,6 @@
         "type": "Point"
       },
       "id": "e892c12a1b6c22f1dff1b981f2c94ba7"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "title": "Columbus Park",
-        "description": "A large park in Chicago's Austin neighborhood"
-      },
-      "geometry": {
-        "coordinates": [
-          -87.769775,
-          41.873683
-        ],
-        "type": "Point"
-      },
-      "id": "f1f07c92eacc3191d7ecc3de440a8885"
     }
   ],
   "type": "FeatureCollection"

@@ -1,4 +1,5 @@
 const contenido = [
+    {nombre:"Cerca De Ti (menos de 500 m.)",slug:"catalogo.html"},
     {nombre:"Manzanas",slug:"catalogo.html"},
     {nombre:"Queso",slug:"catalogo.html"},
     {nombre:"Champiñones",slug:"catalogo.html"},
