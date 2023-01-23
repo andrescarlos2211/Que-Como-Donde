@@ -1,0 +1,426 @@
+/* ------------------------- */
+/* Estilos Generales */
+/* ------------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: rgb(202, 202, 201);
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    background-size: cover;
+  }
+  
+  .contenedor-texto {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 75%;
+    height: auto;
+    font-size: 100%;
+  }
+  
+  .caja-de-texto {
+    min-height: 80vh;
+    align-items: center;
+    position: relative;
+    color: #e5d2ab;
+    z-index: 100;
+  }
+  
+  .caja-de-texto .item {
+    width: 75%;
+    height: 60%;
+    text-align: justify;
+    position: absolute;
+    top: 20%;
+    left: 12%;
+    color: #e5d2ab;
+  }
+  /* Add some content at the bottom of the video/page */
+  .content {
+    position: fixed;
+    text-align: justify;
+    bottom: 0;
+    right: 20%;
+    background: #1d1d1fb8;
+    color: #f1f1f1;
+    width: 60%;
+    padding: 20px;
+  }
+  
+  .section header {
+    display: flex;
+    align-items: center;
+    background-size: cover;
+  
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  
+  .texto-color1 {
+    font-weight: 300;
+    font-size: 5vmin;
+    color: #e5d2ab;
+    background: #1d1d1fb8;
+  }
+  
+  .texto-color2 {
+    font-weight: 700;
+    font-size: 7vmin;
+    color: #c3af87;
+    background: #1d1d1fb8;
+  }
+  
+  .texto-color3 {
+    font-weight: 900;
+    font-size: 5vmin;
+    color: #e5d2ab;
+  }
+  
+  .nav {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 70;
+    width: 100%;
+    margin: 0;
+    padding: 10px 20px;
+    background: #1d1d1fb8;
+  }
+  
+  .loguito {
+    width: 30%;
+  }
+  
+  /*estilo barra busqueda*/
+  
+  .form {
+    position: relative;
+  }
+  
+  .form .fa-search {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #9ca3af;
+  }
+  
+  .form span {
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db;
+  }
+  
+  .left-pan {
+    padding-left: 7px;
+  }
+  
+  .left-pan i {
+    padding-left: 10px;
+  }
+  
+  .form-input {
+    height: 55px;
+    text-indent: 33px;
+    border-radius: 10px;
+  }
+  
+  .form-input:focus {
+    box-shadow: none;
+    border: none;
+  }
+  
+  .text-white {
+    color: #e5d2ab !important;
+  }
+  
+  .form-control {
+    background-color: #e5d2ab !important;
+  }
+  
+  #map {
+    display: flex;
+    overflow: hidden;
+    margin-top: 1vh;
+    width: 30vw;
+    height: 25vh;
+    margin: 2em auto;
+  }
+  
+  .fp-table {
+    justify-content: flex-end !important;
+  }
+  
+  .videobg {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    bottom: 0;
+    z-index: -5;
+    filter: blur(10px);
+  }
+  @media (min-aspect-ratio: 16/9) {
+    .videobg {
+      width: 100%;
+      /* height: Calc(auto-10vh); */
+    }
+  }
+  
+  @media (max-aspect-ratio: 16/9) {
+    .videobg {
+      width: auto;
+      height: 100%;
+    }
+  }
+  
+  .texto-flotante {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+  
+  .nosotros1,
+  .nosotros2,
+  .nosotros3 {
+    position: absolute;
+    display: block;
+    color: #e5d2ab;
+    /* top: 4.5em; */
+    width: 70%;
+    font-size: 2.5em;
+    animation-duration: 25s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    background-color: #1d1d1fb8;
+  }
+  
+  .nosotros1 {
+    animation-name: anim-1;
+  }
+  .nosotros2 {
+    animation-name: anim-2;
+  }
+  .nosotros3 {
+    animation-name: anim-3;
+  }
+  
+  @keyframes anim-1 {
+    0%,
+    8.3% {
+      left: -100%;
+      opacity: 0;
+    }
+    8.3%,
+    25% {
+      left: 25%;
+      opacity: 1;
+    }
+    33.33%,
+    100% {
+      left: 110%;
+      opacity: 0;
+    }
+  }
+  @keyframes anim-2 {
+    0%,
+    33.33% {
+      left: -100%;
+      opacity: 0;
+    }
+    41.63%,
+    58.29% {
+      left: 25%;
+      opacity: 1;
+    }
+    66.66%,
+    100% {
+      left: 110%;
+      opacity: 0;
+    }
+  }
+  @keyframes anim-3 {
+    0%,
+    66.66% {
+      left: -100%;
+      opacity: 0;
+    }
+    74.96%,
+    91.62% {
+      left: 25%;
+      opacity: 1;
+    }
+    100% {
+      left: 110%;
+      opacity: 0;
+    }
+  }
+  
+  .loguito111{
+    margin: 0 auto;
+    width: 20%;
+  
+  }
+  
+  
+  /* Estilo de blog*/
+  
+  /* Header/Blog Title */
+  .header {
+    padding: 30px;
+    font-size: 40px;
+    text-align: center;
+    background: #e5d2ab;
+  }
+  
+  /* Create two unequal columns that floats next to each other */
+  /* Left column */
+  .leftcolumn {
+    float: left;
+    width: 75%;
+  }
+  
+  /* Right column */
+  .rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+  }
+  
+  /* Fake image */
+  .fakeimg {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Add a card effect for articles */
+  .card {
+    background-color: #e5d2ab;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+  }
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 800px) {
+    .leftcolumn,
+    .rightcolumn {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  
+  /* 
+  .textodeblog{
+  position: absolute;
+  top: 100px;
+    } */
+  
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: left;
+  }
+  /* .mt-100 {
+  
+  } */
+  .fp-overflow {
+    margin-top: 100px!important;
+  }
+  
+  
+  .card {
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
+      0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+      0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
+      0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+    border-width: 0;
+    transition: all 0.2s;
+  }
+  .card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    border-bottom-width: 1px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0.625rem;
+    height: 5rem;
+    text-transform: uppercase;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(26, 54, 126, 0.125);
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #3f6ad8;
+    border-color: #3f6ad8;
+  }
+  .btn {
+    font-size: 0.8rem;
+    font-weight: 500;
+    outline: none !important;
+    position: relative;
+    transition: color 0.15s, background-color 0.15s, border-color 0.15s,
+      box-shadow 0.15s;
+  }
+  .card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+  }
+  .card-body p {
+    font-size: 13px;
+  }
+  a {
+    color: #e91e63;
+    text-decoration: none !important;
+    background-color: transparent;
+  }
+  .media img {
+    width: 10vw;
+    height: auto;
+  }
+  
+  #productscontainer{
+    margin-top: 12vh;
+  }
+  

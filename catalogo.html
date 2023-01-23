@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo</title>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/estilo2.css">
+    <link rel="stylesheet" type="text/css" href="/css/fullpage.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <header class="sticky top-0 z-10 bg-teal-700 text-white">
+        <section class="nav mx-auto flex max-w-4xl items-center justify-between p-4">
+            <div><a href="index.html"><img class="loguito" src="/img/Logo/Logo colores.png"
+                        alt="Quecomocuando"></a></div>
+            <div>
+                <button
+                    id="hamburger-button"
+                    class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
+                    <!-- &#9776; -->
+                    <div
+                        class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all
+                        duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4
+                        before:-translate-y-3 before:rounded before:bg-white
+                        before:transition-all before:duration-500 before:content-['']
+                        after:absolute after:h-1 after:w-8 after:-translate-x-4
+                        after:translate-y-3 after:rounded after:bg-white after:transition-all
+                        after:duration-500 after:content-['']"></div>
+                </button>
+                <nav class="hidden space-x-8 text-xl md:block" aria-label="main">
+                    <a href="index.html" class="hover:opacity-90">Inicio</a>
+                    <a href="index.html#nosotros" class="hover:opacity-90">Nosotros</a>
+                    <a href="index.html#blog" class="hover:opacity-90">Blog</a>
+                    <a href="index.html#discusion" class="hover:opacity-90">Discusión</a>
+                    <a href="https://github.com/andrescarlos-gm" class="hover:opacity-90">Github
+                    </a>
+
+                
+                </nav>
+
+            </div>
+        </section>
+        <section
+            id="mobile-menu"
+            class="top-68 justify-content-center absolute hidden w-full origin-top
+            animate-open-menu flex-col bg-black text-5xl">
+            <!-- <button class="text-8xl self-end px-6">
+                  &times;
+              </button> -->
+            <nav class="flex min-h-screen flex-col items-center py-8"
+                aria-label="mobile">
+                <a href="index.html" class="w-full py-6 text-center hover:opacity-90">Inicio</a>
+                <a href="index.html#nosotros" class="w-full py-6 text-center hover:opacity-90">Nosotros</a>
+                <a href="index.html#blog" class="w-full py-6 text-center hover:opacity-90">Blog</a>
+                <a href="index.html#discusion" class="w-full py-6 text-center hover:opacity-90">Discusión</a>
+                <a href="https://github.com/andrescarlos-gm" class="w-full py-6 text-center hover:opacity-90"><img class="loguito111" src="/img/Logo/github-mark/github-mark.png"></a>
+            </nav>
+        </section>
+    </header>
+    <div class="container d-flex justify-content-center mt-50 mb-50">
+            
+        <div class="row" id="productscontainer">
+           <div class="col-md-10">
+            
+                    <div class="card card-body">
+                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                <div class="mr-2 mb-3 mb-lg-0">
+                                    
+                                        <img src="https://i.imgur.com/5Aqgz7o.jpg" width="150" height="150" alt="">
+                                   
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-title font-weight-semibold">
+                                        <a href="#" data-abc="true">Apple iPhone XR (Red, 128 GB)</a>
+                                    </h6>
+
+                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
+                                    </ul>
+
+                                    <p class="mb-3">128 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 7MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+
+
+                                </div>
+
+                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                    <h3 class="mb-0 font-weight-semibold">$459.99</h3>
+
+                                    <div>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+
+                                    </div>
+
+                                    <div class="text-muted">1985 reviews</div>
+
+                                </div>
+                            </div>
+                        </div>
+                    <div class="card card-body mt-3">
+                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                <div class="mr-2 mb-3 mb-lg-0">
+                                    
+                                        <img src="/img/1.jpg" width="20vw" alt="">
+                                   
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-title font-weight-semibold">
+                                        <a href="#" data-abc="true">Apple iPhone XS Max (Gold, 64 GB)</a>
+                                    </h6>
+
+                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
+                                    </ul>
+
+                                    <p class="mb-3">256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+
+                    
+                                </div>
+
+                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                    <h3 class="mb-0 font-weight-semibold">$612.99</h3>
+
+                                    <div>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+
+                                    </div>
+
+                                    <div class="text-muted">2349 reviews</div>
+
+                                </div>
+                            </div>
+                        </div>    
+                    <div class="card card-body mt-3">
+                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                <div class="mr-2 mb-3 mb-lg-0">
+                                    
+                                        <img src="https://i.imgur.com/5Aqgz7o.jpg" width="150" height="150" alt="">
+                                   
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-title font-weight-semibold">
+                                        <a href="#" data-abc="true">Apple iPhone XR (Red, 128 GB)</a>
+                                    </h6>
+
+                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
+                                    </ul>
+
+                                    <p class="mb-3">128 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 7MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+
+                                </div>
+
+                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                    <h3 class="mb-0 font-weight-semibold">$459.99</h3>
+
+                                    <div>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+
+                                    </div>
+
+                                    <div class="text-muted">1985 reviews</div>
+
+                                </div>
+                            </div>
+                        </div>
+                    <div class="card card-body mt-3">
+                        <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                <div class="mr-2 mb-3 mb-lg-0">
+                                    
+                                        <img src="https://i.imgur.com/Aj0L4Wa.jpg" width="150" height="150" alt="">
+                                   
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-title font-weight-semibold">
+                                        <a href="#" data-abc="true">Apple iPhone XS Max (Gold, 64 GB)</a>
+                                    </h6>
+
+                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
+                                    </ul>
+
+                                    <p class="mb-3">256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+
+                    
+                                </div>
+
+                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                    <h3 class="mb-0 font-weight-semibold">$612.99</h3>
+
+                                    <div>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+
+                                    </div>
+
+                                    <div class="text-muted">2349 reviews</div>
+
+                                </div>
+                            </div>
+                        </div> 
+                    <div class="card card-body mt-3">
+                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                    <div class="mr-2 mb-3 mb-lg-0">
+                                        
+                                            <img src="https://i.imgur.com/Aj0L4Wa.jpg" width="150" height="150" alt="">
+                                       
+                                    </div>
+    
+                                    <div class="media-body">
+                                        <h6 class="media-title font-weight-semibold">
+                                            <a href="#" data-abc="true">Apple iPhone XS Max (Gold, 64 GB)</a>
+                                        </h6>
+    
+                                        <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                            <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
+                                        </ul>
+    
+                                        <p class="mb-3">256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+    
+                        
+                                    </div>
+    
+                                    <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                        <h3 class="mb-0 font-weight-semibold">$612.99</h3>
+    
+                                        <div>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+    
+                                        </div>
+    
+                                        <div class="text-muted">2349 reviews</div>
+    
+                                    </div>
+                                </div>
+                        </div>
+                    <div class="card card-body mt-3">
+                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                    <div class="mr-2 mb-3 mb-lg-0">
+                                        
+                                            <img src="https://i.imgur.com/Aj0L4Wa.jpg" width="150" height="150" alt="">
+                                       
+                                    </div>
+    
+                                    <div class="media-body">
+                                        <h6 class="media-title font-weight-semibold">
+                                            <a href="#" data-abc="true">Apple iPhone XS Max (Gold, 64 GB)</a>
+                                        </h6>
+    
+                                        <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                            <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
+                                        </ul>
+    
+                                        <p class="mb-3">256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+    
+                        
+                                    </div>
+    
+                                    <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                        <h3 class="mb-0 font-weight-semibold">$612.99</h3>
+    
+                                        <div>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+    
+                                        </div>
+    
+                                        <div class="text-muted">2349 reviews</div>
+    
+                                    </div>
+                                </div>
+                        </div> 
+                        <div class="card card-body mt-3">
+                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                <div class="mr-2 mb-3 mb-lg-0">
+                                    
+                                        <img src="https://i.imgur.com/5Aqgz7o.jpg" width="150" height="150" alt="">
+                                   
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-title font-weight-semibold">
+                                        <a href="#" data-abc="true">Apple iPhone XR (Red, 128 GB)</a>
+                                    </h6>
+
+                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
+                                    </ul>
+
+                                    <p class="mb-3">128 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 7MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+
+                                </div>
+
+                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                    <h3 class="mb-0 font-weight-semibold">$459.99</h3>
+
+                                    <div>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+
+                                    </div>
+
+                                    <div class="text-muted">1985 reviews</div>
+
+                                </div>
+                            </div>
+                        </div>
+                    <div class="card card-body mt-3">
+                        <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                <div class="mr-2 mb-3 mb-lg-0">
+                                    
+                                        <img src="https://i.imgur.com/Aj0L4Wa.jpg" width="150" height="150" alt="">
+                                   
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-title font-weight-semibold">
+                                        <a href="#" data-abc="true">Apple iPhone XS Max (Gold, 64 GB)</a>
+                                    </h6>
+
+                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
+                                    </ul>
+
+                                    <p class="mb-3">256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+
+                    
+                                </div>
+
+                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                    <h3 class="mb-0 font-weight-semibold">$612.99</h3>
+
+                                    <div>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+
+                                    </div>
+
+                                    <div class="text-muted">2349 reviews</div>
+
+                                </div>
+                            </div>
+                        </div> 
+                    <div class="card card-body mt-3">
+                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                    <div class="mr-2 mb-3 mb-lg-0">
+                                        
+                                            <img src="https://i.imgur.com/Aj0L4Wa.jpg" width="150" height="150" alt="">
+                                       
+                                    </div>
+    
+                                    <div class="media-body">
+                                        <h6 class="media-title font-weight-semibold">
+                                            <a href="#" data-abc="true">Apple iPhone XS Max (Gold, 64 GB)</a>
+                                        </h6>
+    
+                                        <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                            <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
+                                        </ul>
+    
+                                        <p class="mb-3">256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+    
+                        
+                                    </div>
+    
+                                    <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                        <h3 class="mb-0 font-weight-semibold">$612.99</h3>
+    
+                                        <div>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+    
+                                        </div>
+    
+                                        <div class="text-muted">2349 reviews</div>
+    
+                                    </div>
+                                </div>
+                        </div>
+                    <div class="card card-body mt-3">
+                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                    <div class="mr-2 mb-3 mb-lg-0">
+                                        
+                                            <img src="https://i.imgur.com/Aj0L4Wa.jpg" width="150" height="150" alt="">
+                                       
+                                    </div>
+    
+                                    <div class="media-body">
+                                        <h6 class="media-title font-weight-semibold">
+                                            <a href="#" data-abc="true">Apple iPhone XS Max (Gold, 64 GB)</a>
+                                        </h6>
+    
+                                        <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                            <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
+                                            <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
+                                        </ul>
+    
+                                        <p class="mb-3">256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+    
+                        
+                                    </div>
+    
+                                    <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                        <h3 class="mb-0 font-weight-semibold">$612.99</h3>
+    
+                                        <div>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+    
+                                        </div>
+    
+                                        <div class="text-muted">2349 reviews</div>
+    
+                                    </div>
+                                </div>
+                        </div> 
+                  
+        </div>                     
+        </div>
+    </div>
+</body>
+</html>
