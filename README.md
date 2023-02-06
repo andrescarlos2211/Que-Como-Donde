@@ -7,4 +7,4 @@
 
 
 
-This site was designed using a lot of templates, credits to each author :relieved:
+This site was designed using a lot of templates, credits for each author :relieved:
