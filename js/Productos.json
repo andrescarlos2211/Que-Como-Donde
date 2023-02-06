@@ -40,7 +40,7 @@
     "Precio":"990"
 },{
     "Producto":"Almendras",
-    "Distancia":"",
+    "Distancia":"500",
     "Keyword1":"Frutos secos",
     "Keyword2":"Proteina vegetal",
     "Keyword3":"",
@@ -48,7 +48,7 @@
     "Precio":"750 x 100g"
 },{
     "Producto":"Empanadas Caseras",
-    "Distancia":"",
+    "Distancia":"750",
     "Keyword1":"Vegan",
     "Keyword2":"Almidon",
     "Keyword3":"Harina refinada",
@@ -56,7 +56,7 @@
     "Precio":"1500"
 },{
     "Producto":"La birra de Carlitos",
-    "Distancia":"",
+    "Distancia":"900",
     "Keyword1":"Cerveza",
     "Keyword2":"Artesanal",
     "Keyword3":"Todo Grano",
@@ -64,7 +64,7 @@
     "Precio":"2500"
 },{
     "Producto":"Pan de masa madre",
-    "Distancia":"",
+    "Distancia":"1000",
     "Keyword1":"Pan",
     "Keyword2":"Gluten",
     "Keyword3":"Fermentos",
@@ -72,7 +72,7 @@
     "Precio":"2000"
 },{
     "Producto":"Queque de oregano",
-    "Distancia":"",
+    "Distancia":"1100",
     "Keyword1":"Oregano",
     "Keyword2":"Gluten",
     "Keyword3":"Libre de azucar",
