@@ -24,7 +24,8 @@ let dataBase = [{
     "Keyword3": "Probioticos",
     "Descripción":"Vendo Kombucha variados sabores, también dispongo de Scoby por si deseas realizar la tuya. Buscame en instagram como: kokombicoCl",
     "Precio":"1500",
-    "Imagen": "/img/kom.jpg"
+    "Imagen": "/img/kom.jpg",
+    slug : "/catalogo.html"
 },{
     "Producto":"Queso de cabra La pradera",
     "Distancia":"50",
@@ -33,7 +34,8 @@ let dataBase = [{
     "Keyword3":"Artesanal",
     "Descripción":"Vendo exquisito queso de cabra madurado, realizado por artesanos de Coyaritahue",
     "Precio":"5000",
-    "Imagen": "/img/quesocabra.jpg.jpeg"
+    "Imagen": "/img/quesocabra.jpg.jpeg",
+    slug : "/catalogo.html"
 },{
     "Producto":"Manzanas Organicas de mi huerto",
     "Distancia":"100",
@@ -42,7 +44,8 @@ let dataBase = [{
     "Keyword3":"Fructosa",
     "Descripción":"Muy frescas y libres de pesticidas, tambien permuto por cosas interesantes. Comunicarse al +56987452156",
     "Precio":"1500",
-    "Imagen": "/img/manzana.jpg"
+    "Imagen": "/img/manzana.jpg",
+    slug : "/catalogo.html"
 },{
     "Producto":"Champiñones ¡Precios al por mayor!",
     "Distancia":"150",
@@ -51,7 +54,8 @@ let dataBase = [{
     "Keyword3":"",
     "Descripción":"Recién cosechados, si me recomiendas te recompensare",
     "Precio":"1500",
-    "Imagen": "/img/champi.jpg"
+    "Imagen": "/img/champi.jpg",
+    slug : "/catalogo.html"
 },{
     "Producto":"Lechugas hidropónicas",
     "Distancia":"300",
@@ -60,7 +64,8 @@ let dataBase = [{
     "Keyword3":"",
     "Descripción":"Realizo despachos gratuitos todos los días viernes, comunicarse al +56985214532",
     "Precio":"990",
-    "Imagen": "/img/lechuga-hidroponica-e1591367578551.jpg"
+    "Imagen": "/img/lechuga-hidroponica-e1591367578551.jpg",
+    slug : "/catalogo.html"
 },{
     "Producto":"Almendras",
     "Distancia":"500",
@@ -69,7 +74,8 @@ let dataBase = [{
     "Keyword3":"",
     "Descripción":"Almendras partidas a mitad de precio, APURATE! se van rápido.",
     "Precio":"750 x 100g",
-    "Imagen": "/img/1.jpg"
+    "Imagen": "/img/1.jpg",
+    slug : "/catalogo.html"
 },{
     "Producto":"Empanadas Caseras",
     "Distancia":"750",
@@ -78,7 +84,8 @@ let dataBase = [{
     "Keyword3":"Harina refinada",
     "Descripción":"A domicilio y a pedido, disponemos de gran catalogo. Tenemos sitio web y contamos con despacho gratuito.",
     "Precio":"1500",
-    "Imagen": "/img/empanadas.png"
+    "Imagen": "/img/empanadas.png",
+    slug : "/catalogo.html"
 },{
     "Producto":"La birra de Carlitos",
     "Distancia":"900",
@@ -87,7 +94,8 @@ let dataBase = [{
     "Keyword3":"Todo Grano",
     "Descripción":"Ahora también disponible en tu botilleria más cercana. El catálogo de siempre más variedades únicas para que disfrutes el verdadero sabor a cerveza artesana.",
     "Precio":"2500",
-    "Imagen": "/img/cerveza.jpg"
+    "Imagen": "/img/cerveza.jpg",
+    slug : "/catalogo.html"
 },{
     "Producto":"Pan de masa madre",
     "Distancia":"1000",
@@ -96,7 +104,8 @@ let dataBase = [{
     "Keyword3":"Fermentos",
     "Descripción":"Pan con semillas, integral, de centeno, el que te puedas imaginar. Tenemos stock diario y trabajamos a pedido.",
     "Precio":"2000",
-    "Imagen": "/img/pan.jpg"
+    "Imagen": "/img/pan.jpg",
+    slug : "/catalogo.html"
 },{
     "Producto":"Queque de oregano",
     "Distancia":"1100",
@@ -105,10 +114,9 @@ let dataBase = [{
     "Keyword3":"Libre de azucar",
     "Descripción":"Tambien tenemos de otros sabores. Me puedes encontrar en Los Alelies 1148",
     "Precio":"3000",
-    "Imagen": "/img/queque.jpg"
+    "Imagen": "/img/queque.jpg",
+    slug : "./catalogo.html"
 }]
-
-
 
 function enlistarproductos() {
 
@@ -121,7 +129,7 @@ function enlistarproductos() {
                 let kw3 = dataBase[i].Keyword3;
                 let distance = dataBase[i].Distancia;
                 let description = dataBase[i].Descripción;
-                let imagen = dataBase[i].Imagen
+                let imagen = dataBase[i].Imagen;
                 document.getElementById("productscontainer").innerHTML +=  `<div class="card card-body mt-3">
                  <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
                      <div class="mr-2 mb-3 mb-lg-0">
@@ -165,3 +173,20 @@ function enlistarproductos() {
                  </div> `
             }
         }
+
+        function autocompletado () {            
+            var pal = document.getElementById("buscar-pal").value;
+            document.getElementById("demo").innerHTML = '';
+            if(pal.length>0){                
+                var html='';
+                dataBase.forEach(function(element) {
+                    let posicion = element.Producto.toLowerCase().indexOf(pal.toLowerCase());
+                    if (posicion !== -1)
+                        html += "<li class='list-group-item'><a href='/"+element.slug+"'>"+element.Producto+"</a></li>";
+                })
+                document.getElementById("demo").innerHTML = html ;
+            }
+        }
+        
+
+        dataBase.Producto

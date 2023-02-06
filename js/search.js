@@ -27,16 +27,3 @@ const contenido = [
 
 ]
 
-function autocompletado () {            
-    var pal = document.getElementById("buscar-pal").value;
-    document.getElementById("demo").innerHTML = '';
-    if(pal.length>0){                
-        var html='';
-        contenido.forEach(function(element) {
-            let posicion = element.nombre.toLowerCase().indexOf(pal.toLowerCase());
-            if (posicion !== -1)
-                html += "<li class='list-group-item'><a href='/"+element.slug+"'>"+element.nombre+"</a></li>";
-        })
-        document.getElementById("demo").innerHTML = html ;
-    }
-}
