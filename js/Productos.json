@@ -1,0 +1,81 @@
+ [{
+    "Producto":"Kombucha",
+    "Distancia":"20",
+    "Keyword1": "Fermentos",
+    "Keyword2": "Bebestibles",
+    "Keyword3": "Probioticos",
+    "Descripción":"Vendo Kombucha variados sabores, también dispongo de Scoby por si deseas realizar la tuya. Buscame en instagram como: kokombicoCl",
+    "Precio":"1500"
+},{
+    "Producto":"Queso de cabra La pradera",
+    "Distancia":"50",
+    "Keyword1":"Lacteo",
+    "Keyword2":"Procedencia animal",
+    "Keyword3":"Artesanal",
+    "Descripción":"Vendo exquisito queso de cabra madurado, realizado por artesanos de Coyaritahue",
+    "Precio":"5000"
+},{
+    "Producto":"Manzanas Organicas de mi huerto",
+    "Distancia":"100",
+    "Keyword1":"Frutas",
+    "Keyword2":"Organicas",
+    "Keyword3":"Fructosa",
+    "Descripción":"Muy frescas y libres de pesticidas, tambien permuto por cosas interesantes. Comunicarse al +56987452156",
+    "Precio":"1500"
+},{
+    "Producto":"Champiñones ¡Precios al por mayor!",
+    "Distancia":"150",
+    "Keyword1":"Fungi",
+    "Keyword2":"Proteina",
+    "Keyword3":"",
+    "Descripción":"Recién cosechados, si me recomiendas te recompensare",
+    "Precio":"1500"
+},{
+    "Producto":"Lechugas hidropónicas",
+    "Distancia":"300",
+    "Keyword1":"Verduras",
+    "Keyword2":"Hidroponia",
+    "Keyword3":"",
+    "Descripción":"Realizo despachos gratuitos todos los días viernes, comunicarse al +56985214532",
+    "Precio":"990"
+},{
+    "Producto":"Almendras",
+    "Distancia":"",
+    "Keyword1":"Frutos secos",
+    "Keyword2":"Proteina vegetal",
+    "Keyword3":"",
+    "Descripción":"Almendras partidas a mitad de precio, APURATE! se van rápido.",
+    "Precio":"750 x 100g"
+},{
+    "Producto":"Empanadas Caseras",
+    "Distancia":"",
+    "Keyword1":"Vegan",
+    "Keyword2":"Almidon",
+    "Keyword3":"Harina refinada",
+    "Descripción":"A domicilio y a pedido, disponemos de gran catalogo. Tenemos sitio web y contamos con despacho gratuito.",
+    "Precio":"1500"
+},{
+    "Producto":"La birra de Carlitos",
+    "Distancia":"",
+    "Keyword1":"Cerveza",
+    "Keyword2":"Artesanal",
+    "Keyword3":"Todo Grano",
+    "Descripción":"Ahora también disponible en tu botilleria más cercana. El catálogo de siempre más variedades únicas para que disfrutes el verdadero sabor a cerveza artesana.",
+    "Precio":"2500"
+},{
+    "Producto":"Pan de masa madre",
+    "Distancia":"",
+    "Keyword1":"Pan",
+    "Keyword2":"Gluten",
+    "Keyword3":"Fermentos",
+    "Descripción":"Pan con semillas, integral, de centeno, el que te puedas imaginar. Tenemos stock diario y trabajamos a pedido.",
+    "Precio":"2000"
+},{
+    "Producto":"Queque de oregano",
+    "Distancia":"",
+    "Keyword1":"Oregano",
+    "Keyword2":"Gluten",
+    "Keyword3":"Libre de azucar",
+    "Descripción":"Tambien tenemos de otros sabores. Me puedes encontrar en Los Alelies 1148",
+    "Precio":"3000"
+}]
