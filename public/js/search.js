@@ -23,7 +23,7 @@ const contenido = [
     {nombre:"Aloe vera",slug:"catalogo.html"},
     {nombre:"Zuelas de cañamo",slug:"catalogo.html"},
     {nombre:"Seitan",slug:"catalogo.html"},
-    {nombre:"Romero",slug:"rocatalogo.htmlmero"}
+    {nombre:"Romero",slug:"catalogo.html"}
 
 ]
 

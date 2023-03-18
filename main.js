@@ -11,5 +11,9 @@ app.get('/', function(req,res){
 res.render('index')
 });
 
+app.get('/catalogo', function(req,res){
+res.render('catalogo')
+})
+
 app.listen(port);
 console.log(`Servicio levantado en el puerto ${port}!`);
