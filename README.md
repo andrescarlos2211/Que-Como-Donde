@@ -8,3 +8,9 @@
 
 
 This site was designed using a lot of templates, credits for each author :relieved:
+
+
+
+<%- include('./partials/nosotros.ejs'); %>
+			<%- include('./partials/blog.ejs'); %>
+			<%- include('./partials/discusion.ejs'); %>
