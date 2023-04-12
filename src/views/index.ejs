@@ -20,14 +20,16 @@
 					<div class="row height d-flex justify-content-center align-items-center">
 						<div class="col-md-6 wrapper">
 							<div class="form search-input">
-								<a href="" target="_blank" hidden></a>
+								<form action="catalogo" method="get">
+								<a href="catalogo" target="catalogo" hidden></a>
 								<div class="icon"><i class="fa fa-search"></i></div>
-								<input type="search" class="form-control form-input" placeholder="¡Escribe aquí!" id="buscar-pal" onkeyup="autocompletado()">
+								<input type="search" class="form-control form-input" placeholder="¡Escribe aquí!" name="busqueda" id="buscar-pal" onkeyup="autocompletado()">
 								<span class="left-pan"><i class="fa fa-microphone"></i></span>
 								<ul id="demo" class="list-group"></ul>
+							</form>
 							</div>
 						</div>
-					</div>
+			 		</div>
 				</div>
 
 			</div>

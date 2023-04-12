@@ -1,0 +1,25 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    #agrega hostname para poder ingresar server desde adminer
+    hostname: quarkup
+    container_name: QueComoDonde
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: passwds3cur3
+      POSTGRES_DB: QueComoDonde
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    hostname: adminer
+    container_name: Admin_QCC
+    restart: always
+    ports:
+      - 8080:8080
