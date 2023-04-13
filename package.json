@@ -20,11 +20,13 @@
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "ejs": "^3.1.9",
+    "env": "^0.0.2",
     "express-pg-session": "^1.1.0",
     "express-session": "^1.17.3",
     "express-validator": "^6.15.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "pg-cursor": "^2.9.0",
     "postgres": "^3.3.4",
     "timeago.js": "^4.0.2"
   },

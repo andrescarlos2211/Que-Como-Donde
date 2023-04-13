@@ -1,10 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const port = 3000;
-// const DatabaseManager = require('database/database.js');
+const router = express.Router();
+// const pool = require('./database/database');
 
-DatabaseManager.connect()
+// DatabaseManager.connect()
 //Inicializaciones
 const app = express();
 app.use(bodyParser.json())
@@ -28,10 +28,10 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/src/views');
 
 
-//Routes    reparar
-// app.use(require('/routes'));
-// app.use(require('/routes/authentication'));
-// app.use('/links',require('./src/routes/links'));
+//Routes reparar
+//  app.use(require('/src/routes'));
+//  app.use(require('/routes/authentication'));
+//  app.use('/links',require('./src/routes/links'));
 
 // Public
 
@@ -54,7 +54,9 @@ app.post('catalogo', function(req,res){
 })
 
 
-
+router.post('catalog',(req, res){
+ res.send('nombre');   
+})
 
 
 
@@ -75,8 +77,6 @@ res.render('catalogo')
 
 
 //Starting the server
-
 app.listen(app.get('port'), ()=> {
-    
-    console.log('Servicio levantado en el puerto', app.get(port))
+    console.log(`listening on port ${app.get('port')}`)
 });
