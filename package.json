@@ -26,6 +26,7 @@
     "express-validator": "^6.15.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "pg": "^8.10.0",
     "pg-cursor": "^2.9.0",
     "postgres": "^3.3.4",
     "timeago.js": "^4.0.2"

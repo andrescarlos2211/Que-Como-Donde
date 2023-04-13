@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const router = express.Router();
-// const pool = require('./database/database');
+const pool = require('./database/database');
 
 // DatabaseManager.connect()
 //Inicializaciones
@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 //settings
-app.set('port', process.env.PORT || 4000)
+app.set('port', process.env.PORT || 3000)
 
 //middlewares
 app.use(morgan('dev'));
@@ -53,23 +53,18 @@ app.post('catalogo', function(req,res){
     console.log(nombre);
 })
 
-
-router.post('catalog',(req, res){
- res.send('nombre');   
-})
-
-
-
 app.get('/nosotros', function(req,res){
     res.render('nosotros')
 });
 app.get('/blog', function(req,res){
-    
     res.render('blog')
 });
 
+app.get('/ingresar', function(req,res){
+    res.render('ingresar')
+});
 
-app.get('/catalogo.html', function(req,res){
+app.get('/catalogo', function(req,res){
 res.render('catalogo')
 })
 
