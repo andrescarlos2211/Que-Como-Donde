@@ -48,10 +48,26 @@ app.get('/', function(req,res){
 res.render('index')
 });
 
-app.post('catalogo', function(req,res){
-    let nombre = req.body.busqueda;
-    console.log(nombre);
-})
+app.get('/catalogo', function(req,res){
+    // let busqueda = req.query.busqueda;
+    // console.log(busqueda);
+    // res.send(busqueda);
+    res.render('catalogo',{
+        Producto: pname,
+        Precio: price,
+        Keyword1: kw1,
+        Keyword2: kw2,
+        Keyword3: kw3,
+        Distancia: distance,
+        Descripción: description,
+        Imagen: imagen
+    })
+});
+
+// app.post('catalogo', function(req,res){
+//     let nombre = req.body.busqueda;
+//     console.log(nombre);
+// })
 
 app.get('/nosotros', function(req,res){
     res.render('nosotros')
