@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo</title>
-    
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/estilo2.css">
     <link rel="stylesheet" type="text/css" href="/css/fullpage.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -17,18 +21,16 @@
     <script src="./js/main.js"></script>
 
 </head>
+
 <body>
     <header class="sticky top-0 z-10 bg-teal-700 text-white">
         <section class="nav mx-auto flex max-w-4xl items-center justify-between p-4">
-            <div><a href="index.html"><img class="loguito" src="/img/Logo/Logo colores.png"
-                        alt="Quecomocuando"></a></div>
+            <div><a href="index.html"><img class="loguito" src="/img/Logo/Logo colores.png" alt="Quecomocuando"></a>
+            </div>
             <div>
-                <button
-                    id="hamburger-button"
-                    class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
+                <button id="hamburger-button" class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
                     <!-- &#9776; -->
-                    <div
-                        class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all
+                    <div class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all
                         duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4
                         before:-translate-y-3 before:rounded before:bg-white
                         before:transition-all before:duration-500 before:content-['']
@@ -44,7 +46,7 @@
                     <a href="https://github.com/andrescarlos-gm" class="hover:opacity-90">Github
                     </a>
 
-                
+
                 </nav>
 
             </div>
@@ -54,63 +56,68 @@
             <!-- <button class="text-8xl self-end px-6">
                   &times;
               </button> -->
-              
-            <nav class="flex min-h-screen flex-col items-center py-8"
-                aria-label="mobile">
+
+            <nav class="flex min-h-screen flex-col items-center py-8" aria-label="mobile">
                 <a href="index.html" class="w-full py-6 text-center hover:opacity-90">Inicio</a>
                 <a href="index.html#nosotros" class="w-full py-6 text-center hover:opacity-90">Nosotros</a>
                 <a href="index.html#blog" class="w-full py-6 text-center hover:opacity-90">Blog</a>
                 <a href="index.html#discusion" class="w-full py-6 text-center hover:opacity-90">Discusión</a>
-                <a href="https://github.com/andrescarlos-gm" class="w-full py-6 text-center hover:opacity-90"><img class="loguito111" src="/img/Logo/github-mark/github-mark.png"></a>
+                <a href="https://github.com/andrescarlos-gm" class="w-full py-6 text-center hover:opacity-90"><img
+                        class="loguito111" src="/img/Logo/github-mark/github-mark.png"></a>
             </nav>
         </section>
     </header>
     <br>
     <div class="container d-flex justify-content-center mt-50 mb-50">
-        <div class="row" id="productscontainer"></div>                     
+        <div class="row" id="productscontainer"></div>
     </div>
     <!-- <script>enlistarproductos()</script> -->
+    <% productos.forEach(function(product) { %>
 
-    <div class="card card-body mt-3">
-        <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-            <div class="mr-2 mb-3 mb-lg-0">
-               
+        <div class="card card-body mt-3" style="margin-left: 450px;margin-right: 450px;">
+            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                <div class="mr-2 mb-3 mb-lg-0">
+
                     <img src="${imagen}" width="20vw" alt="">
-              
-            </div>
-       
-            <div class="media-body">
-                <h6 class="media-title font-weight-semibold">
-                    <a href="#" data-abc="true">${name}</a>
-                </h6>
-       
-                <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
-                    <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">${kw1}</a></li>
-                    <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">${kw2}</a></li>
-                       <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">${kw3}</a></li>
-                </ul>
-       
-                <p class="mb-3">${description}</p>
-       
-       
-            </div>
-       
-            <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
-                <h3 class="mb-0 font-weight-semibold">${price} x Kilo</h3>
-       
-                <div>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-       
+
                 </div>
-       
-                <div class="text-muted">A ${distance} metros de distancia</div>
-       
+
+                <div>
+                    <h6 class="media-title font-weight-semibold">
+                        <a href="#" data-abc="true"><%= product.Producto %></a>
+                    </h6>
+
+                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true"><%= product.Keyword1 %></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true"><%= product.Keyword2 %></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true"><%= product.Keyword3 %></a></li>
+                    </ul>
+
+                    <p class="mb-3"><%= product.Descripción %></p>
+
+
+                </div>
+
+                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                    <h3 class="mb-0 font-weight-semibold"><%= product.Precio %></h3>
+
+                    <div>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+
+                    </div>
+
+                    <div class="text-muted">A <%= product.Distancia %> metros de distancia</div>
+
+                </div>
+                <br>
             </div>
+            
         </div>
-        </div>
+        <% }); %>
 </body>
+
 </html>

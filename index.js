@@ -1,14 +1,16 @@
+//Rutas
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const router = express.Router();
 const pool = require('./database/database');
+const productos = require("./database/Productos.json")
 
-// DatabaseManager.connect()
 //Inicializaciones
 const app = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.json()) //reconoce json
 
 //settings
 app.set('port', process.env.PORT || 3000)
@@ -52,15 +54,9 @@ app.get('/catalogo', function(req,res){
     // let busqueda = req.query.busqueda;
     // console.log(busqueda);
     // res.send(busqueda);
+    console.log(productos);
     res.render('catalogo',{
-        Producto: pname,
-        Precio: price,
-        Keyword1: kw1,
-        Keyword2: kw2,
-        Keyword3: kw3,
-        Distancia: distance,
-        Descripción: description,
-        Imagen: imagen
+        productos
     })
 });
 
