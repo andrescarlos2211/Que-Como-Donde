@@ -49,9 +49,19 @@ res.render('index')
 });
 
 app.get('/catalogo', function(req,res){
-    let busqueda = req.query.busqueda;
-    console.log(busqueda);
-    res.send(busqueda);
+    // let busqueda = req.query.busqueda;
+    // console.log(busqueda);
+    // res.send(busqueda);
+    res.render('catalogo',{
+        Producto: pname,
+        Precio: price,
+        Keyword1: kw1,
+        Keyword2: kw2,
+        Keyword3: kw3,
+        Distancia: distance,
+        Descripción: description,
+        Imagen: imagen
+    })
 });
 
 // app.post('catalogo', function(req,res){
