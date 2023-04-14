@@ -48,10 +48,16 @@ app.get('/', function(req,res){
 res.render('index')
 });
 
-app.post('catalogo', function(req,res){
-    let nombre = req.body.busqueda;
-    console.log(nombre);
-})
+app.get('/catalogo', function(req,res){
+    let busqueda = req.query.busqueda;
+    console.log(busqueda);
+    res.send(busqueda);
+});
+
+// app.post('catalogo', function(req,res){
+//     let nombre = req.body.busqueda;
+//     console.log(nombre);
+// })
 
 app.get('/nosotros', function(req,res){
     res.render('nosotros')
