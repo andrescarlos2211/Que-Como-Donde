@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de envío de productos</title>
+  <link rel="stylesheet" href="css/publicar.css">
+</head>
+<body>
+  <h1>Ingrese los detalles del producto:</h1>
+  
+  <
+  <form id="formulario" method="post" enctype="multipart/form-data">
+    <div class="campo">
+      <label for="nombre_producto">Nombre del producto:</label>
+      <input type="text" id="nombre_producto" name="nombre_producto" required>
+    </div>
+    <div class="campo">
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" name="descripcion" required></textarea>
+    </div>
+    <div class="campo">
+      <label for="ubicacion">Ubicación:</label>
+      <input type="text" id="ubicacion" name="ubicacion" required>
+    </div>
+    <div class="campo">
+      <label for="precio">Precio:</label>
+      <input type="number" id="precio" name="precio" required>
+    </div>
+    <div class="campo">
+      <label for="palabra_clave_1">Palabra clave 1:</label>
+      <input type="text" id="palabra_clave_1" name="palabra_clave_1" required>
+    </div>
+    <div class="campo">
+      <label for="palabra_clave_2">Palabra clave 2:</label>
+      <input type="text" id="palabra_clave_2" name="palabra_clave_2" required>
+    </div>
+    <div class="campo">
+      <label for="imagen">Imagen:</label>
+      <input type="file" id="imagen" name="imagen" required>
+    </div>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script src="app.js"></script>
+</body>
+</html>
