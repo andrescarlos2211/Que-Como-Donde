@@ -103,8 +103,12 @@ app.post('/ingresar', passport.authenticate('local',{
     successRedirect: '/dash',
     failureRedirect: '/ingresar'
 }));
-app.get('/adentro', function (req, res) {
-    res.send('adentro')
+
+
+app.post('/registro', function (req, res) {
+    const mail = req.body.username
+    const pw = req.body.password
+    const name = req.body.name
 });
 app.get('/publicar', function (req, res) {
     res.render('publicar')
