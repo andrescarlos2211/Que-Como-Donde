@@ -9,6 +9,9 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passportLocal = require('passport-local').Strategy;
+import {sequelize, testConnection} from './database/db.js';
+import { createUser, createPublication } from './database/orm/ormHandler';
+testConnection();
 
 //Inicializaciones
 const app = express();
