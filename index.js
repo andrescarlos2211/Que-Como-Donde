@@ -1,16 +1,17 @@
+// const passportLocal = require('passport-local').Strategy
 //Rutas
-const express = require('express');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const router = express.Router();
-const pool = require('./database/database');
-const productos = require("./database/Productos.json")
-const passport = require('passport');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const passportLocal = require('passport-local').Strategy;
-const { sequelize, testConnection } = require('./database/db.js');
-const { createUser, createPublication } = require('./database/orm/ormHandler');
+
+import express from 'express'
+import morgan from 'morgan'
+import bodyParser from 'body-parser'
+import pool from './database/database'
+import productos from "./database/Productos.json"
+import passport from 'passport'
+import cookieParser from 'cookie-parser'
+import session from 'express-session'
+import { Strategy as LocalStrategy } from 'passport-local';
+import { sequelize, testConnection } from './database/db.js'
+import { createUser, createPublication } from './database/orm/ormHandler'
 testConnection();
 
 //Inicializaciones
