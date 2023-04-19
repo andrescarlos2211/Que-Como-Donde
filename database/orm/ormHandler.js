@@ -1,6 +1,6 @@
-import {sequelize} from './db.js'
-import { User_credentials } from 'user_credentials.js'
-import { Publications } from 'publications.js'
+import {sequelize} from '../db.js'
+import { User_credentials } from './user_credentials.js'
+import { Publications } from './publications.js'
 
 export async function syncTables(){
     try{

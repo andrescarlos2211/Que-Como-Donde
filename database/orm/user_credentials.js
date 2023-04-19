@@ -1,9 +1,9 @@
-import {sequelize} from './bd.js'
-import {datatypes, model} from 'sequelize'
+import {sequelize} from '../db.js'
+import {DataTypes, Model} from 'sequelize'
 
 export class User_credentials extends Model {}
 
-user_credentials.init({
+User_credentials.init({
     user_id:{
         type: DataTypes.INTEGER,
         primary_key: true,

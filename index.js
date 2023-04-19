@@ -2,20 +2,22 @@
 //Rutas
 
 import express from 'express'
+import path from 'path';
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
-import pool from './database/database'
-import productos from "./database/Productos.json"
 import passport from 'passport'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
+
 import { Strategy as LocalStrategy } from 'passport-local';
 import { sequelize, testConnection } from './database/db.js'
-import { createUser, createPublication } from './database/orm/ormHandler'
-testConnection();
+import { createUser, createPublication } from './database/orm/ormHandler.js'
+import { fileURLToPath } from 'url';
+// testConnection();
 
 //Inicializaciones
 const app = express();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json()) //reconoce json
@@ -28,7 +30,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new passportLocal(function (username, password, done) {
+passport.use(new LocalStrategy(function (username, password, done) {
     if (username === 'lucifer@latinmail.com' && password === 'belial')
         return done(null, { id: 1, name: 'Cody' });
     done(null, false);
@@ -55,18 +57,11 @@ app.use((req, res, next) => {
     next();
 });
 
+app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/src/views');
-
-
-//Routes reparar
-//  app.use(require('/src/routes'));
-//  app.use(require('/routes/authentication'));
-//  app.use('/links',require('./src/routes/links'));
-
 // Public
 
-app.use(express.static(__dirname + "/src/public", {
+app.use(express.static(new URL('./src/public', import.meta.url).pathname, {
     index: false,
     immutable: true,
     cacheControl: true,

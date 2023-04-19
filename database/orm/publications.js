@@ -1,10 +1,10 @@
-import {sequelize} from './bd.js'
-import {datatypes, model} from 'sequelize'
-import { User_credentials } from 'user_credentials.js';
+import {sequelize} from '../db.js'
+import {DataTypes, Model} from 'sequelize'
+import { User_credentials } from './user_credentials.js';
 
 export class Publications extends Model {}
 
-Publication.init({
+Publications.init({
     publication_id:{
         type: DataTypes.INTEGER,
         primary_key: true,
@@ -16,7 +16,7 @@ Publication.init({
         unique: true
     },
     publication_price:{
-        type: DataTypes.INTEGER(7)
+        type: DataTypes.INTEGER
     },
     publication_DESCRIPTION:{
         type: DataTypes.STRING(200),
