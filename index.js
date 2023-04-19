@@ -8,13 +8,13 @@ import bodyParser from 'body-parser'
 import passport from 'passport'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
-
 import { Strategy as LocalStrategy } from 'passport-local';
 import { sequelize, testConnection } from './database/db.js'
-import { createUser, createPublication, syncTables } from './database/orm/ormHandler.js'
+import { createUser, createPublication, syncTables, emailExists } from './database/orm/ormHandler.js'
 import { fileURLToPath } from 'url';
 testConnection();
-syncTables()
+emailExists('andrescarlos2211@gmail.com')
+// syncTables()
 // createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
 //Inicializaciones
@@ -24,19 +24,25 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json()) //reconoce json
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser('lucifer'));
+app.use(cookieParser('NKwUmJzAXE'));
 app.use(session({
-    secret: 'baphomet',
+    secret: 'h8VHePweUU',
     resave: true,
     saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+
 passport.use(new LocalStrategy(function (username, password, done) {
     if (username === 'lucifer@latinmail.com' && password === 'belial')
         return done(null, { id: 1, name: 'Cody' });
     done(null, false);
 }));
+
+
+
 //Serialization
 
 passport.serializeUser(function (user, done) {
