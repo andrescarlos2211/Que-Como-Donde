@@ -13,7 +13,7 @@ import { sequelize, testConnection } from './database/db.js'
 import { createUser, createPublication, syncTables, emailExists } from './database/orm/ormHandler.js'
 import { fileURLToPath } from 'url';
 testConnection();
-emailExists('andrescarlos2211@gmail.com')
+// emailExists('andrescarlos2211@gmail.com')
 // syncTables()
 // createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
@@ -35,10 +35,23 @@ app.use(passport.session());
 
 
 
-passport.use(new LocalStrategy(function (username, password, done) {
-    if (username === 'lucifer@latinmail.com' && password === 'belial')
-        return done(null, { id: 1, name: 'Cody' });
-    done(null, false);
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+}, function (email, password, done){
+    User_credentials.findone({ 
+        where:{
+            email: correo,
+            password: password
+        }
+}).then(function (user) {
+    if(!user){
+        return done(null, false, { message: 'Correo electrónico o contraseña incorrectos.' });
+        }
+        return done(null, user);
+}).catch(function (err) {
+    return done(err);
+});
 }));
 
 
@@ -108,7 +121,8 @@ app.get('/ingresar', function (req, res) {
 });
 app.post('/ingresar', passport.authenticate('local',{
     successRedirect: '/dash',
-    failureRedirect: '/ingresar'
+    failureRedirect: '/ingresar',
+    failureFlash: true
 }));
 
 
@@ -116,6 +130,9 @@ app.post('/registro', function (req, res) {
     const mail = req.body.username
     const pw = req.body.password
     const name = req.body.name
+    createUser(mail, name, pw)
+    console.log('Usuario registrado')
+    res.redirect('/dash')
 });
 app.get('/publicar', function (req, res) {
     res.render('publicar')

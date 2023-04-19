@@ -22,11 +22,12 @@ export async function createUser( _email,_username, _password){
 };
  
 export async function emailExists(email) {
-      const mail = await sequelize.query('SELECT email FROM user_credentials WHERE email=$1', {
+    const mail = await sequelize.query('SELECT email FROM user_credentials WHERE email=$1', 
+    {
         bind: [email],
         type: QueryTypes.SELECT,
-      });  
-      let count = 0;
+    });  
+    let count = 0;
     const filteredMail = mail.filter(element=>element.email === email);
     if (filteredMail.length > 0){
         console.log('Email exists');
@@ -34,8 +35,6 @@ export async function emailExists(email) {
     else {
         console.log('Email does not exist');
     }
-
-
 }
 
 
@@ -50,7 +49,7 @@ _publication_description, _product){
         publication_price: _publication_price,
         publication_description: _publication_description,
         product: _product
-        
+
     })
 }
 
