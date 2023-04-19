@@ -11,9 +11,11 @@ import session from 'express-session'
 
 import { Strategy as LocalStrategy } from 'passport-local';
 import { sequelize, testConnection } from './database/db.js'
-import { createUser, createPublication } from './database/orm/ormHandler.js'
+import { createUser, createPublication, syncTables } from './database/orm/ormHandler.js'
 import { fileURLToPath } from 'url';
-// testConnection();
+testConnection();
+syncTables()
+// createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
 //Inicializaciones
 const app = express();

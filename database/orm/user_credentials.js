@@ -4,10 +4,10 @@ import {DataTypes, Model} from 'sequelize'
 export class User_credentials extends Model {}
 
 User_credentials.init({
-    user_id:{
-        type: DataTypes.INTEGER,
-        primary_key: true,
-        autoincrement: true
+    email:{
+        type: DataTypes.STRING(30),
+        primaryKey: true,
+        unique: true
     },
     username:{
         type: DataTypes.STRING(20),
@@ -17,11 +17,6 @@ User_credentials.init({
     password:{
         type: DataTypes.STRING(20),
         allowNull: false
-    },
-    email:{
-        type: DataTypes.STRING(30),
-        allowNull: false,
-        unique: true
     }
 },
 {

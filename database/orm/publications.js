@@ -7,7 +7,7 @@ export class Publications extends Model {}
 Publications.init({
     publication_id:{
         type: DataTypes.INTEGER,
-        primary_key: true,
+        primaryKey: true,
         autoincrement: true
     },
     publication_name:{
@@ -37,7 +37,7 @@ Publications.init({
 sequelize,
 createdAt: false,
 updatedAt: false,
-modelName: 'productos'
+modelName: 'publications'
 });
 
 User_credentials.hasMany(Publications, {foreignKey: 'user_id' },

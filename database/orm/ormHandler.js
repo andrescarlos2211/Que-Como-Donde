@@ -11,7 +11,7 @@ export async function syncTables(){
         console.log('Error synchronizing tables', error);
     }
 };
-export async function createUser(_username, _password, _email){
+export async function createUser( _email,_username, _password){
     const newuser = await User_credentials.create({
         username: _username,
         password: _password,
