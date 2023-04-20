@@ -1,6 +1,4 @@
-// const passportLocal = require('passport-local').Strategy
-//Rutas
-
+//Importación de librerias
 import express from 'express'
 import path from 'path';
 import morgan from 'morgan'
@@ -8,17 +6,24 @@ import bodyParser from 'body-parser'
 import passport from 'passport'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
-import { Strategy as LocalStrategy } from 'passport-local';
+import passportLocal from 'passport-local';
 import { sequelize, testConnection } from './database/db.js'
-import { createUser, createPublication, syncTables, emailExists } from './database/orm/ormHandler.js'
+import { createUser, createPublication, syncTables, emailExists, getUser } from './database/orm/ormHandler.js'
 import { fileURLToPath } from 'url';
+import { User_credentials } from './database/orm/user_credentials.js'
 testConnection();
 // emailExists('andrescarlos2211@gmail.com')
 // syncTables()
 // createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
+
+
+
+
+
 //Inicializaciones
 const app = express();
+const PassportLocal = passportLocal.Strategy
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -34,36 +39,48 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+passport.use(new PassportLocal(async function (username, password, done) {
+    try {
+        let validador = -1;
+        let users =  await getUser(username);
 
-passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password'
-}, function (email, password, done){
-    User_credentials.findone({ 
-        where:{
-            email: correo,
-            password: password
+        //console.log(users.map(e => e.username).indexOf(username));
+        if (users.map(e => e.username).indexOf(username) != -1) {
+            validador = users.map(e => e.username).indexOf(username);
         }
-}).then(function (user) {
-    if(!user){
-        return done(null, false, { message: 'Correo electrónico o contraseña incorrectos.' });
+        if (validador != -1) {
+            let usuario = users[validador];
+            //  console.log(usuario.username);
+            if (usuario.password == password) {
+                return done(null, { email: usuario.email})
+            } else {
+                return done(null, false, { message: 'Contraseña Incorrecta' })
+            }
+        } else {
+            return done(null, false, { message: 'Correo no registrado' })
         }
-        return done(null, user);
-}).catch(function (err) {
-    return done(err);
-});
+    }
+    catch (error) {
+        console.log(error);
+        return done(null, false, { message: 'Error obteniendo resultado' });
+    }
 }));
 
 
+// //Serialization
 
-//Serialization
-
-passport.serializeUser(function (user, done) {
-    done(null, user.id)
-});
+ passport.serializeUser(function (mail, done) {
+  console.log(mail);
+     done(null, mail.email)
+ });
 //Deserialization
-passport.deserializeUser(function (id, done) {
-    done(null, { id: 1, name: 'Cody' });
+passport.deserializeUser(async function (email, done) {
+    try {
+        const user = await getUser(email);
+        done(null, user);
+    } catch (error) {
+        done(error);
+    }
 });
 //settings
 app.set('port', process.env.PORT || 3000)
@@ -94,7 +111,6 @@ app.use(express.static(new URL('./src/public', import.meta.url).pathname, {
 app.get('/', function (req, res) {
     res.render('index')
 });
-
 app.get('/catalogo', function (req, res) {
     // let busqueda = req.query.busqueda;
     // console.log(busqueda);
@@ -104,12 +120,10 @@ app.get('/catalogo', function (req, res) {
         productos
     })
 });
-
 // app.post('catalogo', function(req,res){
 //     let nombre = req.body.busqueda;
 //     console.log(nombre);
 // })
-
 app.get('/nosotros', function (req, res) {
     res.render('nosotros')
 });
@@ -119,13 +133,10 @@ app.get('/blog', function (req, res) {
 app.get('/ingresar', function (req, res) {
     res.render('ingresar')
 });
-app.post('/ingresar', passport.authenticate('local',{
+app.post('/ingresar', passport.authenticate('local', {
     successRedirect: '/dash',
-    failureRedirect: '/ingresar',
-    failureFlash: true
+    failureRedirect: '/ingresar'
 }));
-
-
 app.post('/registro', function (req, res) {
     const mail = req.body.username
     const pw = req.body.password
@@ -137,20 +148,16 @@ app.post('/registro', function (req, res) {
 app.get('/publicar', function (req, res) {
     res.render('publicar')
 });
-
-
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
 });
 app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
-
 app.get('/dash', function (req, res) {
     res.render('dash')
 });
 //Public
-
 
 //Starting the server
 app.listen(app.get('port'), () => {

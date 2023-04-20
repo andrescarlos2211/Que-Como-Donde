@@ -2,7 +2,6 @@ import {sequelize} from '../db.js'
 import { User_credentials } from './user_credentials.js'
 import { Publications } from './publications.js'
 import {QueryTypes} from 'sequelize';
-import postgres from 'postgres';
 
 export async function syncTables(){
     try{
@@ -22,7 +21,7 @@ export async function createUser( _email,_username, _password){
 };
  
 export async function emailExists(email) {
-    const mail = await sequelize.query('SELECT email FROM user_credentials WHERE email=$1', 
+    const mail = await User_credentials.query('SELECT email FROM user_credentials WHERE email=$1', 
     {
         bind: [email],
         type: QueryTypes.SELECT,
@@ -37,8 +36,36 @@ export async function emailExists(email) {
     }
 }
 
+//Buscar credenciales de usuario para login
+
+// export async function findMail (email){
+//     console.log(typeof User_credentials)
+//     try{
+//     const mail = await user_credentials.findAll({
+//         where: { email: email},
+//         });
+//         console.log(mail);
+//     }catch(error){
+//         console.log(error);
+//     }}
 
 
+export async function getUser (username){
+    try {
+let users = await sequelize.query
+("SELECT email as username,password FROM user_credentials where email = $1 LIMIT 10", 
+{
+    bind: [username],
+    type: QueryTypes.SELECT
+});
+return users;
+}
+catch (error) {
+    console.log('Error getting users', error);
+}}
+
+
+//Funcion creadora de publicaciones
 
 export async function createPublication (_publication_name, _publication_price, 
 _publication_description, _product){
