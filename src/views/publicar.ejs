@@ -9,12 +9,12 @@
 <body>
   <h1>Ingrese los detalles del producto:</h1>
   
-  <
-  <form id="formulario" method="post" enctype="multipart/form-data">
+  <form id="form" method="POST">
     <div class="campo">
       <label for="nombre_producto">Nombre del producto:</label>
       <input type="text" id="nombre_producto" name="nombre_producto" required>
     </div>
+    
     <div class="campo">
       <label for="descripcion">Descripción:</label>
       <textarea id="descripcion" name="descripcion" required></textarea>
@@ -28,12 +28,16 @@
       <input type="number" id="precio" name="precio" required>
     </div>
     <div class="campo">
+      <label for="precio">Unidades:</label>
+      <input type="number" id="unidades" name="unidades" required>
+    </div>
+    <div class="campo">
       <label for="palabra_clave_1">Palabra clave 1:</label>
-      <input type="text" id="palabra_clave_1" name="palabra_clave_1" required>
+      <input type="text" id="palabra_clave_1" name="kw1" required>
     </div>
     <div class="campo">
       <label for="palabra_clave_2">Palabra clave 2:</label>
-      <input type="text" id="palabra_clave_2" name="palabra_clave_2" required>
+      <input type="text" id="palabra_clave_2" name="kw2" required>
     </div>
     <div class="campo">
       <label for="imagen">Imagen:</label>
@@ -41,5 +45,6 @@
     </div>
     <button type="submit">Enviar</button>
   </form>
+</div>
 </body>
 </html>

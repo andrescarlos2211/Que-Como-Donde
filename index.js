@@ -135,6 +135,15 @@ app.get('/publicar', function (req, res) {
     res.render('publicar')
 });
 app.post('/publicar', function (req, res) {
+    const nombre = req.body.nombre_producto
+    const descripcion = req.body.descripcion
+    const ubicacion = req.body.ubicacion
+    const precio = req.body.precio
+    const unidades = req.body.unidades
+    const kw1 = req.body.kw1
+    const kw2 = req.body.kw2
+    const producto = req.body.producto
+    createPublication(nombre, precio, descripcion, producto, ubicacion, kw1, kw2, unidades)
 });
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
@@ -150,9 +159,7 @@ app.get('/dash', function (req, res) {
         
     })
 });
-//Public
-
 //Starting the server
 app.listen(app.get('port'), () => {
     console.log(`listening on port ${app.get('port')}`)
-});
+});+
