@@ -36,61 +36,56 @@ app.use(passport.session());
 app.use(flash());
 
 passport.use(new PassportLocal(async function (username, password, done) {
-        let validador = -1;
-        let users =  await getUser(username);
-        
-        if (users.map(e => e.username).indexOf(username) != -1) {
-            validador = users.map(e => e.username).indexOf(username);
-        } else {
-            return done(null, false, { message: 'Correo no registrado' })};
-        
-        if (validador != -1) {
-            let usuario = users[validador];
-                
-            if (usuario.password == password) {
-                return done(null, { email: usuario.username})} 
-            else {
-                return done(null, false, { message: 'Contraseña Incorrecta' })}
+    let validador = -1;
+    let users = await getUser(username);
+
+    if (users.map(e => e.username).indexOf(username) != -1) {
+        validador = users.map(e => e.username).indexOf(username);
+    } else {
+        return done(null, false, { message: 'Correo no registrado' })
+    };
+
+    if (validador != -1) {
+        let usuario = users[validador];
+
+        if (usuario.password == password) {
+            return done(null, { email: usuario.username })
         }
+        else {
+            return done(null, false, { message: 'Contraseña Incorrecta' })
+        }
+    }
 }));
-
 // //Serialization
-
- passport.serializeUser(function (mail, done) {
-  console.log(mail.email);
-     done(null, mail)
- });
+passport.serializeUser(function (mail, done) {
+    console.log(mail.email);
+    done(null, mail)
+});
 //Deserialization
 passport.deserializeUser(async function (mail, done) {
     console.log(mail)
-        done(null, mail);
+    done(null, mail);
 });
 //settings
 app.set('port', process.env.PORT || 3000)
-
 //middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
 //Global variables
 app.use((req, res, next) => {
     next();
 });
-
 app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 // Public
-
 app.use(express.static(new URL('./src/public', import.meta.url).pathname, {
     index: false,
     immutable: true,
     cacheControl: true,
     maxAge: "30d"
 }));
-
-//Rutas
-
+//Rutas *******************************************************************************************
 app.get('/', function (req, res) {
     res.render('index')
 });
@@ -121,6 +116,12 @@ app.post('/ingresar', passport.authenticate('local', {
     successRedirect: '/dash',
     failureRedirect: '/ingresar'
 }));
+app.post('/salir', function (req, res, next) {
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+    });
+});
 app.post('/registro', function (req, res) {
     const mail = req.body.username
     const pw = req.body.password
@@ -133,21 +134,21 @@ app.get('/publicar', function (req, res) {
 
     res.render('publicar')
 });
-
 app.post('/publicar', function (req, res) {
-    
-
 });
-
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
 });
 app.get('/contacto', function (req, res) {
     res.render('contacto')
-}); 
+});
 app.get('/dash', function (req, res) {
-    console.log(req.session)
-    res.render('dash')
+
+    // console.log(req.session)
+    console.log(req.email)
+    res.render('dash', {
+        
+    })
 });
 //Public
 
