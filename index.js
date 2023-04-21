@@ -7,6 +7,7 @@ import passport from 'passport'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import passportLocal from 'passport-local';
+import flash from 'express-flash';
 import { sequelize, testConnection } from './database/db.js'
 import { createUser, createPublication, syncTables, emailExists, getUser } from './database/orm/ormHandler.js'
 import { fileURLToPath } from 'url';
@@ -16,43 +17,38 @@ testConnection();
 // syncTables()
 // createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
-
-
-
-
-
 //Inicializaciones
 const app = express();
 const PassportLocal = passportLocal.Strategy
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json()) //reconoce json
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser('NKwUmJzAXE'));
 app.use(session({
-    secret: 'h8VHePweUU',
+    secret: 'NKwUmJzAXE',
     resave: true,
     saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 
 passport.use(new PassportLocal(async function (username, password, done) {
     try {
         let validador = -1;
         let users =  await getUser(username);
-
-        //console.log(users.map(e => e.username).indexOf(username));
         if (users.map(e => e.username).indexOf(username) != -1) {
             validador = users.map(e => e.username).indexOf(username);
         }
         if (validador != -1) {
             let usuario = users[validador];
-            //  console.log(usuario.username);
+            console.log(usuario);
             if (usuario.password == password) {
-                return done(null, { email: usuario.email})
+                // console.log('holamundo'+usuario.email)
+                return done(null, { email: usuario.username})
             } else {
                 return done(null, false, { message: 'Contraseña Incorrecta' })
             }
@@ -66,7 +62,6 @@ passport.use(new PassportLocal(async function (username, password, done) {
     }
 }));
 
-
 // //Serialization
 
  passport.serializeUser(function (mail, done) {
@@ -75,12 +70,7 @@ passport.use(new PassportLocal(async function (username, password, done) {
  });
 //Deserialization
 passport.deserializeUser(async function (email, done) {
-    try {
-        const user = await getUser(email);
         done(null, user);
-    } catch (error) {
-        done(error);
-    }
 });
 //settings
 app.set('port', process.env.PORT || 3000)
@@ -131,6 +121,7 @@ app.get('/blog', function (req, res) {
     res.render('blog')
 });
 app.get('/ingresar', function (req, res) {
+    console.log(req.session)
     res.render('ingresar')
 });
 app.post('/ingresar', passport.authenticate('local', {
@@ -155,6 +146,7 @@ app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
 app.get('/dash', function (req, res) {
+    console.log(req.session)
     res.render('dash')
 });
 //Public
