@@ -36,20 +36,6 @@ export async function emailExists(email) {
     }
 }
 
-//Buscar credenciales de usuario para login
-
-// export async function findMail (email){
-//     console.log(typeof User_credentials)
-//     try{
-//     const mail = await user_credentials.findAll({
-//         where: { email: email},
-//         });
-//         console.log(mail);
-//     }catch(error){
-//         console.log(error);
-//     }}
-
-
 export async function getUser (username){
     try {
 let users = await sequelize.query
@@ -80,3 +66,16 @@ _publication_description, _product){
     })
 }
 
+export async function getpublications (_query){
+    try{
+        let users = await sequelize.query
+        ("SELECT publication_name FROM publications where email = $1 LIMIT 10", 
+        {
+            bind: [username],
+            type: QueryTypes.SELECT
+        });
+        return users;
+        }
+        catch (error) {
+            console.log('Error getting users', error);
+        }}

@@ -31,7 +31,7 @@ Publications.init({
         type: DataTypes.STRING(30),
         allowNull: false,
         unique: true
-    }
+    },
 },
 {
 sequelize,

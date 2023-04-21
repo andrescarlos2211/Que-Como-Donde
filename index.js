@@ -29,48 +29,40 @@ app.use(cookieParser('NKwUmJzAXE'));
 app.use(session({
     secret: 'NKwUmJzAXE',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-
 passport.use(new PassportLocal(async function (username, password, done) {
-    try {
         let validador = -1;
         let users =  await getUser(username);
+        
         if (users.map(e => e.username).indexOf(username) != -1) {
             validador = users.map(e => e.username).indexOf(username);
-        }
+        } else {
+            return done(null, false, { message: 'Correo no registrado' })};
+        
         if (validador != -1) {
             let usuario = users[validador];
-            console.log(usuario);
+                
             if (usuario.password == password) {
-                // console.log('holamundo'+usuario.email)
-                return done(null, { email: usuario.username})
-            } else {
-                return done(null, false, { message: 'Contraseña Incorrecta' })
-            }
-        } else {
-            return done(null, false, { message: 'Correo no registrado' })
+                return done(null, { email: usuario.username})} 
+            else {
+                return done(null, false, { message: 'Contraseña Incorrecta' })}
         }
-    }
-    catch (error) {
-        console.log(error);
-        return done(null, false, { message: 'Error obteniendo resultado' });
-    }
 }));
 
 // //Serialization
 
  passport.serializeUser(function (mail, done) {
-  console.log(mail);
+  console.log(mail.email);
      done(null, mail.email)
  });
 //Deserialization
 passport.deserializeUser(async function (email, done) {
-        done(null, user);
+        done(null, mail.email);
 });
 //settings
 app.set('port', process.env.PORT || 3000)
@@ -121,7 +113,7 @@ app.get('/blog', function (req, res) {
     res.render('blog')
 });
 app.get('/ingresar', function (req, res) {
-    console.log(req.session)
+    req.flash('error', req.flash)
     res.render('ingresar')
 });
 app.post('/ingresar', passport.authenticate('local', {
@@ -137,14 +129,21 @@ app.post('/registro', function (req, res) {
     res.redirect('/dash')
 });
 app.get('/publicar', function (req, res) {
+
     res.render('publicar')
 });
+
+app.post('/publicar', function (req, res) {
+    
+
+});
+
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
 });
 app.get('/contacto', function (req, res) {
     res.render('contacto')
-});
+}); 
 app.get('/dash', function (req, res) {
     console.log(req.session)
     res.render('dash')
