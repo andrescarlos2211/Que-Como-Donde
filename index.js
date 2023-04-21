@@ -58,11 +58,12 @@ passport.use(new PassportLocal(async function (username, password, done) {
 
  passport.serializeUser(function (mail, done) {
   console.log(mail.email);
-     done(null, mail.email)
+     done(null, mail)
  });
 //Deserialization
-passport.deserializeUser(async function (email, done) {
-        done(null, mail.email);
+passport.deserializeUser(async function (mail, done) {
+    console.log(mail)
+        done(null, mail);
 });
 //settings
 app.set('port', process.env.PORT || 3000)
