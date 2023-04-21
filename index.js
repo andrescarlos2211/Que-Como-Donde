@@ -12,6 +12,7 @@ import { sequelize, testConnection } from './database/db.js'
 import { createUser, createPublication, syncTables, emailExists, getUser } from './database/orm/ormHandler.js'
 import { fileURLToPath } from 'url';
 import { User_credentials } from './database/orm/user_credentials.js'
+
 testConnection();
 // emailExists('andrescarlos2211@gmail.com')
 // syncTables()
@@ -20,6 +21,7 @@ testConnection();
 //Inicializaciones
 const app = express();
 const PassportLocal = passportLocal.Strategy
+let currentUserId = null
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -37,18 +39,21 @@ app.use(flash());
 
 passport.use(new PassportLocal(async function (username, password, done) {
     let validador = -1;
-    let users = await getUser(username);
+    let users_ = await getUser(username);
 
-    if (users.map(e => e.username).indexOf(username) != -1) {
-        validador = users.map(e => e.username).indexOf(username);
+
+    if (users_.map(e => e.username).indexOf(username) != -1) {
+        validador = users_.map(e => e.username).indexOf(username);
     } else {
         return done(null, false, { message: 'Correo no registrado' })
     };
 
     if (validador != -1) {
-        let usuario = users[validador];
+        let usuario = users_[validador];
 
         if (usuario.password == password) {
+            currentUserId = usuario.user_id;
+            // console.log(currentUserId);
             return done(null, { email: usuario.username })
         }
         else {
@@ -63,8 +68,8 @@ passport.serializeUser(function (mail, done) {
 });
 //Deserialization
 passport.deserializeUser(async function (mail, done) {
-    console.log(mail)
-    done(null, mail);
+    // console.log(mail)
+    done(null, mail.email);
 });
 //settings
 app.set('port', process.env.PORT || 3000)
@@ -119,6 +124,7 @@ app.post('/ingresar', passport.authenticate('local', {
 app.post('/salir', function (req, res, next) {
     req.logout(function (err) {
         if (err) { return next(err); }
+        currentUserId = null
         res.redirect('/');
     });
 });
@@ -135,15 +141,16 @@ app.get('/publicar', function (req, res) {
     res.render('publicar')
 });
 app.post('/publicar', function (req, res) {
-    const nombre = req.body.nombre_producto
-    const descripcion = req.body.descripcion
-    const ubicacion = req.body.ubicacion
+    const nombre = req.body.nombre_publicacion
     const precio = req.body.precio
-    const unidades = req.body.unidades
+    const descripcion = req.body.descripcion
+    const producto = req.body.producto
+    const ubicacion = req.body.ubicacion
     const kw1 = req.body.kw1
     const kw2 = req.body.kw2
-    const producto = req.body.producto
-    createPublication(nombre, precio, descripcion, producto, ubicacion, kw1, kw2, unidades)
+    const unidades = req.body.unidades
+    const user_id = currentUserId
+    createPublication(nombre, precio, descripcion, producto, ubicacion, kw1, kw2, unidades, user_id);
 });
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
@@ -154,7 +161,7 @@ app.get('/contacto', function (req, res) {
 app.get('/dash', function (req, res) {
 
     // console.log(req.session)
-    console.log(req.email)
+    // console.log(req.email)
     res.render('dash', {
         
     })
@@ -162,4 +169,4 @@ app.get('/dash', function (req, res) {
 //Starting the server
 app.listen(app.get('port'), () => {
     console.log(`listening on port ${app.get('port')}`)
-});+
+});

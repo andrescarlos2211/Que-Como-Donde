@@ -39,7 +39,7 @@ export async function emailExists(email) {
 export async function getUser (username){
     try {
 let users = await sequelize.query
-("SELECT email as username,password FROM user_credentials where email = $1 LIMIT 10", 
+("SELECT email as username,password, user_id FROM user_credentials where email = $1 LIMIT 10", 
 {
     bind: [username],
     type: QueryTypes.SELECT
@@ -54,16 +54,23 @@ catch (error) {
 //Funcion creadora de publicaciones
 
 export async function createPublication (_publication_name, _publication_price, 
-_publication_description, _product){
-
+_publication_description, _product, _publication_ubication, _keyword1, _keyword2, _publication_qty, _user_id){
+try{
     const publ = await Publications.create({
-
         publication_name_: _publication_name,
         publication_price: _publication_price,
         publication_description: _publication_description,
-        product: _product
-
+        product: _product,
+        publication_ubication: _publication_ubication,
+        keyword1: _keyword1,
+        keyword2: _keyword2,
+        publication_qty: _publication_qty,
+        user_id: _user_id
     })
+}
+catch (error) {
+    console.log(error);
+}
 }
 
 export async function getpublications (_query){
