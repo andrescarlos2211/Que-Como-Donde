@@ -8,7 +8,7 @@ Publications.init({
     publication_id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoincrement: true
+        autoIncrement: true
     },
     publication_name:{
         type: DataTypes.STRING(20),

@@ -54,10 +54,11 @@ catch (error) {
 //Funcion creadora de publicaciones
 
 export async function createPublication (_publication_name, _publication_price, 
-_publication_description, _product, _publication_ubication, _keyword1, _keyword2, _publication_qty, _user_id){
+_publication_description, _product, _publication_ubication, _keyword1, _keyword2, 
+_publication_qty, _user_id){
 try{
     const publ = await Publications.create({
-        publication_name_: _publication_name,
+        publication_name: _publication_name,
         publication_price: _publication_price,
         publication_description: _publication_description,
         product: _product,

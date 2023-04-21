@@ -15,7 +15,7 @@ import { User_credentials } from './database/orm/user_credentials.js'
 
 testConnection();
 // emailExists('andrescarlos2211@gmail.com')
-// syncTables()
+syncTables()
 // createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
 //Inicializaciones
@@ -53,7 +53,7 @@ passport.use(new PassportLocal(async function (username, password, done) {
 
         if (usuario.password == password) {
             currentUserId = usuario.user_id;
-            // console.log(currentUserId);
+            console.log(currentUserId);
             return done(null, { email: usuario.username })
         }
         else {
@@ -69,7 +69,7 @@ passport.serializeUser(function (mail, done) {
 //Deserialization
 passport.deserializeUser(async function (mail, done) {
     // console.log(mail)
-    done(null, mail.email);
+    done(null, mail);
 });
 //settings
 app.set('port', process.env.PORT || 3000)
@@ -150,6 +150,7 @@ app.post('/publicar', function (req, res) {
     const kw2 = req.body.kw2
     const unidades = req.body.unidades
     const user_id = currentUserId
+    console.log(nombre, precio, descripcion, producto, ubicacion, kw1, kw2, unidades, user_id);
     createPublication(nombre, precio, descripcion, producto, ubicacion, kw1, kw2, unidades, user_id);
 });
 app.get('/catalogo', function (req, res) {
