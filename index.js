@@ -90,11 +90,21 @@ app.use(express.static(new URL('./src/public', import.meta.url).pathname, {
     cacheControl: true,
     maxAge: "30d"
 }));
+//
+
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect('/login');
+  }
+
+
 //Rutas *******************************************************************************************
 app.get('/', function (req, res) {
     res.render('index')
 });
-app.get('/catalogo', function (req, res) {
+app.get('/catalogo', ensureAuthenticated ,function (req, res) {
     // let busqueda = req.query.busqueda;
     // console.log(busqueda);
     // res.send(busqueda);
@@ -136,11 +146,11 @@ app.post('/registro', function (req, res) {
     console.log('Usuario registrado')
     res.redirect('/dash')
 });
-app.get('/publicar', function (req, res) {
+app.get('/publicar', ensureAuthenticated,   function (req, res) {
 
     res.render('publicar')
 });
-app.post('/publicar', function (req, res) {
+app.post('/publicar', ensureAuthenticated, function (req, res) {
     const nombre = req.body.nombre_publicacion
     const precio = req.body.precio
     const descripcion = req.body.descripcion
@@ -159,7 +169,7 @@ app.get('/catalogo', function (req, res) {
 app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
-app.get('/dash', function (req, res) {
+app.get('/dash', ensureAuthenticated, function (req, res) {
 
     // console.log(req.session)
     // console.log(req.email)
