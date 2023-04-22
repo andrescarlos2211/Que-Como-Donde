@@ -1,1 +1,0 @@
-SELECT * FROM user_credentials WHERE email='andrescarlos2211@gmail.com'
