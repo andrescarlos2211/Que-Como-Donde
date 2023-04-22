@@ -15,7 +15,7 @@ Comunas.init({
         allowNull: false
     },
     region_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     }
 }, {

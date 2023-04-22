@@ -15,7 +15,7 @@ import { User_credentials } from './database/orm/user_credentials.js'
 
 testConnection();
 // emailExists('andrescarlos2211@gmail.com')
-syncTables()
+// syncTables()
 // createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
 
@@ -89,17 +89,15 @@ app.set('view engine', 'ejs');
 app.use(express.static(new URL('./src/public', import.meta.url).pathname, {
     index: false,
     immutable: true,
-    cacheControl: true,
-    // maxAge: "30d"
+    cacheControl: true
 }));
 //
-
-// functio(req, res, next) {
-//     if (req.isAuthenticated()) {
-//       return next();
-//     }
-//     res.redirect('/login');
-//   }
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect('/login');
+  }
 
 
 //Rutas *******************************************************************************************
@@ -148,7 +146,7 @@ app.post('/registro', function (req, res) {
     console.log('Usuario registrado')
     res.redirect('/dash')
 });
-app.get('/publicar',   function (req, res) {
+app.get('/publicar', ensureAuthenticated ,  function (req, res) {
 
     res.render('publicar')
 });
@@ -171,7 +169,7 @@ app.get('/catalogo', function (req, res) {
 app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
-app.get('/dash', function (req, res) {
+app.get('/dash', ensureAuthenticated ,function (req, res) {
 
     // console.log(req.session)
     // console.log(req.email)
