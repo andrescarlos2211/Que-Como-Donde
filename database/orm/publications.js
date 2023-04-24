@@ -25,11 +25,6 @@ Publications.init({
         allowNull: false,
         unique: true
     },
-    product: {
-        type: DataTypes.STRING(30),
-        allowNull: false,
-        unique: true
-    },
     keyword1: {
         type: DataTypes.STRING(15),
         allowNull: false,
@@ -43,14 +38,6 @@ Publications.init({
     },
     user_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    nombre_region: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    nombre_comuna: {
-        type: DataTypes.STRING,
         allowNull: false
     }
 }, {

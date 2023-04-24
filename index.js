@@ -15,7 +15,7 @@ import { User_credentials } from './database/orm/user_credentials.js'
 
 testConnection();
 // emailExists('andrescarlos2211@gmail.com')
-// syncTables()
+syncTables()
 // createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
 
@@ -74,7 +74,7 @@ passport.deserializeUser(async function (mail, done) {
     done(null, mail);
 });
 //settings
-app.set('port', process.env.PORT || 3000)
+app.set('port', process.env.PORT || 5000)
 //middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -96,7 +96,7 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
     }
-    res.redirect('/login');
+    res.redirect('/ingresar');
   }
 
 
