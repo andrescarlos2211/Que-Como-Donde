@@ -23,7 +23,6 @@ Publications.init({
     publication_description: {
         type: DataTypes.STRING(200),
         allowNull: false,
-        unique: true
     },
     keyword1: {
         type: DataTypes.STRING(15),

@@ -9,6 +9,7 @@ import session from 'express-session'
 import passportLocal from 'passport-local';
 import flash from 'express-flash';
 import fetch from 'node-fetch';
+import formidable from 'formidable';
 
 import { sequelize, testConnection } from './database/db.js'
 import { createUser, createPublication, syncTables, emailExists, getUser } from './database/orm/ormHandler.js'
@@ -33,7 +34,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json()) //reconoce json
 app.use(express.urlencoded({ extended: true }));
-
 app.use(cookieParser('NKwUmJzAXE'));
 app.use(session({
     secret: 'NKwUmJzAXE',
@@ -194,18 +194,39 @@ app.get('/ciudades', async (req, res) => {
     }
 });
 
+app.post('/publicar', ensureAuthenticated ,async function (req, res) {
+    try {
+        const form = formidable({ multiples: true });
+    
+        form.parse(req, async (err, fields, files) => {
+      if (err) {
+        console.error(err);
+        throw new Error('Error al procesar el formulario');
+      }
 
-app.post('/publicar', ensureAuthenticated ,function (req, res) {
-    const nombre = req.body.nombre_publicacion
-    const precio = req.body.precio
-    const descripcion = req.body.descripcion
-    const region = req.body['Region']
-    const ciudad = req.body['Ciudad']
-    const kw1 = req.body.kw1
-    const kw2 = req.body.kw2
-    const unidades = req.body.unidades
-    const user_id = currentUserId
-    createPublication(nombre, precio, descripcion, region, ciudad, kw1, kw2, unidades, user_id);
+
+        const response = await fetch('http://localhost:4000/api/v1/publicaciones', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+          publication_name: fields.nombre_publicacion,
+          publication_price: fields['precio'],
+          publication_description: fields.descripcion,
+          region_id: fields['Region'],
+          comuna_id: fields['Ciudad'],
+          keyword1: fields.kw1,
+          keyword2: fields.kw2,
+          publication_qty: fields.unidades,
+          user_id: currentUserId,
+        }),
+    })    
+});
+} catch (error) {
+  console.error(error);
+  res.sendStatus(500);
+}
 });
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')

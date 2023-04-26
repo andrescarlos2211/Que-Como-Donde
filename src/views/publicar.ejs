@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +8,11 @@
 </head>
 <body>
   <h1>Ingrese los detalles del producto:</h1>
-  
-  <form id="form" method="POST">
+  <form id="form" method="POST" enctype="multipart/form-data">
     <div class="campo">
       <label for="nombre_producto">Nombre de publicación:</label>
       <input type="text" id="nombre_producto" name="nombre_publicacion" required>
     </div>
-
     <div class="campo">
       <label for="descripcion">Descripción:</label>
       <input type="text" id="descripcion" name="descripcion" required>
@@ -37,10 +35,8 @@
     </div>
     <div class="campo">
       <label for="imagen">Imagen:</label>
-      <input type="file" id="imagen" name="imagen" required>
+      <input type="file" id="imagen" name="archivo" required>
     </div>
-    
-
     <div class="campo">
       <label for="Region">Region:</label>
       <select type="text" id="Region" name="Region" onchange="cambiaCiudad()">
@@ -56,10 +52,8 @@
         <option value=""></option>
       </select>
     </div>
-
     <button type="submit">Enviar</button>
   </form>
-
   <script>
     function cambiaCiudad() {
       const regionSeleccionada = document.getElementById("Region").value;
@@ -84,7 +78,6 @@
       xhttp.open("GET", `http://localhost:4000/api/v1/ciudades?region=${regionSeleccionada}`, true);
       xhttp.send();
     }
-    </script>
-    
+  </script>
 </body>
 </html>
