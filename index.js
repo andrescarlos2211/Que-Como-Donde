@@ -8,8 +8,6 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import passportLocal from 'passport-local';
 import flash from 'express-flash';
-import cors from 'cors';
-
 import fetch from 'node-fetch';
 
 import { sequelize, testConnection } from './database/db.js'
@@ -19,7 +17,7 @@ import { User_credentials } from './database/orm/user_credentials.js'
 // import method-override from 'method-override'
 testConnection();
 // emailExists('andrescarlos2211@gmail.com')
-// syncTables()
+//syncTables()
 // createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
 
@@ -64,7 +62,6 @@ passport.use(new PassportLocal(async function (username, password, done) {
 
         if (usuario.password == password) {
             currentUserId = usuario.user_id;
-            console.log(currentUserId);
             return done(null, { email: usuario.username })
         }
         else {
@@ -74,7 +71,6 @@ passport.use(new PassportLocal(async function (username, password, done) {
 }));
 // //Serialization
 passport.serializeUser(function (mail, done) {
-    console.log(mail.email);
     done(null, mail)
 });
 //Deserialization
@@ -151,19 +147,18 @@ app.post('/registro', function (req, res) {
     const pw = req.body.password
     const name = req.body.name
     createUser(mail, name, pw)
-    console.log('Usuario registrado')
     res.redirect('/dash')
 });
 
 app.get('/publicar', async (req, res) => {
     try {
         const regionesJSON = await fetch("http://localhost:4000/api/v1/regiones",
-        {
-	        'mode': 'no-cors',
-	        'headers': {
-            	'Access-Control-Allow-Origin': '*',
-        	}
-    	});
+            {
+                'mode': 'no-cors',
+                'headers': {
+                    'Access-Control-Allow-Origin': '*',
+                }
+            });
         const comunas = await regionesJSON.json()
         const regiones = [];
         comunas.rows.forEach((comuna) => {
@@ -172,37 +167,16 @@ app.get('/publicar', async (req, res) => {
         const regionesUnicas = [...new Set(regiones)];
         const listaCiudades = comunas.rows.map(item => {
             return {
-              region_id: item.region_id,
-              nombre_comuna: item.nombre_comuna
+                region_id: item.region_id,
+                nombre_comuna: item.nombre_comuna
             }
-          });
-        
-
-          
-          const comunas_ = [];
-          comunas.rows.forEach((comuna) => {
-              comunas_.push(comuna.nombre_comuna);
-          });
-          console.log(comunas_)
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        res.render('publicar', {regiones: regionesUnicas, ciudades: listaCiudades});
-
-    } 
+        });
+        const comunas_ = [];
+        comunas.rows.forEach((comuna) => {
+            comunas_.push(comuna.nombre_comuna);
+        });
+        res.render('publicar', { regiones: regionesUnicas, ciudades: listaCiudades });
+    }
     catch (error) {
         console.error(error);
     }
@@ -210,47 +184,44 @@ app.get('/publicar', async (req, res) => {
 
 app.get('/ciudades', async (req, res) => {
     try {
-      const regionSeleccionada = req.query.region;
-      console.log(regionSeleccionada)
-      const ciudadesJSON = await fetch(`http://localhost:4000/api/v1/ciudades?region=${regionSeleccionada}`);
-      const ciudades = await ciudadesJSON.json();
-      console.log(ciudades);
-      res.send(ciudades);
+        const regionSeleccionada = req.query.region;
+        const ciudadesJSON = await fetch(`http://localhost:4000/api/v1/ciudades?region=${regionSeleccionada}`);
+        const ciudades = await ciudadesJSON.json();
+        res.send(ciudades);
     } catch (error) {
-      console.error(error);
-      res.sendStatus(500);
+        console.error(error);
+        res.sendStatus(500);
     }
-  });
+});
 
 
-    app.post('/publicar', function (req, res) {
-        const nombre = req.body.nombre_publicacion
-        const precio = req.body.precio
-        const descripcion = req.body.descripcion
-        const producto = req.body.producto
-        const ubicacion = req.body.ubicacion
-        const kw1 = req.body.kw1
-        const kw2 = req.body.kw2
-        const unidades = req.body.unidades
-        const user_id = currentUserId
-        console.log(nombre, precio, descripcion, producto, ubicacion, kw1, kw2, unidades, user_id);
-        createPublication(nombre, precio, descripcion, producto, ubicacion, kw1, kw2, unidades, user_id);
-    });
-    app.get('/catalogo', function (req, res) {
-        res.render('catalogo')
-    });
-    app.get('/contacto', function (req, res) {
-        res.render('contacto')
-    });
-    app.get('/dash', ensureAuthenticated, function (req, res) {
+app.post('/publicar', ensureAuthenticated ,function (req, res) {
+    const nombre = req.body.nombre_publicacion
+    const precio = req.body.precio
+    const descripcion = req.body.descripcion
+    const region = req.body['Region']
+    const ciudad = req.body['Ciudad']
+    const kw1 = req.body.kw1
+    const kw2 = req.body.kw2
+    const unidades = req.body.unidades
+    const user_id = currentUserId
+    createPublication(nombre, precio, descripcion, region, ciudad, kw1, kw2, unidades, user_id);
+});
+app.get('/catalogo', function (req, res) {
+    res.render('catalogo')
+});
+app.get('/contacto', function (req, res) {
+    res.render('contacto')
+});
+app.get('/dash', ensureAuthenticated, function (req, res) {
 
-        // console.log(req.session)
-        // console.log(req.email)
-        res.render('dash', {
+    // console.log(req.session)
+    // console.log(req.email)
+    res.render('dash', {
 
-        })
-    });
-    //Starting the server
-    app.listen(app.get('port'), () => {
-        console.log(`listening on port ${app.get('port')}`)
-    });
+    })
+});
+//Starting the server
+app.listen(app.get('port'), () => {
+    console.log(`listening on port ${app.get('port')}`)
+});

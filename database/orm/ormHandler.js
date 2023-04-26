@@ -55,15 +55,15 @@ export async function getUser(username) {
 //Funcion creadora de publicaciones
 
 export async function createPublication(_publication_name, _publication_price,
-    _publication_description, _product, _publication_ubication, _keyword1, _keyword2,
+    _publication_description, _region_id, _comuna_id, _keyword1, _keyword2,
     _publication_qty, _user_id) {
     try {
         const publ = await Publications.create({
             publication_name: _publication_name,
             publication_price: _publication_price,
             publication_description: _publication_description,
-            product: _product,
-            publication_ubication: _publication_ubication,
+            region_id: _region_id,
+            comuna_id: _comuna_id,
             keyword1: _keyword1,
             keyword2: _keyword2,
             publication_qty: _publication_qty,

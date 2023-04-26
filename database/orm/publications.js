@@ -36,6 +36,14 @@ Publications.init({
     publication_qty: {
         type: DataTypes.INTEGER
     },
+    region_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    comuna_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false

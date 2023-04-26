@@ -330,7 +330,7 @@ INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Zapallar', '14');
 
 -- Tarapacá
 
-INSERT INTO regions  (nombre_region, region_id) VALUES ('Tarapacá', '15');
+INSERT INTO regions  (nombre_region, region_id) VALUES ('Región de Tarapacá', '15');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Alto Hospicio', '15');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Pica', '15');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Pozo Almonte', '15');

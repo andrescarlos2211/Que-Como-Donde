@@ -2,10 +2,19 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {Pool} = require('pg');
 const cors = require('cors');
+const expressFileUpload = require('express-fileupload')
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: false }));
 app.use(bodyParser.json());
+app.use(expressFileUpload({
+
+    limits: { fileSize: 5000000},
+    abortOnLimit: true,
+    responseOnLimit: "El peso del archivo es superior a lo permitido"
+})
+);
+app.use(cors());
 
 const pool = new Pool({
     host: "localhost",
@@ -15,9 +24,6 @@ const pool = new Pool({
     port: "5432"
 });
 
-
-app.use(cors());
-  
 //Obtener listado completo de usuarios
 app.get("/api/v1/users", (req, res)=>{
     pool.query('select * from user_credentials', (err, res) => {
@@ -55,7 +61,7 @@ app.get("/api/v1/ciudades", async (req, res) => {
     try {
       const { region } = req.query
       const ciudades = await pool.query(
-        "SELECT nombre_comuna as ciudad FROM comunas WHERE region_id = $1",
+        "SELECT comuna_id, nombre_comuna as ciudad FROM comunas WHERE region_id = $1",
         [region]
       );
       res.json(ciudades.rows);
