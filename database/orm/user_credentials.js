@@ -7,6 +7,7 @@ User_credentials.init({
     user_id:{
     type: DataTypes.INTEGER,
     primaryKey: true,
+    autoIncrement: true
     },
     email:{
         type: DataTypes.STRING(30),

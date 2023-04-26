@@ -63,7 +63,6 @@ INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Freirina', '4');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Huasco', '4');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Vallenar', '4');
 
-
 -- Bio Bio
 
 INSERT INTO regions  (nombre_region, region_id) VALUES ('Región del Biobío', '5');
@@ -121,7 +120,6 @@ INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Río Hurtado', '6');
 
 -- La Araucania
 
-
 INSERT INTO regions  (nombre_region, region_id) VALUES ('Región de La Araucanía', '7');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Temuco', '7');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Carahue', '7');
@@ -148,8 +146,8 @@ INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Victoria', '7');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Vilcún', '7');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Villarrica', '7');
 
-
 --Ohiggins
+
 INSERT INTO regions  (nombre_region, region_id) VALUES ('Región del Libertador General Bernardo OHiggins', '8');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Rancagua', '8');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Codegua', '8');
@@ -176,7 +174,6 @@ INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Placilla', '8');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Pumanque', '8');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Santa Cruz', '8');
 
-
 --Los Lagos
 
 INSERT INTO regions  (nombre_region, region_id) VALUES ('Región de Los Lagos', '9');
@@ -201,6 +198,7 @@ INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Hualaihué', '9');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Purranque', '9');
 
 -- Los Rios
+
 INSERT INTO regions  (nombre_region, region_id) VALUES ('Región de Los Ríos', '10');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Valdivia', '10');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Corral', '10');
@@ -213,7 +211,6 @@ INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Panguipulli', '10');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('La Unión', '10');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Río Bueno', '10');
 
-
 --Magallanes
 
 INSERT INTO regions  (nombre_region, region_id) VALUES ('Región de Magallanes y de la Antártica Chilena', '11');
@@ -221,7 +218,6 @@ INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Punta Arenas', '11');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Puerto Natales', '11');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Porvenir', '11');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Puerto Williams', '11');
-
 
 -- Maule
 
@@ -256,6 +252,7 @@ INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Colbun', '12');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Rio Claro', '12');
 
 --Santiago
+
 INSERT INTO regions  (nombre_region, region_id) VALUES ('Región Metropolitana de Santiago', '13');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Cerrillos', '13');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Cerro Navia', '13');
@@ -301,7 +298,6 @@ INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Vitacura', '13');
 
 --Valparaiso
 
-
 INSERT INTO regions  (nombre_region, region_id) VALUES ('Región de Valparaíso', '14');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Valparaíso', '14');
 INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Viña del Mar', '14');
@@ -334,7 +330,6 @@ INSERT INTO Comunas (nombre_comuna, region_id) VALUES ('Zapallar', '14');
 
 -- Tarapacá
 
-
 INSERT INTO regions  (nombre_region, region_id) VALUES ('Tarapacá', '15');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Alto Hospicio', '15');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Pica', '15');
@@ -342,7 +337,6 @@ INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Pozo Almonte', '15');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Huara', '15');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Camiña', '15');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Colchane', '15');
-
 
 -- Ñuble
 
@@ -367,3 +361,10 @@ INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('San Ignacio', '16');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('San Nicolás', '16');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Trehuaco', '16');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Yungay', '16');
+
+-- Obtener todas las ciudades de x comuna
+SELECT nombre_comuna FROM Comunas INNER JOIN regions 
+ON regions.region_id = Comunas.region_id WHERE regions.region_id = 1;
+
+
+SELECT email as username,password, user_id FROM user_credentials where email = "andrescarlos2211@gmail.com" LIMIT 10;

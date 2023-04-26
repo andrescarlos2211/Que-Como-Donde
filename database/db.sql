@@ -16,27 +16,8 @@ CREATE TABLE
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(user_id)
     );
+select regions.nombre_region as region, comunas.nombre_comuna from regions INNER JOIN comunas ON comunas.region_id = regions.region_id;
+select nombre_region from regions;
 
-INSERT INTO
-    publications (
-        "publication_name",
-        "publication_price",
-        "publication_description",
-        "product",
-        "publication_ubication",
-        "keyword1",
-        "keyword2",
-        "publication_qty",
-        "user_id"
-    )
-VALUES (
-        'fafa',
-        '56',
-        'blanca y pura',
-        'cocaina',
-        'Lo espejo',
-        'toxica',
-        'healty',
-        '2',
-        '1'
-    )
+
+SELECT nombre_comuna as ciudad FROM comunas WHERE region_id = 1;c

@@ -43,10 +43,15 @@
       <label for="imagen">Imagen:</label>
       <input type="file" id="imagen" name="imagen" required>
     </div>
+    
+
     <div class="campo">
       <label for="Region">Region:</label>
-      <select type="text" id="Region" name="Region" required>
-        <option value=""></option>
+      <select type="text" id="Region" name="Region" onchange="cambiaCiudad()">
+        <option value="0" required>Seleccione Región</option>
+        <% regiones.forEach(function(element, index) { %>
+        <option value="<%= index + 1 %>"><%= element%></option>
+        <% }) %>
       </select>
     </div>
     <div class="campo">
@@ -58,5 +63,32 @@
 
     <button type="submit">Enviar</button>
   </form>
+
+  <script>
+    function cambiaCiudad() {
+      const regionSeleccionada = document.getElementById("Region").value;
+    
+      // Realiza una solicitud AJAX al servidor para obtener las ciudades correspondientes a la región seleccionada
+      const xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          const ciudades = JSON.parse(this.responseText);
+    
+          // Reemplaza las opciones actuales en el selector Ciudad con las nuevas opciones devueltas por el servidor
+          const selectorCiudad = document.getElementById("Ciudad");
+          selectorCiudad.innerHTML = "";
+          ciudades.forEach((ciudad) => {
+            const option = document.createElement("option");
+            option.value = ciudad.ciudad;
+            option.text = ciudad.ciudad;
+            selectorCiudad.add(option);
+          });
+        }
+      };
+      xhttp.open("GET", `http://localhost:4000/api/v1/ciudades?region=${regionSeleccionada}`, true);
+      xhttp.send();
+    }
+    </script>
+    
 </body>
 </html>

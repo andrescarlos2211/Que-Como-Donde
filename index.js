@@ -8,15 +8,21 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import passportLocal from 'passport-local';
 import flash from 'express-flash';
+import cors from 'cors';
+
+import fetch from 'node-fetch';
+
 import { sequelize, testConnection } from './database/db.js'
 import { createUser, createPublication, syncTables, emailExists, getUser } from './database/orm/ormHandler.js'
 import { fileURLToPath } from 'url';
 import { User_credentials } from './database/orm/user_credentials.js'
-
+// import method-override from 'method-override'
 testConnection();
 // emailExists('andrescarlos2211@gmail.com')
-syncTables()
+// syncTables()
 // createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
+
+
 
 
 
@@ -29,6 +35,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json()) //reconoce json
 app.use(express.urlencoded({ extended: true }));
+
 app.use(cookieParser('NKwUmJzAXE'));
 app.use(session({
     secret: 'NKwUmJzAXE',
@@ -38,6 +45,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+
 
 passport.use(new PassportLocal(async function (username, password, done) {
     let validador = -1;
@@ -94,17 +103,15 @@ app.use(express.static(new URL('./src/public', import.meta.url).pathname, {
 //
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-      return next();
+        return next();
     }
     res.redirect('/ingresar');
-  }
-
-
+}
 //Rutas *******************************************************************************************
 app.get('/', function (req, res) {
     res.render('index')
 });
-app.get('/catalogo' ,function (req, res) {
+app.get('/catalogo', function (req, res) {
     // let busqueda = req.query.busqueda;
     // console.log(busqueda);
     // res.send(busqueda);
@@ -138,6 +145,7 @@ app.post('/salir', function (req, res, next) {
         res.redirect('/');
     });
 });
+
 app.post('/registro', function (req, res) {
     const mail = req.body.username
     const pw = req.body.password
@@ -146,38 +154,103 @@ app.post('/registro', function (req, res) {
     console.log('Usuario registrado')
     res.redirect('/dash')
 });
-app.get('/publicar', ensureAuthenticated ,  function (req, res) {
 
-    res.render('publicar')
-});
-app.post('/publicar', function (req, res) {
-    const nombre = req.body.nombre_publicacion
-    const precio = req.body.precio
-    const descripcion = req.body.descripcion
-    const producto = req.body.producto
-    const ubicacion = req.body.ubicacion
-    const kw1 = req.body.kw1
-    const kw2 = req.body.kw2
-    const unidades = req.body.unidades
-    const user_id = currentUserId
-    console.log(nombre, precio, descripcion, producto, ubicacion, kw1, kw2, unidades, user_id);
-    createPublication(nombre, precio, descripcion, producto, ubicacion, kw1, kw2, unidades, user_id);
-});
-app.get('/catalogo', function (req, res) {
-    res.render('catalogo')
-});
-app.get('/contacto', function (req, res) {
-    res.render('contacto')
-});
-app.get('/dash', ensureAuthenticated ,function (req, res) {
-
-    // console.log(req.session)
-    // console.log(req.email)
-    res.render('dash', {
+app.get('/publicar', async (req, res) => {
+    try {
+        const regionesJSON = await fetch("http://localhost:4000/api/v1/regiones",
+        {
+	        'mode': 'no-cors',
+	        'headers': {
+            	'Access-Control-Allow-Origin': '*',
+        	}
+    	});
+        const comunas = await regionesJSON.json()
+        const regiones = [];
+        comunas.rows.forEach((comuna) => {
+            regiones.push(comuna.region);
+        });
+        const regionesUnicas = [...new Set(regiones)];
+        const listaCiudades = comunas.rows.map(item => {
+            return {
+              region_id: item.region_id,
+              nombre_comuna: item.nombre_comuna
+            }
+          });
         
-    })
+
+          
+          const comunas_ = [];
+          comunas.rows.forEach((comuna) => {
+              comunas_.push(comuna.nombre_comuna);
+          });
+          console.log(comunas_)
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        res.render('publicar', {regiones: regionesUnicas, ciudades: listaCiudades});
+
+    } 
+    catch (error) {
+        console.error(error);
+    }
 });
-//Starting the server
-app.listen(app.get('port'), () => {
-    console.log(`listening on port ${app.get('port')}`)
-});
+
+app.get('/ciudades', async (req, res) => {
+    try {
+      const regionSeleccionada = req.query.region;
+      console.log(regionSeleccionada)
+      const ciudadesJSON = await fetch(`http://localhost:4000/api/v1/ciudades?region=${regionSeleccionada}`);
+      const ciudades = await ciudadesJSON.json();
+      console.log(ciudades);
+      res.send(ciudades);
+    } catch (error) {
+      console.error(error);
+      res.sendStatus(500);
+    }
+  });
+
+
+    app.post('/publicar', function (req, res) {
+        const nombre = req.body.nombre_publicacion
+        const precio = req.body.precio
+        const descripcion = req.body.descripcion
+        const producto = req.body.producto
+        const ubicacion = req.body.ubicacion
+        const kw1 = req.body.kw1
+        const kw2 = req.body.kw2
+        const unidades = req.body.unidades
+        const user_id = currentUserId
+        console.log(nombre, precio, descripcion, producto, ubicacion, kw1, kw2, unidades, user_id);
+        createPublication(nombre, precio, descripcion, producto, ubicacion, kw1, kw2, unidades, user_id);
+    });
+    app.get('/catalogo', function (req, res) {
+        res.render('catalogo')
+    });
+    app.get('/contacto', function (req, res) {
+        res.render('contacto')
+    });
+    app.get('/dash', ensureAuthenticated, function (req, res) {
+
+        // console.log(req.session)
+        // console.log(req.email)
+        res.render('dash', {
+
+        })
+    });
+    //Starting the server
+    app.listen(app.get('port'), () => {
+        console.log(`listening on port ${app.get('port')}`)
+    });
