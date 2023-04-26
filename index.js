@@ -227,7 +227,9 @@ app.post('/publicar', ensureAuthenticated ,async function (req, res) {
   console.error(error);
   res.sendStatus(500);
 }
+res.redirect('/dash')
 });
+
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
 });

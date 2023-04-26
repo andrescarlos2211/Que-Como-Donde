@@ -123,6 +123,7 @@ app.post("/api/v1/publicaciones", upload.single('foto'), async (req, res) => {
         console.error(err);
         res.sendStatus(500);
     }
+    console.log('Publicación creada correctamente')
 });
     //Eliminar un usuario
     app.delete("/api/v1/users/:id", (req, res) => {

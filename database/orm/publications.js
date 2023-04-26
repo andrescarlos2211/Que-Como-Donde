@@ -15,7 +15,6 @@ Publications.init({
     publication_name: {
         type: DataTypes.STRING(20),
         allowNull: false,
-        unique: true
     },
     publication_price: {
         type: DataTypes.INTEGER
