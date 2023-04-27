@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 const cors = require('cors');
-const multer = require('multer');
+
 const port = 4000
 // const expressFileUpload = require('express-fileupload');
 const morgan = require('morgan')
@@ -13,7 +13,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const upload = multer({ dest: 'uploads/' })
 // app.use(expressFileUpload({
 
 //      limits: { fileSize: 5000000},
@@ -67,7 +66,7 @@ app.get("/api/v1/ciudades", async (req, res) => {
     }
 });
 // Crear Publicacion
-app.post("/api/v1/publicaciones", upload.single('foto'), async (req, res) => {
+app.post("/api/v1/publicaciones", async (req, res) => {
     //Envio de formulario
     const {
         publication_name,
@@ -98,27 +97,6 @@ app.post("/api/v1/publicaciones", upload.single('foto'), async (req, res) => {
         );
         res.json({ message: "Publicación creada correctamente" });
     }
-    //     //Gestion de la imagen de publicación
-
-    //     const  archivo  = (req.foto)
-    //     console.log(archivo)
-
-    //     // const { originalFilename, mimetype } = archivo;
-    //     console.log(archivo.originalFilename, archivo.mimetype)
-
-    //     // Verificar que el archivo es una imagen
-    // /url
-    //     if (!archivo.mimetype.startsWith('image/')) {
-    //         return res.status(400).json({ message: "El archivo no es una imagen válida" });
-    //     }
-
-    //     archivo.mv(`${__dirname}/archivos/${archivo.originalFilename}`, (err) =>{
-    //         if (err) {
-    //             console.error(err);
-    //             res.status(500).json({ message: "Hubo un problema al cargar el archivos"});
-    //     }
-    //     res.status(201).json({ message: "Archivo cargado con exito"});
-    // })
     catch (err) {
         console.error(err);
         res.sendStatus(500);

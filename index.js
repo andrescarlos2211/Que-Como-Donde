@@ -10,22 +10,24 @@ import passportLocal from 'passport-local';
 import flash from 'express-flash';
 import fetch from 'node-fetch';
 import formidable from 'formidable';
+import fileUpload from 'express-fileupload';
+
 
 import { sequelize, testConnection } from './database/db.js'
 import { createUser, createPublication, syncTables, emailExists, getUser } from './database/orm/ormHandler.js'
 import { fileURLToPath } from 'url';
 import { User_credentials } from './database/orm/user_credentials.js'
 // import method-override from 'method-override'
-testConnection();
+
+// testConnection();
 // emailExists('andrescarlos2211@gmail.com')
-//syncTables()
+// syncTables()
 // createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
 
-
-
-
 //Inicializaciones
+
+
 const app = express();
 const PassportLocal = passportLocal.Strategy
 let currentUserId = null
@@ -43,6 +45,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(fileUpload());
 
 
 
@@ -141,7 +144,6 @@ app.post('/salir', function (req, res, next) {
         res.redirect('/');
     });
 });
-
 app.post('/registro', function (req, res) {
     const mail = req.body.username
     const pw = req.body.password
@@ -149,7 +151,6 @@ app.post('/registro', function (req, res) {
     createUser(mail, name, pw)
     res.redirect('/dash')
 });
-
 app.get('/publicar', async (req, res) => {
     try {
         const regionesJSON = await fetch("http://localhost:4000/api/v1/regiones",
@@ -181,7 +182,6 @@ app.get('/publicar', async (req, res) => {
         console.error(error);
     }
 });
-
 app.get('/ciudades', async (req, res) => {
     try {
         const regionSeleccionada = req.query.region;
@@ -193,42 +193,64 @@ app.get('/ciudades', async (req, res) => {
         res.sendStatus(500);
     }
 });
-
-app.post('/publicar', ensureAuthenticated ,async function (req, res) {
+app.post('/publicar', ensureAuthenticated, async function (req, res) {
     try {
         const form = formidable({ multiples: true });
-    
+
         form.parse(req, async (err, fields, files) => {
-      if (err) {
-        console.error(err);
-        throw new Error('Error al procesar el formulario');
+            if (err) {
+                console.error(err);
+                throw new Error('Error al procesar el formulario');
+            }
+            //   const archivo = files.archivo;
+            //   console.log('archivo:', archivo);
+
+            const response = await fetch('http://localhost:4000/api/v1/publicaciones', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    publication_name: fields.nombre_publicacion,
+                    publication_price: fields['precio'],
+                    publication_description: fields.descripcion,
+                    region_id: fields['Region'],
+                    comuna_id: fields['Ciudad'],
+                    keyword1: fields.kw1,
+                    keyword2: fields.kw2,
+                    publication_qty: fields.unidades,
+                    user_id: currentUserId
+                }),
+            })
+        });
+    } catch (error) {
+        console.error(error);
+        res.sendStatus(500);
+    }
+    res.redirect('/publicarimg')
+});
+
+app.get('/publicarimg', function (req, res) {
+    res.render('publicarimg')
+});
+app.post('/publicarimg', function (req, res) {
+    let archivo;
+    let uploadPath;
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('Sin archivo enviado');
       }
-
-
-        const response = await fetch('http://localhost:4000/api/v1/publicaciones', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-          publication_name: fields.nombre_publicacion,
-          publication_price: fields['precio'],
-          publication_description: fields.descripcion,
-          region_id: fields['Region'],
-          comuna_id: fields['Ciudad'],
-          keyword1: fields.kw1,
-          keyword2: fields.kw2,
-          publication_qty: fields.unidades,
-          user_id: currentUserId,
-        }),
-    })    
-});
-} catch (error) {
-  console.error(error);
-  res.sendStatus(500);
-}
-res.redirect('/dash')
-});
+    
+      archivo = req.files.archivo;
+      uploadPath = __dirname + '/src/public/pubimg/' + archivo.name;
+    
+      archivo.mv(uploadPath, function(err) {
+        if (err)
+          return res.status(500).send(err);
+          
+        res.render('dash')
+      });
+})
 
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
@@ -237,12 +259,7 @@ app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
 app.get('/dash', ensureAuthenticated, function (req, res) {
-
-    // console.log(req.session)
-    // console.log(req.email)
-    res.render('dash', {
-
-    })
+    res.render('dash')
 });
 //Starting the server
 app.listen(app.get('port'), () => {

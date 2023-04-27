@@ -1,0 +1,23 @@
+<head>
+  <link rel="stylesheet" href="css/imagenpublicacion.css">
+</head>
+<p>Ahora sube una imagen para tu publicación.</p>
+<form ref='uploadForm' id='uploadForm' action='/publicarimg' method='post' encType="multipart/form-data">
+  <input type="file" name="archivo" required>
+  <p>Puedes tocar aquí o arrastrar el archivo.</p>
+  <button type="submit">Presiona para subir<input type="submit" value='Presiona para subir'/></button>
+  
+</form>
+
+<script>document.addEventListener("DOMContentLoaded", function () {
+    let inputs = document.querySelectorAll("form input");
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener("change", function () {
+        let paragraphs = document.querySelectorAll("form p");
+        for (let j = 0; j < paragraphs.length; j++) {
+          paragraphs[j].textContent = "Archivo Seleccionado";
+        }
+      });
+    }
+  });
+</script>
