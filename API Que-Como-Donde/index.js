@@ -68,6 +68,7 @@ app.get("/api/v1/ciudades", async (req, res) => {
 // Crear Publicacion
 app.post("/api/v1/publicaciones", async (req, res) => {
     //Envio de formulario
+
     const {
         publication_name,
         publication_price,
@@ -77,8 +78,10 @@ app.post("/api/v1/publicaciones", async (req, res) => {
         keyword1,
         keyword2,
         publication_qty,
-        user_id,
-    } = req.body;
+        user_id
+    } = req.body
+
+
     try {
         const publ = await pool.query(
             `INSERT INTO publications (publication_name, publication_price, publication_description, region_id, comuna_id, keyword1, keyword2, publication_qty, user_id) 
@@ -95,6 +98,7 @@ app.post("/api/v1/publicaciones", async (req, res) => {
                 user_id,
             ]
         );
+        
         res.json({ message: "Publicación creada correctamente" });
     }
     catch (err) {

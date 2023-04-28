@@ -194,40 +194,26 @@ app.get('/ciudades', async (req, res) => {
     }
 });
 app.post('/publicar', ensureAuthenticated, async function (req, res) {
-    try {
-        const form = formidable({ multiples: true });
+    
 
-        form.parse(req, async (err, fields, files) => {
-            if (err) {
-                console.error(err);
-                throw new Error('Error al procesar el formulario');
-            }
-            //   const archivo = files.archivo;
-            //   console.log('archivo:', archivo);
-
-            const response = await fetch('http://localhost:4000/api/v1/publicaciones', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    publication_name: fields.nombre_publicacion,
-                    publication_price: fields['precio'],
-                    publication_description: fields.descripcion,
-                    region_id: fields['Region'],
-                    comuna_id: fields['Ciudad'],
-                    keyword1: fields.kw1,
-                    keyword2: fields.kw2,
-                    publication_qty: fields.unidades,
-                    user_id: currentUserId
-                }),
-            })
-        });
-    } catch (error) {
-        console.error(error);
-        res.sendStatus(500);
+    const data = {
+        publication_name: req.body.nombre_publicacion,
+        publication_price: req.body.precio,
+        publication_description: req.body.descripcion,
+        region_id: req.body.Region,
+        comuna_id: req.body.Ciudad,
+        keyword1: req.body.kw1,
+        keyword2: req.body.kw2,
+        publication_qty: req.body.unidades,
+        user_id: currentUserId
     }
-    res.redirect('/publicarimg')
+
+    const response = await fetch('http://localhost:4000/api/v1/publicaciones', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+    console.log(response);
 });
 
 app.get('/publicarimg', function (req, res) {
