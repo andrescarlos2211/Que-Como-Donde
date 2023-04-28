@@ -22,7 +22,11 @@ User_credentials.init({
     password:{
         type: DataTypes.STRING(20),
         allowNull: false
-    }
+    },
+    profilepic:{
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 },
 {
 sequelize,

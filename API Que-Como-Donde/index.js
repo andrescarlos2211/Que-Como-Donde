@@ -41,6 +41,21 @@ app.get("/api/v1/users", (req, res) => {
         }
     })
 });
+
+
+//Obtener listado completo de publicaciones por un usuario
+app.get("/api/v1/publications/:user_id", async (req, res) => {
+    try {
+      const { user_id } = req.params;
+      const publicaciones = await pool.query('SELECT * FROM publications WHERE user_id = $1', [user_id]);
+      console.log(publicaciones.rows);
+      res.json(publicaciones.rows);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+  });
+
 //Obtener todas las regiones
 app.get("/api/v1/regiones", async (req, res) => {
     try {
@@ -79,13 +94,13 @@ app.post("/api/v1/publicaciones", async (req, res) => {
         keyword2,
         publication_qty,
         user_id,
-        imgdir
+        imgDir
     } = req.body
 
     console.log(req.body)
     try {
         const publ = await pool.query(
-            `INSERT INTO publications (publication_name, publication_price, publication_description, region_id, comuna_id, keyword1, keyword2, publication_qty, user_id, imgdir) 
+            `INSERT INTO publications (publication_name, publication_price, publication_description, region_id, comuna_id, keyword1, keyword2, publication_qty, user_id, imgDir) 
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
             [
                 publication_name,

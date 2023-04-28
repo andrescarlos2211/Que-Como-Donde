@@ -23,7 +23,7 @@ import { UUID } from 'sequelize';
 
 testConnection();
 // emailExists('andrescarlos2211@gmail.com')
-syncTables() 
+// syncTables() 
 //createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
 
@@ -237,37 +237,18 @@ console.log(data)
     });
     res.render('index');
 });
-
-// app.get('/publicarimg', function (req, res) {
-//     res.render('publicarimg')
-// });
-// app.post('/publicarimg', function (req, res) {
-//     let archivo;
-//     let uploadPath;
-
-//     if (!req.files || Object.keys(req.files).length === 0) {
-//         return res.status(400).send('Sin archivo enviado');
-//       }
-    
-//       archivo = req.files.archivo;
-//       uploadPath = __dirname + '/src/public/pubimg/' + archivo.name;
-    
-//       archivo.mv(uploadPath, function(err) {
-//         if (err)
-//           return res.status(500).send(err);
-          
-//         res.render('dash')
-//       });
-// })
-
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
 });
 app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
-app.get('/dash', ensureAuthenticated, function (req, res) {
-    res.render('dash')
+app.get('/dash', ensureAuthenticated, async function (req, res) {
+    const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
+    const data = await response.json(); 
+
+    console.log(data)
+    res.render('dash', {data})
 });
 //Starting the server
 app.listen(app.get('port'), () => {
