@@ -362,9 +362,4 @@ INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('San Nicolás', '16');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Trehuaco', '16');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Yungay', '16');
 
--- Obtener todas las ciudades de x comuna
-SELECT nombre_comuna FROM Comunas INNER JOIN regions 
-ON regions.region_id = Comunas.region_id WHERE regions.region_id = 1;
 
-
-SELECT email as username,password, user_id FROM user_credentials where email = "andrescarlos2211@gmail.com" LIMIT 10;

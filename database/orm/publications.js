@@ -45,7 +45,11 @@ Publications.init({
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false
-    }
+    },
+    imgdir:{
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 }, {
     sequelize,
     createdAt: false,
@@ -61,4 +65,7 @@ Publications.belongsTo(Region, { foreignKey: 'region_id' });
 
 Comunas.hasMany(Publications, { foreignKey: 'comuna_id' });
 Publications.belongsTo(Region, { foreignKey: 'comuna_id' });
+
+
+
 

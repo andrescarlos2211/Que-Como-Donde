@@ -56,7 +56,7 @@ export async function getUser(username) {
 
 export async function createPublication(_publication_name, _publication_price,
     _publication_description, _region_id, _comuna_id, _keyword1, _keyword2,
-    _publication_qty, _user_id) {
+    _publication_qty, _user_id, _imgdir) {
     try {
         const publ = await Publications.create({
             publication_name: _publication_name,
@@ -67,7 +67,8 @@ export async function createPublication(_publication_name, _publication_price,
             keyword1: _keyword1,
             keyword2: _keyword2,
             publication_qty: _publication_qty,
-            user_id: _user_id
+            user_id: _user_id,
+            imgdir: _imgdir,
         })
     }
     catch (error) {

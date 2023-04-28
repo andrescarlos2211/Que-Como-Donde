@@ -9,7 +9,7 @@ import session from 'express-session'
 import passportLocal from 'passport-local';
 import flash from 'express-flash';
 import fetch from 'node-fetch';
-import formidable from 'formidable';
+import { v4 as uuidv4 } from 'uuid';
 import fileUpload from 'express-fileupload';
 
 
@@ -17,12 +17,14 @@ import { sequelize, testConnection } from './database/db.js'
 import { createUser, createPublication, syncTables, emailExists, getUser } from './database/orm/ormHandler.js'
 import { fileURLToPath } from 'url';
 import { User_credentials } from './database/orm/user_credentials.js'
+import { timeStamp } from 'console';
+import { UUID } from 'sequelize';
 // import method-override from 'method-override'
 
-// testConnection();
+testConnection();
 // emailExists('andrescarlos2211@gmail.com')
-// syncTables()
-// createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
+syncTables() 
+//createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
 
 
 //Inicializaciones
@@ -194,8 +196,27 @@ app.get('/ciudades', async (req, res) => {
     }
 });
 app.post('/publicar', ensureAuthenticated, async function (req, res) {
-    
 
+
+    let archivo;
+    let uploadPath;
+    let nombreArchivo
+    let imgdir
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('Sin archivo enviado');
+      }
+      archivo = req.files.archivo;
+      nombreArchivo = uuidv4() + archivo.name;
+
+      uploadPath = __dirname + '/src/public/pubimg/' + nombreArchivo 
+    
+      archivo.mv(uploadPath, function(err) {
+        if (err)
+          return res.status(500).send(err);
+      });
+      imgdir = '/pubimg/'+ nombreArchivo
+
+// Enviar formulario a la API
     const data = {
         publication_name: req.body.nombre_publicacion,
         publication_price: req.body.precio,
@@ -205,38 +226,39 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
         keyword1: req.body.kw1,
         keyword2: req.body.kw2,
         publication_qty: req.body.unidades,
-        user_id: currentUserId
+        user_id: currentUserId,
+        imgdir: imgdir,
     }
-
+console.log(data)
     const response = await fetch('http://localhost:4000/api/v1/publicaciones', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     });
-    console.log(response);
+    res.render('index');
 });
 
-app.get('/publicarimg', function (req, res) {
-    res.render('publicarimg')
-});
-app.post('/publicarimg', function (req, res) {
-    let archivo;
-    let uploadPath;
+// app.get('/publicarimg', function (req, res) {
+//     res.render('publicarimg')
+// });
+// app.post('/publicarimg', function (req, res) {
+//     let archivo;
+//     let uploadPath;
 
-    if (!req.files || Object.keys(req.files).length === 0) {
-        return res.status(400).send('Sin archivo enviado');
-      }
+//     if (!req.files || Object.keys(req.files).length === 0) {
+//         return res.status(400).send('Sin archivo enviado');
+//       }
     
-      archivo = req.files.archivo;
-      uploadPath = __dirname + '/src/public/pubimg/' + archivo.name;
+//       archivo = req.files.archivo;
+//       uploadPath = __dirname + '/src/public/pubimg/' + archivo.name;
     
-      archivo.mv(uploadPath, function(err) {
-        if (err)
-          return res.status(500).send(err);
+//       archivo.mv(uploadPath, function(err) {
+//         if (err)
+//           return res.status(500).send(err);
           
-        res.render('dash')
-      });
-})
+//         res.render('dash')
+//       });
+// })
 
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')

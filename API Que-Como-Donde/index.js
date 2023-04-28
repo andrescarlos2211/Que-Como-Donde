@@ -78,14 +78,15 @@ app.post("/api/v1/publicaciones", async (req, res) => {
         keyword1,
         keyword2,
         publication_qty,
-        user_id
+        user_id,
+        imgdir
     } = req.body
 
-
+    console.log(req.body)
     try {
         const publ = await pool.query(
-            `INSERT INTO publications (publication_name, publication_price, publication_description, region_id, comuna_id, keyword1, keyword2, publication_qty, user_id) 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+            `INSERT INTO publications (publication_name, publication_price, publication_description, region_id, comuna_id, keyword1, keyword2, publication_qty, user_id, imgdir) 
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
             [
                 publication_name,
                 publication_price,
@@ -96,6 +97,7 @@ app.post("/api/v1/publicaciones", async (req, res) => {
                 keyword2,
                 publication_qty,
                 user_id,
+                imgdir
             ]
         );
         
