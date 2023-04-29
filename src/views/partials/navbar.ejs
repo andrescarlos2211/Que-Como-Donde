@@ -1,5 +1,5 @@
 <header class="sticky top-0 z-10 bg-teal-700 text-white">
-    <section class="nav mx-auto flex max-w-4xl items-center justify-between p-4">
+    <section class="nav mx-auto flex max-w-4xl items-center justify-between p-4" id="navbarro">
         <div><a href="/"><img class="loguito" src="/img/Logo/Logo colores.png" alt="Quecomocuando"></a></div>
         <div>
             <button id="hamburger-button" class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
@@ -12,23 +12,22 @@
                         after:duration-500 after:content-['']"></div>
             </button>
             <nav class="hidden space-x-8 text-xl md:block" aria-label="main">
+                <% if (!isLoggedIn) { %>
+                <a href="/ingresar" class="hover:opacity-90">Ingresar</a>
                 <a href="/" class="hover:opacity-90">Inicio</a>
                 <a href="/nosotros" class="hover:opacity-90">Nosotros</a>
-                <a href="/blog" class="hover:opacity-90">Blog</a>
-                <% if (!currentUserId) { %>
-                    <a href="/ingresar" class="hover:opacity-90">Ingresar</a>
                     <% } else { %>
+
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            <button class="btn btn-primary dropdown-toggle text-xl" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Hola <%= users_[0].username %>
+                                Hola <%= isLoggedIn.email %>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/dash">Ir a mi panel</a>
-                                <!-- <a class="dropdown-item"> -->
+                            <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="/dash">Ir a mi panel</a></li>
+                                <li><a class="dropdown-item" href="/nosotros">Sobre Nosotros</a></li>
                                     <form action="/salir" method="post">
-                                        <button type="submit" class="dropdown-item">Cerrar Sesion</button>
-                                <!-- </a> -->
+                                     <li><button type="submit" class="dropdown-item">Cerrar Sesion</button></li>
                                 </form>
                             </div>
                         </div>
@@ -40,10 +39,27 @@
     <section id="mobile-menu" class="top-68 justify-content-center absolute hidden w-full origin-top
             animate-open-menu flex-col bg-black text-5xl">
         <nav class="flex min-h-screen flex-col items-center py-8" aria-label="mobile">
-            <a href="/" class="w-full py-6 text-center hover:opacity-90">Inicio</a>
-            <a href="/nosotros" class="w-full py-6 text-center hover:opacity-90">Nosotros</a>
-            <a href="/blog" class="w-full py-6 text-center hover:opacity-90">Blog</a>
-            <a href="/ingresar" class="hover:opacity-90">Ingresar</a>
+            <% if (!isLoggedIn.email) { %>
+                <a href="/" class="w-full py-6 text-center hover:opacity-90">Inicio</a>
+                
+                <a href="/nosotros" class="w-full py-6 text-center hover:opacity-90">Sobre Nosotros</a>
+                <a href="/blog" class="w-full py-6 text-center hover:opacity-90">Blog</a>
+                <a href="/ingresar" class="hover:opacity-90">Ingresar</a>
+                <% } else { %>
+                    <a href="">  Hola <%= isLoggedIn%></a>
+                    <br>
+                    <a href="/dash">Ir a mi panel</a>
+                    <a href="/nosotros" class="w-full py-6 text-center hover:opacity-90">Sobre Nosotros</a>
+                    <a href="/blog" class="w-full py-6 text-center hover:opacity-90">Blog</a>
+                    <form action="/salir" method="post">
+                       <button type="submit" class="dropdown-item">Cerrar Sesion</button>
+                   </form>
+
+               <% } %>
+
+
+
+
         </nav>
     </section>
 </header>

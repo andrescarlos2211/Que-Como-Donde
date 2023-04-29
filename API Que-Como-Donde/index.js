@@ -94,7 +94,7 @@ app.post("/api/v1/publicaciones", async (req, res) => {
         keyword2,
         publication_qty,
         user_id,
-        imgDir
+        imgdir
     } = req.body
 
     console.log(req.body)

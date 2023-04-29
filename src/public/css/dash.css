@@ -108,6 +108,26 @@ body {
     display: none;
   }
 }
+
+
+@media screen and (min-width: 1024px) {
+  /* .sidebar {
+    display: none;
+  } */
+}
+
+.navbar-container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  /* ... otras propiedades de estilo ... */
+}
+
+
+
 .mode-switch {
   background-color: transparent;
   border: none;
@@ -577,4 +597,8 @@ body {
 }
 .gridView .cell-label {
   opacity: 0.6;
+}
+
+.logodash{
+  width: 45%;
 }

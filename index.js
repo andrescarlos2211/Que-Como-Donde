@@ -48,7 +48,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(fileUpload());
-app.use(cors());
+
 
 
 
@@ -109,10 +109,17 @@ function ensureAuthenticated(req, res, next) {
 }
 //Rutas *******************************************************************************************
 app.get('/', async function (req, res) {
-    
-    let users_ = await profiledata(currentUserId);
-    console.log(users_);
-    res.render('index', { currentUserId, users_ })
+
+    // let users_ = await profiledata(currentUserId);
+    let correouser = false
+     if(correouser) {
+        correouser = req.user.email
+    }
+    else {
+        correouser = false
+    }
+    console.log(req)
+    res.render('index', { currentUserId, isLoggedIn: correouser})
 });
 app.get('/catalogo', function (req, res) {
     // let busqueda = req.query.busqueda;
@@ -180,7 +187,10 @@ app.get('/publicar', ensureAuthenticated , async (req, res) => {
         comunas.rows.forEach((comuna) => {
             comunas_.push(comuna.nombre_comuna);
         });
-        res.render('publicar', { regiones: regionesUnicas, ciudades: listaCiudades });
+
+
+
+        res.render('publicar', { regiones: regionesUnicas, ciudades: listaCiudades,  });
     }
     catch (error) {
         console.error(error);
@@ -198,8 +208,6 @@ app.get('/ciudades', async (req, res) => {
     }
 });
 app.post('/publicar', ensureAuthenticated, async function (req, res) {
-
-
     let archivo;
     let uploadPath;
     let nombreArchivo
@@ -231,13 +239,13 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
         user_id: currentUserId,
         imgdir: imgdir,
     }
-console.log(data)
     const response = await fetch('http://localhost:4000/api/v1/publicaciones', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     });
-    res.render('index');
+
+    res.render('index', {isLoggedIn: req.user});
 });
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
@@ -249,9 +257,8 @@ app.get('/dash', ensureAuthenticated, async function (req, res) {
     const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
     const data = await response.json();
     let users_ = await profiledata(currentUserId);
-    console.log(users_)
-    console.log(users_[0].username, users_[0].profilepic)
-    res.render('dash', {data, users_})
+    let correouser = req.user.email
+    res.render('dash', {data, users_, isLoggedIn: req.user, correouser: correouser})
 });
 //Starting the server
 app.listen(app.get('port'), () => {
