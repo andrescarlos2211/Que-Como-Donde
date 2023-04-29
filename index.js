@@ -190,7 +190,7 @@ app.get('/publicar', ensureAuthenticated , async (req, res) => {
 
 
 
-        res.render('publicar', { regiones: regionesUnicas, ciudades: listaCiudades,  });
+        res.render('publicar', { regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
     }
     catch (error) {
         console.error(error);
