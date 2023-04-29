@@ -1,42 +1,49 @@
-
-    <header class="sticky top-0 z-10 bg-teal-700 text-white">
-        <section class="nav mx-auto flex max-w-4xl items-center justify-between p-4">
-            <div><a href="/"><img class="loguito" src="/img/Logo/Logo colores.png"
-                        alt="Quecomocuando"></a></div>
-            <div>
-                <button
-                    id="hamburger-button"
-                    class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
-                    <div
-                        class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all
+<header class="sticky top-0 z-10 bg-teal-700 text-white">
+    <section class="nav mx-auto flex max-w-4xl items-center justify-between p-4">
+        <div><a href="/"><img class="loguito" src="/img/Logo/Logo colores.png" alt="Quecomocuando"></a></div>
+        <div>
+            <button id="hamburger-button" class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
+                <div class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all
                         duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4
                         before:-translate-y-3 before:rounded before:bg-white
                         before:transition-all before:duration-500 before:content-['']
                         after:absolute after:h-1 after:w-8 after:-translate-x-4
                         after:translate-y-3 after:rounded after:bg-white after:transition-all
                         after:duration-500 after:content-['']"></div>
-                </button>
-                <nav class="hidden space-x-8 text-xl md:block" aria-label="main">
-                    <a href="/" class="hover:opacity-90">Inicio</a>
-                    <a href="/nosotros" class="hover:opacity-90">Nosotros</a>
-                    <a href="/blog" class="hover:opacity-90">Blog</a>
+            </button>
+            <nav class="hidden space-x-8 text-xl md:block" aria-label="main">
+                <a href="/" class="hover:opacity-90">Inicio</a>
+                <a href="/nosotros" class="hover:opacity-90">Nosotros</a>
+                <a href="/blog" class="hover:opacity-90">Blog</a>
+                <% if (!currentUserId) { %>
                     <a href="/ingresar" class="hover:opacity-90">Ingresar</a>
-
-                
-                </nav>
-
-            </div>
-        </section>
-        <section
-            id="mobile-menu"
-            class="top-68 justify-content-center absolute hidden w-full origin-top
-            animate-open-menu flex-col bg-black text-5xl">
-            <nav class="flex min-h-screen flex-col items-center py-8"
-                aria-label="mobile">
-                <a href="/" class="w-full py-6 text-center hover:opacity-90">Inicio</a>
-                <a href="/nosotros" class="w-full py-6 text-center hover:opacity-90">Nosotros</a>
-                <a href="/blog" class="w-full py-6 text-center hover:opacity-90">Blog</a>
-                <a href="/ingresar" class="hover:opacity-90">Ingresar</a>
+                    <% } else { %>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hola <%= users_[0].username %>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/dash">Ir a mi panel</a>
+                                <!-- <a class="dropdown-item"> -->
+                                    <form action="/salir" method="post">
+                                        <button type="submit" class="dropdown-item">Cerrar Sesion</button>
+                                <!-- </a> -->
+                                </form>
+                            </div>
+                        </div>
+                        <% } %>
             </nav>
-        </section>
-    </header>
+
+        </div>
+    </section>
+    <section id="mobile-menu" class="top-68 justify-content-center absolute hidden w-full origin-top
+            animate-open-menu flex-col bg-black text-5xl">
+        <nav class="flex min-h-screen flex-col items-center py-8" aria-label="mobile">
+            <a href="/" class="w-full py-6 text-center hover:opacity-90">Inicio</a>
+            <a href="/nosotros" class="w-full py-6 text-center hover:opacity-90">Nosotros</a>
+            <a href="/blog" class="w-full py-6 text-center hover:opacity-90">Blog</a>
+            <a href="/ingresar" class="hover:opacity-90">Ingresar</a>
+        </nav>
+    </section>
+</header>

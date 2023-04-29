@@ -12,13 +12,20 @@ export async function syncTables() {
         console.log('Error synchronizing tables', error);
     }
 };
-export async function createUser(_email, _username, _password) {
+export async function createUser(_email, _username, _password, _profilepic) {
+    try {
     const newuser = await User_credentials.create({
         username: _username,
         password: _password,
-        email: _email
+        email: _email,
+        profilepic: _profilepic
     })
-};
+    return newuser
+}
+catch (error){
+    console.log(error)
+}}
+
 
 export async function emailExists(email) {
     const mail = await User_credentials.query('SELECT email FROM user_credentials WHERE email=$1',
@@ -36,10 +43,26 @@ export async function emailExists(email) {
     }
 }
 
+//Parametros de usuario segun user id
+
+export async function profiledata(userid) {
+    try {
+      const users = await User_credentials.findAll({
+        where: { user_id: userid },
+        raw: true
+      });
+      return users;
+    } catch (error) {
+      console.log('Error getting users', error);
+    }
+  }
+
+//obtener listado de usuarios
+
 export async function getUser(username) {
     try {
         let users = await sequelize.query
-            ("SELECT email as username,password, user_id FROM user_credentials where email = $1 LIMIT 10",
+            ("SELECT email as username,password, user_id, profilepic, username as nameuser FROM user_credentials where email = $1 LIMIT 10",
                 {
                     bind: [username],
                     type: QueryTypes.SELECT

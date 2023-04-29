@@ -11,10 +11,10 @@ import flash from 'express-flash';
 import fetch from 'node-fetch';
 import { v4 as uuidv4 } from 'uuid';
 import fileUpload from 'express-fileupload';
-
+import cors from 'cors';
 
 import { sequelize, testConnection } from './database/db.js'
-import { createUser, createPublication, syncTables, emailExists, getUser } from './database/orm/ormHandler.js'
+import { createUser, createPublication, syncTables, emailExists, getUser, profiledata } from './database/orm/ormHandler.js'
 import { fileURLToPath } from 'url';
 import { User_credentials } from './database/orm/user_credentials.js'
 import { timeStamp } from 'console';
@@ -23,8 +23,8 @@ import { UUID } from 'sequelize';
 
 testConnection();
 // emailExists('andrescarlos2211@gmail.com')
-// syncTables() 
-//createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap');
+//syncTables() 
+//createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap', '/pubimg/webmaster.jpg');
 
 
 //Inicializaciones
@@ -48,23 +48,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(fileUpload());
+app.use(cors());
 
 
 
 passport.use(new PassportLocal(async function (username, password, done) {
     let validador = -1;
     let users_ = await getUser(username);
-
-
+    
     if (users_.map(e => e.username).indexOf(username) != -1) {
         validador = users_.map(e => e.username).indexOf(username);
     } else {
         return done(null, false, { message: 'Correo no registrado' })
     };
-
+    console.log(users_)
     if (validador != -1) {
         let usuario = users_[validador];
-
         if (usuario.password == password) {
             currentUserId = usuario.user_id;
             return done(null, { email: usuario.username })
@@ -109,8 +108,11 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/ingresar');
 }
 //Rutas *******************************************************************************************
-app.get('/', function (req, res) {
-    res.render('index')
+app.get('/', async function (req, res) {
+    
+    let users_ = await profiledata(currentUserId);
+    console.log(users_);
+    res.render('index', { currentUserId, users_ })
 });
 app.get('/catalogo', function (req, res) {
     // let busqueda = req.query.busqueda;
@@ -153,7 +155,7 @@ app.post('/registro', function (req, res) {
     createUser(mail, name, pw)
     res.redirect('/dash')
 });
-app.get('/publicar', async (req, res) => {
+app.get('/publicar', ensureAuthenticated , async (req, res) => {
     try {
         const regionesJSON = await fetch("http://localhost:4000/api/v1/regiones",
             {
@@ -245,10 +247,11 @@ app.get('/contacto', function (req, res) {
 });
 app.get('/dash', ensureAuthenticated, async function (req, res) {
     const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
-    const data = await response.json(); 
-
-    console.log(data)
-    res.render('dash', {data})
+    const data = await response.json();
+    let users_ = await profiledata(currentUserId);
+    console.log(users_)
+    console.log(users_[0].username, users_[0].profilepic)
+    res.render('dash', {data, users_})
 });
 //Starting the server
 app.listen(app.get('port'), () => {
