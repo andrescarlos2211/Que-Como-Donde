@@ -20,4 +20,11 @@ select regions.nombre_region as region, comunas.nombre_comuna from regions INNER
 select nombre_region from regions;
 
 
-SELECT nombre_comuna as ciudad FROM comunas WHERE region_id = 1;c
+SELECT nombre_comuna as ciudad FROM comunas WHERE region_id = 1;
+
+
+SELECT * FROM publications 
+WHERE publication_name ILIKE '%Tomates%' 
+OR publication_description ILIKE '%tomates%' 
+OR keyword1 ILIKE '%tomates%' 
+OR keyword2 ILIKE '%tomates%';

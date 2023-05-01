@@ -95,11 +95,22 @@ app.use((req, res, next) => {
 app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 // Public
-app.use(express.static(new URL('./src/public', import.meta.url).pathname, {
-    index: false,
-    immutable: true,
-    cacheControl: true
-}));
+
+// parte problematica del codigo
+
+// app.use(express.static(new URL('./src/public', import.meta.url).pathname, {
+//     index: false,
+//     immutable: true,
+//     cacheControl: true
+// }));
+app.use(express.static(path.join(__dirname, 'src', 'public')));
+
+
+
+
+
+
+
 //
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
@@ -118,22 +129,21 @@ app.get('/', async function (req, res) {
     else {
         correouser = false
     }
-    console.log(req)
-    res.render('index', { currentUserId, isLoggedIn: correouser})
+
+
+    res.render('index', { currentUserId, isLoggedIn: correouser })
+
+    
 });
-app.get('/catalogo', function (req, res) {
-    // let busqueda = req.query.busqueda;
-    // console.log(busqueda);
-    // res.send(busqueda);
-    console.log(productos);
-    res.render('catalogo', {
-        productos
-    })
-});
-// app.post('catalogo', function(req,res){
-//     let nombre = req.body.busqueda;
-//     console.log(nombre);
-// })
+
+app.post('/catalogo', async function(req,res){
+    let busqueda = req.body.busqueda;
+    const response = await fetch(`http://localhost:4000/api/v1/simplesearch/${busqueda}`)
+    const data = await response.json(); // Convertir la respuesta en formato JSON
+    console.log(data)
+    res.render('catalogo', {data});
+})
+
 app.get('/nosotros', function (req, res) {
     res.render('nosotros')
 });
@@ -253,6 +263,11 @@ app.get('/catalogo', function (req, res) {
 app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
+
+app.get('/index', function(req, res){
+    res.render('index', {isLoggedIn: req.user});
+})
+
 app.get('/dash', ensureAuthenticated, async function (req, res) {
     const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
     const data = await response.json();

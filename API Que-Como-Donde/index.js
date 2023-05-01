@@ -135,6 +135,28 @@ app.post("/api/v1/publicaciones", async (req, res) => {
         })
     });
 
+
+
+//Buscar en publicaciones de acuerdo a palabras ingresadas
+app.get("/api/v1/simplesearch/:consulta", async (req, res) => {
+    try {
+      const { consulta } = req.params;
+      let publicaciones = await pool.query("SELECT * FROM publications WHERE publication_name ILIKE '%' || $1 || '%' OR publication_description ILIKE '%' || $1 || '%' OR keyword1 ILIKE '%' || $1 || '%' OR keyword2 ILIKE '%' || $1 || '%';", [consulta]);
+      console.log(publicaciones.rows);
+      res.json(publicaciones.rows);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+  });
+  
+
+
+
+
+
+
+
     app.listen(port, () => {
         console.log('Servicio iniciado en el puerto ', port)
     });
