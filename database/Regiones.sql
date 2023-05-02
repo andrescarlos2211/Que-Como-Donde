@@ -361,5 +361,3 @@ INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('San Ignacio', '16');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('San Nicolás', '16');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Trehuaco', '16');
 INSERT INTO Comunas  (nombre_comuna, region_id) VALUES ('Yungay', '16');
-
-

@@ -104,13 +104,6 @@ app.set('view engine', 'ejs');
 //     cacheControl: true
 // }));
 app.use(express.static(path.join(__dirname, 'src', 'public')));
-
-
-
-
-
-
-
 //
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
@@ -135,7 +128,6 @@ app.get('/', async function (req, res) {
 
     
 });
-
 app.post('/catalogo', async function(req,res){
     let busqueda = req.body.busqueda;
     const response = await fetch(`http://localhost:4000/api/v1/simplesearch/${busqueda}`)
@@ -143,7 +135,6 @@ app.post('/catalogo', async function(req,res){
     console.log(data)
     res.render('catalogo', {data});
 })
-
 app.get('/nosotros', function (req, res) {
     res.render('nosotros')
 });
@@ -181,6 +172,7 @@ app.get('/publicar', ensureAuthenticated , async (req, res) => {
                     'Access-Control-Allow-Origin': '*',
                 }
             });
+            let users_ = await profiledata(currentUserId);
         const comunas = await regionesJSON.json()
         const regiones = [];
         comunas.rows.forEach((comuna) => {
@@ -200,7 +192,7 @@ app.get('/publicar', ensureAuthenticated , async (req, res) => {
 
 
 
-        res.render('publicar', { regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
+        res.render('publicar', {users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
     }
     catch (error) {
         console.error(error);
@@ -263,11 +255,9 @@ app.get('/catalogo', function (req, res) {
 app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
-
 app.get('/index', function(req, res){
     res.render('index', {isLoggedIn: req.user});
 })
-
 app.get('/dash', ensureAuthenticated, async function (req, res) {
     const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
     const data = await response.json();
@@ -275,17 +265,24 @@ app.get('/dash', ensureAuthenticated, async function (req, res) {
     let correouser = req.user.email
     res.render('dash', {data, users_, isLoggedIn: req.user, correouser: correouser})
 });
-
-app.get('/admin', ensureAuthenticated , async function (req, res) {
+app.get('/modusr', ensureAuthenticated , async function (req, res) {
     // const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
     let users_ = await profiledata(currentUserId);
     let correouser = req.user.email
     // const data = await response.json();
     // let users_ = await profiledata(currentUserId);
     // let correouser = req.user.email
-    res.render('exadmin', {users_, isLoggedIn: req.user})
+    res.render('modusr', {users_, isLoggedIn: req.user})
 });
-
+app.get('/modpub', ensureAuthenticated , async function (req, res) {
+    // const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
+    let users_ = await profiledata(currentUserId);
+    let correouser = req.user.email
+    // const data = await response.json();
+    // let users_ = await profiledata(currentUserId);
+    // let correouser = req.user.email
+    res.render('modpub', {users_, isLoggedIn: req.user})
+});
 
 
 

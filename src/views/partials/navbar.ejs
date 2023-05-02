@@ -1,6 +1,6 @@
 <header class="sticky top-0 z-10 bg-teal-700 text-white">
     <section class="nav mx-auto flex max-w-4xl items-center justify-between p-4" id="navbarro">
-        <div><a href="/"><img class="loguito" src="/img/Logo/Logo colores.png" alt="Quecomocuando"></a></div>
+        <div><a href="/index"><img class="loguito" src="/img/Logo/Logo colores.png" alt="Quecomocuando"></a></div>
         <div>
             <button id="hamburger-button" class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
                 <div class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all
@@ -24,8 +24,9 @@
                                 Hola <%= isLoggedIn.email %>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right position-absolute" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="/index">Inicio</a></li>
                                 <li><a class="dropdown-item" href="/dash">Ir a mi panel</a></li>
-                                <li><a class="dropdown-item" href="/nosotros">Sobre Nosotros</a></li>
+
                                     <form action="/salir" method="post">
                                      <li><button type="submit" class="dropdown-item">Cerrar Sesion</button></li>
                                 </form>
@@ -41,17 +42,15 @@
         <nav class="flex min-h-screen flex-col items-center py-8" aria-label="mobile">
             <% if (!isLoggedIn.email) { %>
                 <a href="/" class="w-full py-6 text-center hover:opacity-90">Inicio</a>
-                
-                <a href="/nosotros" class="w-full py-6 text-center hover:opacity-90">Sobre Nosotros</a>
-                <a href="/blog" class="w-full py-6 text-center hover:opacity-90">Blog</a>
-                <a href="/ingresar" class="hover:opacity-90">Ingresar</a>
+                <a href="/publicar" class="w-full py-6 text-center hover:opacity-90">Publicar un producto</a>
+                <a href="/ingresar" class="w-full py-6 text-center hover:opacity-90"">Ingresar</a>
+
                 <% } else { %>
-                    <a href="">  Hola <%= isLoggedIn%></a>
+                    <a href="">  Hola <%= isLoggedIn.email%></a>
                     <br>
-                    <a href="/dash">Ir a mi panel</a>
-                    <a href="/nosotros" class="w-full py-6 text-center hover:opacity-90">Sobre Nosotros</a>
-                    <a href="/blog" class="w-full py-6 text-center hover:opacity-90">Blog</a>
-                    <form action="/salir" method="post">
+                    <a href="/dash" class="w-full py-6 text-center hover:opacity-90">Ir a mi panel</a>
+                    <a href="/publicar" class="w-full py-6 text-center hover:opacity-90">Publicar un producto</a>
+                    <form action="/salir" class="w-full py-6 text-center hover:opacity-90" method="post">
                        <button type="submit" class="dropdown-item">Cerrar Sesion</button>
                    </form>
 
