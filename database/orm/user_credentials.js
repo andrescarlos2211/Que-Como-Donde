@@ -27,6 +27,10 @@ User_credentials.init({
         type: DataTypes.STRING,
         allowNull: true
     },
+    isadmin:{
+        type: DataTypes.BOOLEAN,
+        allowNull: true,
+    }
 },
 {
 sequelize,

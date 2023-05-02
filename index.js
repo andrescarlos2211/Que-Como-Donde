@@ -23,8 +23,8 @@ import { UUID } from 'sequelize';
 
 testConnection();
 // emailExists('andrescarlos2211@gmail.com')
-//syncTables() 
-//createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap', '/pubimg/webmaster.jpg');
+ // syncTables() 
+// createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap', '/pubimg/webmaster.jpg', 'true');
 
 
 //Inicializaciones
@@ -263,6 +263,7 @@ app.get('/dash', ensureAuthenticated, async function (req, res) {
     const data = await response.json();
     let users_ = await profiledata(currentUserId);
     let correouser = req.user.email
+    console.log(users_)
     res.render('dash', {data, users_, isLoggedIn: req.user, correouser: correouser})
 });
 app.get('/modusr', ensureAuthenticated , async function (req, res) {

@@ -183,6 +183,7 @@
                   <th>username</th>
                   <th>profilepic</th>
                   <th>password</th>
+                  <th>isadmin</th>
                   <th class="text-center">ACCIONES</th>
                 </tr>
               </thead>
@@ -216,6 +217,10 @@
 
                 <label for="" class="col-form-label">password</label>
                 <input id="password" type="text" class="form-control">
+
+                <label for="" class="col-form-label">isadmin</label>
+                <input id="isadmin" type="text" class="form-control">
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -256,6 +261,7 @@
               { "data": "username" },
               { "data": "profilepic" },
               { "data": "password" },
+              { "data": "isadmin" },
               { "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-info btn-sm btnEditar'>Editar</button><button class='btn btn-danger btn-sm btnBorrar'>Borrar</button></div></div>" }
             ]
           });
@@ -278,11 +284,14 @@
             username = fila.find('td:eq(2)').text();
             profilepic = fila.find('td:eq(3)').text();
             password = fila.find('td:eq(4)').text();
+            isadmin = fila.find('td:eq(5)').text();
             $("#user_id").val(user_id);
             $("#email").val(email);
             $("#username").val(username);
             $("#profilepic").val(profilepic);
             $("#password").val(password);
+            $("#isadmin").val(isadmin);
+
             $(".modal-header").css("background-color", "#7303c0");
             $(".modal-header").css("color", "white");
             $(".modal-title").text("Editar Artículo");
@@ -319,12 +328,13 @@
             username = $.trim($('#username').val());
             profilepic = $.trim($('#profilepic').val());
             password = $.trim($('#password').val());
+            isadmin = $.trim($('#isadmin').val());
             if (opcion == 'crear') {
               $.ajax({
                 url: url,
                 method: 'post',
                 contentType: 'application/json',
-                data: JSON.stringify({ email: email, username: username, profilepic: profilepic, password: password }),
+                data: JSON.stringify({ email: email, username: username, profilepic: profilepic, password: password, isadmin: isadmin }),
                 success: function (data) {
                   tablaArticulos.ajax.reload(null, false);
                 }
@@ -336,7 +346,7 @@
                 url: url + '/' + user_id,
                 method: 'put',
                 contentType: 'application/json',
-                data: JSON.stringify({ user_id: user_id, email: email, username: username, profilepic: profilepic, password: password }),
+                data: JSON.stringify({ user_id: user_id, email: email, username: username, profilepic: profilepic, password: password, isadmin: isadmin }),
                 success: function (data) {
                   tablaArticulos.ajax.reload(null, false);
                 }

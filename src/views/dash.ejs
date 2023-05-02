@@ -76,7 +76,7 @@
               <span>Estadisticas</span>
             </a>
           </li>
-
+          <% if (users_[0].isadmin == true) { %>
 
           <li class="sidebar-list-item" id="usuarios">
             <a href="/modpub">
@@ -88,9 +88,6 @@
               <span>Modificar Publicaciones</span>
             </a>
           </li>
-
-
-
           <li class="sidebar-list-item" id="administrar">
             <a href="/modusr">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
@@ -102,9 +99,9 @@
               <span>Modificar usuarios</span>
             </a>
           </li>
-
-
-
+          <% } else { %>
+            
+            <% } %>
           <li class="sidebar-list-item">
             <form action="/salir" method="post">
               <a href="#" class="sidebar-list-item-link">
