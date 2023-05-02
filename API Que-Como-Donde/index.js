@@ -31,9 +31,6 @@ const pool = new Pool({
 
 //******************Rutas de API ***************************************************
 
-
-
-
 //Obtener listado completo de publicaciones por un usuario
 app.get("/api/v1/publications/:user_id", async (req, res) => {
     try {
@@ -61,7 +58,7 @@ app.get("/api/v1/ciudades", async (req, res) => {
     try {
         const { region } = req.query
         const ciudades = await pool.query(
-            "SELECT comuna_id, nombre_comuna as ciudad FROM comunas WHERE region_id = $1",
+            "SELECT comuna_id, nombre_comuna as ciudad FROM comunas WHERE region_id = $1 ORDER BY nombre_comuna ASC",
             [region]
         );
         res.json(ciudades.rows);
@@ -150,7 +147,7 @@ app.get("/api/v1/users", async (req, res) => {
     console.error(err);
     res.sendStatus(500);
   }
-});
+    });
 app.post("/api/v1/users", async (req, res) => {
     try{
         const { email, username, profilepic, password } = req.body;
@@ -172,12 +169,109 @@ app.put("/api/v1/users/:id", async (req, res) => {
           console.error(err);
           res.sendStatus(500);
         }
-      });
+    });
       
+//CRUD PUBLICACIONES *****************************************************************
 
+// Crear Publicacion
+app.post("/api/v1/publicaciones", async (req, res) => {
+  //Envio de formulario
 
+  const {
+      publication_name,
+      publication_price,
+      publication_description,
+      region_id,
+      comuna_id,
+      keyword1,
+      keyword2,
+      publication_qty,
+      user_id,
+      imgdir
+  } = req.body
 
-
+  console.log(req.body)
+  try {
+      const publ = await pool.query(
+          `INSERT INTO publications (publication_name, publication_price, publication_description, region_id, comuna_id, keyword1, keyword2, publication_qty, user_id, imgDir) 
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+          [
+              publication_name,
+              publication_price,
+              publication_description,
+              region_id,
+              comuna_id,
+              keyword1,
+              keyword2,
+              publication_qty,
+              user_id,
+              imgdir
+          ]
+      );
+      
+      res.json({ message: "Publicación creada correctamente" });
+  }
+  catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+  }
+  console.log('Publicación creada correctamente')
+});
+app.get("/api/v1/publicaciones", async (req, res) => {
+  try{
+    let publicaciones = await pool.query('select * from publications');
+    res.json(publicaciones.rows)
+} catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
+app.put("/api/v1/publicaciones/:id", async (req, res) => {
+    
+  console.log(req.body)
+  const user_id = req.params.id;
+    const {
+      publication_name,
+      publication_price,
+      publication_description,
+      region_id,
+      comuna_id,
+      keyword1,
+      keyword2,
+      publication_qty,
+      imgdir
+  } = req.body
+  try {
+    const publ = await pool.query(
+        `UPDATE publications SET publication_name=$1, publication_price=$2, publication_description=$3, keyword1=$4, keyword2=$5, publication_qty=$6, comuna_id=$7, region_id=$8, imgdir=$9 WHERE user_id=$10`,
+        [
+            publication_name,
+            publication_price,
+            publication_description,
+            keyword1,
+            keyword2,
+            publication_qty,
+            comuna_id,
+            region_id,
+            imgdir,
+            user_id,
+        ])
+    res.json(publ.rows);
+  }
+    catch (err){
+      console.log(err)
+    }
+  });
+  app.delete("/api/v1/publicaciones/:id", async (req, res) => {
+    try{
+        var id = req.params.id
+        let usuarios = await pool.query('delete from publications where user_id = $1', [id]);
+        res.json(usuarios.rows)
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+      }
+    });
 
 
 

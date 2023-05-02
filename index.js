@@ -283,7 +283,7 @@ app.get('/admin', ensureAuthenticated , async function (req, res) {
     // const data = await response.json();
     // let users_ = await profiledata(currentUserId);
     // let correouser = req.user.email
-    res.render('admin', {users_, isLoggedIn: req.user})
+    res.render('exadmin', {users_, isLoggedIn: req.user})
 });
 
 
