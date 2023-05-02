@@ -602,3 +602,27 @@ body {
 .logodash{
   width: 45%;
 }
+
+
+
+@media screen and (max-width: 768px) {
+    table.dataTable td, table.dataTable th {
+        white-space: nowrap;
+    }
+    table.dataTable tbody td:nth-child(2)::before {
+        content: "Email: ";
+        font-weight: bold;
+    }
+    table.dataTable tbody td:nth-child(3)::before {
+        content: "Username: ";
+        font-weight: bold;
+    }
+    table.dataTable tbody td:nth-child(4)::before {
+        content: "Profilepic: ";
+        font-weight: bold;
+    }
+    table.dataTable tbody td:nth-child(5)::before {
+        content: "Password: ";
+        font-weight: bold;
+    }
+}

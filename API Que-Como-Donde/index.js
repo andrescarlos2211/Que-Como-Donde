@@ -31,16 +31,7 @@ const pool = new Pool({
 
 //******************Rutas de API ***************************************************
 
-//Obtener listado completo de usuarios
-app.get("/api/v1/users", (req, res) => {
-    pool.query('select * from user_credentials', (err, res) => {
-        if (err) {
-            res.json({ err })
-        } else {
-            res.json(res.rows)
-        }
-    })
-});
+
 
 
 //Obtener listado completo de publicaciones por un usuario
@@ -55,7 +46,6 @@ app.get("/api/v1/publications/:user_id", async (req, res) => {
       res.sendStatus(500);
     }
   });
-
 //Obtener todas las regiones
 app.get("/api/v1/regiones", async (req, res) => {
     try {
@@ -124,18 +114,7 @@ app.post("/api/v1/publicaciones", async (req, res) => {
     }
     console.log('Publicación creada correctamente')
 });
-    //Eliminar un usuario
-    app.delete("/api/v1/users/:id", (req, res) => {
-        pool.query('delete from user_credentials where id = $1', req.params.id, (err, res) => {
-            if (err) {
-                resp.json({ err })
-            } else {
-                resp.json(res.rows)
-            }
-        })
-    });
-
-
+//Eliminar un usuario
 
 //Buscar en publicaciones de acuerdo a palabras ingresadas
 app.get("/api/v1/simplesearch/:consulta", async (req, res) => {
@@ -150,6 +129,51 @@ app.get("/api/v1/simplesearch/:consulta", async (req, res) => {
     }
   });
   
+//CRUD usuarios***********************************************************************************************
+app.delete("/api/v1/users/:id", async (req, res) => {
+    try{
+        console.log(req.params.id)
+        var id = req.params.id
+        let usuarios = await pool.query('delete from user_credentials where user_id = $1', [id]);
+        res.json(usuarios.rows)
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+      }
+    });
+//Obtener listado completo de usuarios
+app.get("/api/v1/users", async (req, res) => {
+    try{
+    let usuarios = await pool.query('select * from user_credentials');
+    res.json(usuarios.rows)
+} catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
+app.post("/api/v1/users", async (req, res) => {
+    try{
+        const { email, username, profilepic, password } = req.body;
+        let usuarios = await pool.query('insert into user_credentials (email, username, profilepic, password) VALUES ($1, $2, $3, $4); ', [email, username, profilepic, password]);
+        res.json(usuarios.rows)
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+      }
+    });
+app.put("/api/v1/users/:id", async (req, res) => {
+        try {
+          const user_id = req.params.id;
+          const { email, username, profilepic, password } = req.body;
+          const query = `UPDATE user_credentials SET email=$1, username=$2, profilepic=$3, password=$4 WHERE user_id=$5`;
+          const result = await pool.query(query, [email, username, profilepic, password, user_id]);
+          res.json(result.rows);
+        } catch (err) {
+          console.error(err);
+          res.sendStatus(500);
+        }
+      });
+      
 
 
 

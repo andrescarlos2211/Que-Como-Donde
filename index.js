@@ -11,7 +11,7 @@ import flash from 'express-flash';
 import fetch from 'node-fetch';
 import { v4 as uuidv4 } from 'uuid';
 import fileUpload from 'express-fileupload';
-import cors from 'cors';
+
 
 import { sequelize, testConnection } from './database/db.js'
 import { createUser, createPublication, syncTables, emailExists, getUser, profiledata } from './database/orm/ormHandler.js'
@@ -275,6 +275,20 @@ app.get('/dash', ensureAuthenticated, async function (req, res) {
     let correouser = req.user.email
     res.render('dash', {data, users_, isLoggedIn: req.user, correouser: correouser})
 });
+
+app.get('/admin', ensureAuthenticated , async function (req, res) {
+    // const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
+    let users_ = await profiledata(currentUserId);
+    let correouser = req.user.email
+    // const data = await response.json();
+    // let users_ = await profiledata(currentUserId);
+    // let correouser = req.user.email
+    res.render('admin', {users_, isLoggedIn: req.user})
+});
+
+
+
+
 //Starting the server
 app.listen(app.get('port'), () => {
     console.log(`listening on port ${app.get('port')}`)

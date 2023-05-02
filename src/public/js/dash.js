@@ -23,3 +23,16 @@ modeSwitch.addEventListener('click', function () {
   document.documentElement.classList.toggle('light');
   modeSwitch.classList.toggle('active');
 });
+
+const sidebarList = document.querySelector('.sidebar-list');
+const listItems = sidebarList.getElementsByTagName('li');
+
+for (let i = 0; i < listItems.length; i++) {
+  listItems[i].addEventListener('click', function() {
+    const currentActive = sidebarList.querySelector('.active');
+    if (currentActive) {
+      currentActive.classList.remove('active');
+    }
+    this.classList.add('active');
+  });
+}
