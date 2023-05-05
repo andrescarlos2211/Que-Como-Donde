@@ -13,13 +13,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// app.use(expressFileUpload({
-
-//      limits: { fileSize: 5000000},
-//      abortOnLimit: true,
-//      responseOnLimit: "El peso del archivo es superior a lo permitido"
-//  })
-//  );
 //Definicion de pool
 const pool = new Pool({
   host: "localhost",
@@ -43,7 +36,7 @@ app.get("/api/v1/publications/:user_id", async (req, res) => {
     res.sendStatus(500);
   }
 });
-//Obtener todas las regiones
+//Obtener todas las regiones y ciudades
 app.get("/api/v1/regiones", async (req, res) => {
   try {
     const regiones = await pool.query('select regions.region_id, regions.nombre_region as region, comunas.nombre_comuna from regions INNER JOIN comunas ON comunas.region_id = regions.region_id;')
@@ -53,7 +46,7 @@ app.get("/api/v1/regiones", async (req, res) => {
     console.log(err)
   }
 });
-// Obtener ciudades
+// Obtener solo ciudades y ordenarlas por orden alfabetico
 app.get("/api/v1/ciudades", async (req, res) => {
   try {
     const { region } = req.query
@@ -113,7 +106,7 @@ app.post("/api/v1/publicaciones", async (req, res) => {
 });
 //Eliminar un usuario
 
-//Buscar en publicaciones de acuerdo a palabras ingresadas
+//Buscar en publicaciones de acuerdo a palabras ingresadas, consulta usada en la pagina principal.
 app.get("/api/v1/simplesearch/:consulta", async (req, res) => {
   try {
     const { consulta } = req.params;
@@ -131,17 +124,7 @@ app.get("/api/v1/simplesearch/:consulta", async (req, res) => {
 });
 
 //CRUD usuarios***********************************************************************************************
-app.delete("/api/v1/users/:id", async (req, res) => {
-  try {
-    console.log(req.params.id)
-    var id = req.params.id
-    let usuarios = await pool.query('delete from user_credentials where user_id = $1', [id]);
-    res.json(usuarios.rows)
-  } catch (err) {
-    console.error(err);
-    res.sendStatus(500);
-  }
-});
+
 app.get("/api/v1/users", async (req, res) => {
   try {
     let usuarios = await pool.query('select * from user_credentials');
@@ -173,10 +156,32 @@ app.put("/api/v1/users/:id", async (req, res) => {
     res.sendStatus(500);
   }
 });
-
+app.delete("/api/v1/users/:id", async (req, res) => {
+  try {
+    console.log(req.params.id)
+    var id = req.params.id
+    let usuarios = await pool.query('delete from user_credentials where user_id = $1', [id]);
+    res.json(usuarios.rows)
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
 //CRUD PUBLICACIONES *****************************************************************
 
 // Crear Publicacion
+app.get("/api/v1/publicaciones", async (req, res) => {
+  try {
+    let publicaciones = await pool.query(`SELECT publication_id, publication_name, publication_price, publication_description, keyword1, keyword2, publication_qty, region_id, comuna_id, user_id, imgdir
+    FROM publications
+    GROUP BY user_id, publication_id, publication_name, publication_price, publication_description, keyword1, keyword2, publication_qty, region_id, comuna_id, imgdir;
+    `);
+    res.json(publicaciones.rows)
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
+});
 app.post("/api/v1/publicaciones", async (req, res) => {
   //Envio de formulario
 
@@ -219,18 +224,6 @@ app.post("/api/v1/publicaciones", async (req, res) => {
     res.sendStatus(500);
   }
   console.log('Publicación creada correctamente')
-});
-app.get("/api/v1/publicaciones", async (req, res) => {
-  try {
-    let publicaciones = await pool.query(`SELECT publication_id, publication_name, publication_price, publication_description, keyword1, keyword2, publication_qty, region_id, comuna_id, user_id, imgdir
-    FROM publications
-    GROUP BY user_id, publication_id, publication_name, publication_price, publication_description, keyword1, keyword2, publication_qty, region_id, comuna_id, imgdir;
-    `);
-    res.json(publicaciones.rows)
-  } catch (err) {
-    console.error(err);
-    res.sendStatus(500);
-  }
 });
 app.put("/api/v1/publicaciones/:id", async (req, res) => {
 
