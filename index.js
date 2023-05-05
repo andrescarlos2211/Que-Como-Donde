@@ -11,24 +11,23 @@ import flash from 'express-flash';
 import fetch from 'node-fetch';
 import { v4 as uuidv4 } from 'uuid';
 import fileUpload from 'express-fileupload';
-
-
 import { sequelize, testConnection } from './database/db.js'
 import { createUser, createPublication, syncTables, emailExists, getUser, profiledata } from './database/orm/ormHandler.js'
 import { fileURLToPath } from 'url';
 import { User_credentials } from './database/orm/user_credentials.js'
 import { timeStamp } from 'console';
 import { UUID } from 'sequelize';
-// import method-override from 'method-override'
 
-testConnection();
-// emailExists('andrescarlos2211@gmail.com')
- // syncTables() 
-// createUser('andrescarlos2211@gmail.com','QuarkUp', 'itsatrap', '/pubimg/webmaster.jpg', 'true');
+switch (process.argv[2]) {
+    case 'sync':
+        syncTables()
+        break;
 
-
+    case 'admin':
+        createUser('andrescarlos2211@gmail.com', 'QuarkUp', 'contraseña', '/pubimg/webmaster.jpg', 'true');
+        break
+}
 //Inicializaciones
-
 
 const app = express();
 const PassportLocal = passportLocal.Strategy
@@ -49,13 +48,10 @@ app.use(passport.session());
 app.use(flash());
 app.use(fileUpload());
 
-
-
-
 passport.use(new PassportLocal(async function (username, password, done) {
     let validador = -1;
     let users_ = await getUser(username);
-    
+
     if (users_.map(e => e.username).indexOf(username) != -1) {
         validador = users_.map(e => e.username).indexOf(username);
     } else {
@@ -116,7 +112,7 @@ app.get('/', async function (req, res) {
 
     // let users_ = await profiledata(currentUserId);
     let correouser = false
-     if(correouser) {
+    if (correouser) {
         correouser = req.user.email
     }
     else {
@@ -126,14 +122,14 @@ app.get('/', async function (req, res) {
 
     res.render('index', { currentUserId, isLoggedIn: correouser })
 
-    
+
 });
-app.post('/catalogo', async function(req,res){
+app.post('/catalogo', async function (req, res) {
     let busqueda = req.body.busqueda;
     const response = await fetch(`http://localhost:4000/api/v1/simplesearch/${busqueda}`)
     const data = await response.json(); // Convertir la respuesta en formato JSON
     console.log(data)
-    res.render('catalogo', {data});
+    res.render('catalogo', { data });
 })
 app.get('/nosotros', function (req, res) {
     res.render('nosotros')
@@ -159,11 +155,12 @@ app.post('/salir', function (req, res, next) {
 app.post('/registro', function (req, res) {
     const mail = req.body.username
     const pw = req.body.password
+    
     const name = req.body.name
     createUser(mail, name, pw)
     res.redirect('/dash')
 });
-app.get('/publicar', ensureAuthenticated , async (req, res) => {
+app.get('/publicar', ensureAuthenticated, async (req, res) => {
     try {
         const regionesJSON = await fetch("http://localhost:4000/api/v1/regiones",
             {
@@ -172,7 +169,7 @@ app.get('/publicar', ensureAuthenticated , async (req, res) => {
                     'Access-Control-Allow-Origin': '*',
                 }
             });
-            let users_ = await profiledata(currentUserId);
+        let users_ = await profiledata(currentUserId);
         const comunas = await regionesJSON.json()
         const regiones = [];
         comunas.rows.forEach((comuna) => {
@@ -192,7 +189,7 @@ app.get('/publicar', ensureAuthenticated , async (req, res) => {
 
 
 
-        res.render('publicar', {users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
+        res.render('publicar', { users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
     }
     catch (error) {
         console.error(error);
@@ -216,19 +213,19 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
     let imgdir
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('Sin archivo enviado');
-      }
-      archivo = req.files.archivo;
-      nombreArchivo = uuidv4() + archivo.name;
+    }
+    archivo = req.files.archivo;
+    nombreArchivo = uuidv4() + archivo.name;
 
-      uploadPath = __dirname + '/src/public/pubimg/' + nombreArchivo 
-    
-      archivo.mv(uploadPath, function(err) {
+    uploadPath = __dirname + '/src/public/pubimg/' + nombreArchivo
+
+    archivo.mv(uploadPath, function (err) {
         if (err)
-          return res.status(500).send(err);
-      });
-      imgdir = '/pubimg/'+ nombreArchivo
+            return res.status(500).send(err);
+    });
+    imgdir = '/pubimg/' + nombreArchivo
 
-// Enviar formulario a la API
+    // Enviar formulario a la API
     const data = {
         publication_name: req.body.nombre_publicacion,
         publication_price: req.body.precio,
@@ -247,7 +244,7 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
         body: JSON.stringify(data)
     });
 
-    res.render('index', {isLoggedIn: req.user});
+    res.render('index', { isLoggedIn: req.user });
 });
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
@@ -255,8 +252,8 @@ app.get('/catalogo', function (req, res) {
 app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
-app.get('/index', function(req, res){
-    res.render('index', {isLoggedIn: req.user});
+app.get('/index', function (req, res) {
+    res.render('index', { isLoggedIn: req.user });
 })
 app.get('/dash', ensureAuthenticated, async function (req, res) {
     const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
@@ -264,28 +261,26 @@ app.get('/dash', ensureAuthenticated, async function (req, res) {
     let users_ = await profiledata(currentUserId);
     let correouser = req.user.email
     console.log(users_)
-    res.render('dash', {data, users_, isLoggedIn: req.user, correouser: correouser})
+    res.render('dash', { data, users_, isLoggedIn: req.user, correouser: correouser })
 });
-app.get('/modusr', ensureAuthenticated , async function (req, res) {
+app.get('/modusr', ensureAuthenticated, async function (req, res) {
     // const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
     let users_ = await profiledata(currentUserId);
     let correouser = req.user.email
     // const data = await response.json();
     // let users_ = await profiledata(currentUserId);
     // let correouser = req.user.email
-    res.render('modusr', {users_, isLoggedIn: req.user})
+    res.render('modusr', { users_, isLoggedIn: req.user })
 });
-app.get('/modpub', ensureAuthenticated , async function (req, res) {
+app.get('/modpub', ensureAuthenticated, async function (req, res) {
     // const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
     let users_ = await profiledata(currentUserId);
     let correouser = req.user.email
     // const data = await response.json();
     // let users_ = await profiledata(currentUserId);
     // let correouser = req.user.email
-    res.render('modpub', {users_, isLoggedIn: req.user})
+    res.render('modpub', { users_, isLoggedIn: req.user })
 });
-
-
 
 //Starting the server
 app.listen(app.get('port'), () => {
