@@ -12,7 +12,7 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: passwds3cur3
-      POSTGRES_DB: QueComoDonde
+      POSTGRES_DB: quecomodonde
     ports:
       - 5432:5432
 
