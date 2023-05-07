@@ -20,7 +20,7 @@ User_credentials.init({
         unique: true
     },
     password:{
-        type: DataTypes.STRING(20),
+        type: DataTypes.STRING(250),
         allowNull: false
     },
     profilepic:{

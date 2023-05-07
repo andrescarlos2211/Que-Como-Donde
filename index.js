@@ -17,6 +17,7 @@ import { fileURLToPath } from 'url';
 import { User_credentials } from './database/orm/user_credentials.js'
 import { timeStamp } from 'console';
 import { UUID } from 'sequelize';
+import bcrypt from 'bcryptjs';
 
 switch (process.argv[2]) {
     case 'sync':
@@ -24,7 +25,8 @@ switch (process.argv[2]) {
         break;
 
     case 'admin':
-        createUser('andrescarlos2211@gmail.com', 'QuarkUp', 'contraseña', '/pubimg/webmaster.jpg', 'true');
+        createUser('andrescarlos2211@gmail.com', 'QuarkUp', '$2a$10$YHukGD0HYRn3WOUOklca9.16a7CkBJolDmjWhkAfIhrWAMC5HZaOK', '/pubimg/webmaster.jpg', 'true');
+        console.loog("Usuario: andrescarlos2211@gmail.com, contraseña: itsatrap")
         break
 }
 //Inicializaciones
@@ -57,18 +59,25 @@ passport.use(new PassportLocal(async function (username, password, done) {
     } else {
         return done(null, false, { message: 'Correo no registrado' })
     };
-    console.log(users_)
+
     if (validador != -1) {
         let usuario = users_[validador];
-        if (usuario.password == password) {
+
+        // Utiliza bcrypt para comparar las contraseñas
+        const match = await bcrypt.compare(password, usuario.password);
+
+        if (match) {
             currentUserId = usuario.user_id;
-            return done(null, { email: usuario.username })
+            return done(null, { email: usuario.username });
         }
         else {
-            return done(null, false, { message: 'Contraseña Incorrecta' })
+            return done(null, false, { message: 'Contraseña Incorrecta' });
         }
     }
 }));
+
+
+
 // //Serialization
 passport.serializeUser(function (mail, done) {
     done(null, mail)
@@ -152,14 +161,24 @@ app.post('/salir', function (req, res, next) {
         res.redirect('/');
     });
 });
-app.post('/registro', function (req, res) {
+app.post('/registro', async function (req, res) {
+    try{
     const mail = req.body.username
     const pw = req.body.password
+    const namek = req.body.name
+    const hashedPassword = await bcrypt.hash(pw, 10);
+    console.log('holamundo')
     
-    const name = req.body.name
-    createUser(mail, name, pw)
+    createUser(mail, namek, hashedPassword)
     res.redirect('/dash')
+    }
+    catch(err){
+        res.send(err)
+        }
+    
 });
+
+
 app.get('/publicar', ensureAuthenticated, async (req, res) => {
     try {
         const regionesJSON = await fetch("http://localhost:4000/api/v1/regiones",
