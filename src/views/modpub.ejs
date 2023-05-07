@@ -177,11 +177,11 @@
 
 
 
-            <div class="container-fluid">
+            <div class="container-md">
                 <button id="btnCrear" class="btn btn-dark mt-2">Crear</button>
                 <div class="row shadow-lg p-3 mb-5">
-                    <div class="col">
-                        <table id="tablaArticulos" class="table table-striped table-bordered" style="width:100%">
+                    <div class="col table-responsive">
+                        <table id="tablaArticulos" class="table table-striped table-bordered" style="width:50%">
                             <thead>
                                 <tr>
                                     <th>publication_id</th>
@@ -282,6 +282,7 @@
                         imgdir;
                     //MOSTRAR
                     let tablaArticulos = $('#tablaArticulos').DataTable({
+                        responsive: true,
                         "ajax": {
                             "url": url,
                             "dataSrc": ""

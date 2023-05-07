@@ -26,7 +26,7 @@ switch (process.argv[2]) {
 
     case 'admin':
         createUser('andrescarlos2211@gmail.com', 'QuarkUp', '$2a$10$YHukGD0HYRn3WOUOklca9.16a7CkBJolDmjWhkAfIhrWAMC5HZaOK', '/pubimg/webmaster.jpg', 'true');
-        console.loog("Usuario: andrescarlos2211@gmail.com, contraseña: itsatrap")
+        console.log("Usuario: andrescarlos2211@gmail.com, contraseña: itsatrap")
         break
 }
 //Inicializaciones
