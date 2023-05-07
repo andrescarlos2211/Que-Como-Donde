@@ -3,7 +3,7 @@
 
 Instrucciones
 
-1. Ejecutar `npm i` para instalar modulos, tanto en la carpeta raiz `/` como dentro de la API `API Que-Como-Donde`
+1. Ejecutar `npm i` para instalar modulos, tanto en la carpeta raiz `/` como dentro de la API que se ubica en el directorio `API Que-Como-Donde`
 2. Instalar Docker, abrirlo y ejecutar `docker-compose up -d` en la carpeta `database/`
 3. Ejecutar `node index.js sync` para crear o sincronizar las tablas en la base de datos
 4. Ejecutar todas las consultas sql en el archivo `Database/Regiones.sql` para agregar las ciudades y regiones a las tablas correspondientes
