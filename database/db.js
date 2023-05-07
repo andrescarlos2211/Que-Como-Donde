@@ -1,7 +1,7 @@
 import {Sequelize} from 'sequelize';
 export const sequelize = new Sequelize(
     'quecomodonde','admin','cEdzl9zld7Jg5lgTmBqVKwpPz4YWRtMU',{
-        host:'dpg-chc2jbe7avjcvo1sh8rg-a.postgres.renderer-staging.com',
+        host:'dpg-chc2jbe7avjcvo1sh8rg-a',
         dialect:'postgres',
         // logging: false,
         pool: {
