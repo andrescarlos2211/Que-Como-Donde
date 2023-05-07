@@ -123,7 +123,7 @@ app.get('/', async function (req, res) {
 });
 app.post('/catalogo', async function (req, res) {
     let busqueda = req.body.busqueda;
-    const response = await fetch(`http://localhost:4000/api/v1/simplesearch/${busqueda}`)
+    const response = await fetch(`https://api-qcc.onrender.com/api/v1/simplesearch/${busqueda}`)
     const data = await response.json(); // Convertir la respuesta en formato JSON
     res.render('catalogo', { data });
 })
@@ -152,7 +152,7 @@ app.post('/registro', async function (req, res) {
     const namek = req.body.name
     const hashedPassword = await bcrypt.hash(pw, 10);    
     createUser(mail, namek, hashedPassword)
-    res.render('registro', { successMessage: 'Registro exitoso' })
+    res.render('/registro', { successMessage: 'Registro exitoso' })
     }
     catch(err){
         res.send(err)
@@ -164,7 +164,7 @@ app.get('/registro', function (req, res) {
 
 app.get('/publicar', ensureAuthenticated, async (req, res) => {
     try {
-        const regionesJSON = await fetch("http://localhost:4000/api/v1/regiones",
+        const regionesJSON = await fetch("https://api-qcc.onrender.com/api/v1/regiones",
             {
                 'mode': 'no-cors',
                 'headers': {
@@ -200,7 +200,7 @@ app.get('/publicar', ensureAuthenticated, async (req, res) => {
 app.get('/ciudades', async (req, res) => {
     try {
         const regionSeleccionada = req.query.region;
-        const ciudadesJSON = await fetch(`http://localhost:4000/api/v1/ciudades?region=${regionSeleccionada}`);
+        const ciudadesJSON = await fetch(`https://api-qcc.onrender.com/api/v1/ciudades?region=${regionSeleccionada}`);
         const ciudades = await ciudadesJSON.json();
         res.send(ciudades);
     } catch (error) {
@@ -240,7 +240,7 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
         user_id: currentUserId,
         imgdir: imgdir,
     }
-    const response = await fetch('http://localhost:4000/api/v1/publicaciones', {
+    const response = await fetch('https://api-qcc.onrender.com/api/v1/publicaciones', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -259,14 +259,14 @@ app.get('/index', async function (req, res) {
     res.render('index', { isLoggedIn: req.user });
 })
 app.get('/dash', ensureAuthenticated, async function (req, res) {
-    const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
+    const response = await fetch(`https://api-qcc.onrender.com/api/v1/publications/${currentUserId}`);
     const data = await response.json();
     let users_ = await profiledata(currentUserId);
     let correouser = req.user.email
     res.render('dash', { data, users_, isLoggedIn: req.user, correouser: correouser })
 });
 app.get('/modusr', ensureAuthenticated, async function (req, res) {
-    // const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
+    // const response = await fetch(`https://api-qcc.onrender.com/api/v1/publications/${currentUserId}`);
     let users_ = await profiledata(currentUserId);
     let correouser = req.user.email
     // const data = await response.json();
@@ -275,7 +275,7 @@ app.get('/modusr', ensureAuthenticated, async function (req, res) {
     res.render('modusr', { users_, isLoggedIn: req.user })
 });
 app.get('/modpub', ensureAuthenticated, async function (req, res) {
-    // const response = await fetch(`http://localhost:4000/api/v1/publications/${currentUserId}`);
+    // const response = await fetch(`https://api-qcc.onrender.com/api/v1/publications/${currentUserId}`);
     let users_ = await profiledata(currentUserId);
     let correouser = req.user.email
     // const data = await response.json();
