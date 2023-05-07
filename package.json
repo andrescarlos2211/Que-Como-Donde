@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "[![](https://quecomodonde.netlify.app/img/Logo/Logo%20colores.png)](www.quecomodonde.ml)",
   "main": "index.js",
+  "engines":{
+    "node": "14.x"
+  },
   "type": "module",
   "dependencies": {
     "abbrev": "^1.1.1",
