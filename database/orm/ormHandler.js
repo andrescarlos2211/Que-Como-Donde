@@ -63,7 +63,7 @@ export async function profiledata(userid) {
 export async function getUser(username) {
     try {
         let users = await sequelize.query
-            ("SELECT email as username,password, user_id, profilepic, username as nameuser FROM user_credentials where email = $1 LIMIT 10",
+            ("SELECT email as username,password, isadmin, user_id, profilepic, username as nameuser FROM user_credentials where email = $1 LIMIT 10",
                 {
                     bind: [username],
                     type: QueryTypes.SELECT

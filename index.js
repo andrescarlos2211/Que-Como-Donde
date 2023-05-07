@@ -42,14 +42,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser('NKwUmJzAXE'));
 app.use(session({
     secret: 'NKwUmJzAXE',
-    resave: true,
+    resave: false,
     saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(fileUpload());
-
+//Definicion de estrategia local para autentificar usuarios
 passport.use(new PassportLocal(async function (username, password, done) {
     let validador = -1;
     let users_ = await getUser(username);
@@ -68,28 +68,25 @@ passport.use(new PassportLocal(async function (username, password, done) {
 
         if (match) {
             currentUserId = usuario.user_id;
-            return done(null, { email: usuario.username });
+            return done(null, usuario);
         }
         else {
             return done(null, false, { message: 'Contraseña Incorrecta' });
         }
     }
 }));
-
-
-
 // //Serialization
 passport.serializeUser(function (mail, done) {
     done(null, mail)
 });
 //Deserialization
 passport.deserializeUser(async function (mail, done) {
-    // console.log(mail)
     done(null, mail);
 });
-//settings
+//Se utiliza un puerto disponible o en su defecto el 5000
 app.set('port', process.env.PORT || 5000)
 //middlewares
+// Morgan para revision de errores
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -98,18 +95,14 @@ app.use((req, res, next) => {
     next();
 });
 app.set('views', path.join(__dirname, 'src', 'views'));
+//Motor de renderizado EJS
 app.set('view engine', 'ejs');
-// Public
+//Definicion de ruta estatica (publica)
 
-// parte problematica del codigo
-
-// app.use(express.static(new URL('./src/public', import.meta.url).pathname, {
-//     index: false,
-//     immutable: true,
-//     cacheControl: true
-// }));
 app.use(express.static(path.join(__dirname, 'src', 'public')));
 //
+
+//Esta funcion requiere autentificación para acceder a ciertas rutas
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -118,7 +111,6 @@ function ensureAuthenticated(req, res, next) {
 }
 //Rutas *******************************************************************************************
 app.get('/', async function (req, res) {
-
     // let users_ = await profiledata(currentUserId);
     let correouser = false
     if (correouser) {
@@ -127,31 +119,23 @@ app.get('/', async function (req, res) {
     else {
         correouser = false
     }
-
-
     res.render('index', { currentUserId, isLoggedIn: correouser })
-
-
 });
 app.post('/catalogo', async function (req, res) {
     let busqueda = req.body.busqueda;
     const response = await fetch(`http://localhost:4000/api/v1/simplesearch/${busqueda}`)
     const data = await response.json(); // Convertir la respuesta en formato JSON
-    console.log(data)
     res.render('catalogo', { data });
 })
 app.get('/nosotros', function (req, res) {
     res.render('nosotros')
 });
-app.get('/blog', function (req, res) {
-    res.render('blog')
-});
 app.get('/ingresar', function (req, res) {
-    req.flash('error', req.flash)
+    req.flash('error', 'un mensaje de error')
     res.render('ingresar')
 });
 app.post('/ingresar', passport.authenticate('local', {
-    successRedirect: '/dash',
+    successRedirect: '/index',
     failureRedirect: '/ingresar'
 }));
 app.post('/salir', function (req, res, next) {
@@ -166,18 +150,17 @@ app.post('/registro', async function (req, res) {
     const mail = req.body.username
     const pw = req.body.password
     const namek = req.body.name
-    const hashedPassword = await bcrypt.hash(pw, 10);
-    console.log('holamundo')
-    
+    const hashedPassword = await bcrypt.hash(pw, 10);    
     createUser(mail, namek, hashedPassword)
-    res.redirect('/dash')
+    res.render('registro', { successMessage: 'Registro exitoso' })
     }
     catch(err){
         res.send(err)
         }
-    
 });
-
+app.get('/registro', function (req, res) {
+    res.render('registro')
+});
 
 app.get('/publicar', ensureAuthenticated, async (req, res) => {
     try {
@@ -271,7 +254,8 @@ app.get('/catalogo', function (req, res) {
 app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
-app.get('/index', function (req, res) {
+app.get('/index', async function (req, res) {
+    const users_ = await profiledata(currentUserId);
     res.render('index', { isLoggedIn: req.user });
 })
 app.get('/dash', ensureAuthenticated, async function (req, res) {
@@ -279,7 +263,6 @@ app.get('/dash', ensureAuthenticated, async function (req, res) {
     const data = await response.json();
     let users_ = await profiledata(currentUserId);
     let correouser = req.user.email
-    console.log(users_)
     res.render('dash', { data, users_, isLoggedIn: req.user, correouser: correouser })
 });
 app.get('/modusr', ensureAuthenticated, async function (req, res) {

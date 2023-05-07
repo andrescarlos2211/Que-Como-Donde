@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Registro exitoso</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+  </head>
+  <body>
+    <% if (typeof successMessage !== 'undefined') { %>
+      <script>
+        Swal.fire({
+            title: '¡Registro exitoso!',
+            icon: 'success',
+            timer: 3000,
+            timerProgressBar: true,
+        }).then(() => {
+            window.location.href = '/ingresar'; // Redirecciona a otra ruta
+        });
+    </script>
+    <% } %>
+    <h1>Registro exitoso</h1>
+    <p>Tu cuenta ha sido creada exitosamente.</p>
+    <p>Ahora serás redirigido para que inicies sesion con tus credenciales</p>
+  </body>
+</html>
