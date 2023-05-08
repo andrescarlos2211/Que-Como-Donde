@@ -16,8 +16,7 @@ Instrucciones
 [![](https://que-como-donde.onrender.com/img/Logo/Logo%20colores.png)](www.quecomodonde.ml)
 
 * La branch main esta diseñada para ejecutar de forma local en node
-** El sitio esta levantado en Render.com , dispone de un branch dedicado y las nuevas caracteristicas seran desarrolladas para la versi
-
+** El sitio esta levantado en Render.com , dispone de un branch dedicado y las nuevas caracteristicas seran desarrolladas para esta versi
 https://github.com/andrescarlos-gm/Que-Como-Donde/
 
 
