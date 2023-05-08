@@ -146,17 +146,17 @@ app.post('/salir', function (req, res, next) {
     });
 });
 app.post('/registro', async function (req, res) {
-    try{
-    const mail = req.body.username
-    const pw = req.body.password
-    const namek = req.body.name
-    const hashedPassword = await bcrypt.hash(pw, 10);    
-    createUser(mail, namek, hashedPassword)
-    res.render('registro', { successMessage: 'Registro exitoso' })
+    try {
+        const mail = req.body.username
+        const pw = req.body.password
+        const namek = req.body.name
+        const hashedPassword = await bcrypt.hash(pw, 10);
+        createUser(mail, namek, hashedPassword)
+        res.render('registro', { successMessage: 'Registro exitoso' })
     }
-    catch(err){
+    catch (err) {
         res.send(err)
-        }
+    }
 });
 app.get('/registro', function (req, res) {
     res.render('registro')
@@ -213,41 +213,48 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
     let uploadPath;
     let nombreArchivo
     let imgdir
-    if (!req.files || Object.keys(req.files).length === 0) {
-        return res.status(400).send('Sin archivo enviado');
-    }
-    archivo = req.files.archivo;
-    nombreArchivo = uuidv4() + archivo.name;
 
-    uploadPath = __dirname + '/src/public/pubimg/' + nombreArchivo
 
-    archivo.mv(uploadPath, function (err) {
-        if (err)
+    try {
+        if (!req.files || Object.keys(req.files).length === 0) {
+            return res.status(400).send('Sin archivo enviado');
+        }
+        archivo = req.files.archivo;
+        nombreArchivo = uuidv4() + archivo.name;
+
+        uploadPath = __dirname + '/src/public/pubimg/' + nombreArchivo
+
+        archivo.mv(uploadPath, function (err) {
+            if (err)
+                console.log(err)
             return res.status(500).send(err);
-    });
-    imgdir = '/pubimg/' + nombreArchivo
+        });
+        imgdir = '/pubimg/' + nombreArchivo
 
-    // Enviar formulario a la API
-    const data = {
-        publication_name: req.body.nombre_publicacion,
-        publication_price: req.body.precio,
-        publication_description: req.body.descripcion,
-        region_id: req.body.Region,
-        comuna_id: req.body.Ciudad,
-        keyword1: req.body.kw1,
-        keyword2: req.body.kw2,
-        publication_qty: req.body.unidades,
-        user_id: currentUserId,
-        imgdir: imgdir,
+        // Enviar formulario a la API
+        const data = {
+            publication_name: req.body.nombre_publicacion,
+            publication_price: req.body.precio,
+            publication_description: req.body.descripcion,
+            region_id: req.body.Region,
+            comuna_id: req.body.Ciudad,
+            keyword1: req.body.kw1,
+            keyword2: req.body.kw2,
+            publication_qty: req.body.unidades,
+            user_id: currentUserId,
+            imgdir: imgdir,
+        }
+        const response = await fetch('https://api-qcc.onrender.com/api/v1/publicaciones', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        res.render('index', { isLoggedIn: req.user });
     }
-    const response = await fetch('https://api-qcc.onrender.com/api/v1/publicaciones', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    });
-
-    res.render('index', { isLoggedIn: req.user });
-});
+    catch (error) {
+        console.log(error)
+    }});
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
 });
