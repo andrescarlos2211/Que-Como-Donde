@@ -152,7 +152,7 @@ app.post('/registro', async function (req, res) {
     const namek = req.body.name
     const hashedPassword = await bcrypt.hash(pw, 10);    
     createUser(mail, namek, hashedPassword)
-    res.render('/registro', { successMessage: 'Registro exitoso' })
+    res.render('registro', { successMessage: 'Registro exitoso' })
     }
     catch(err){
         res.send(err)
