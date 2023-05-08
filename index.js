@@ -225,36 +225,39 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
         uploadPath = __dirname + '/src/public/pubimg/' + nombreArchivo
 
         archivo.mv(uploadPath, function (err) {
-            if (err)
-                console.log(err)
-            return res.status(500).send(err);
-        });
-        imgdir = '/pubimg/' + nombreArchivo
+            if (err) {
+                console.log(err);
+                return res.status(500).send(err);
+            }
 
-        // Enviar formulario a la API
-        const data = {
-            publication_name: req.body.nombre_publicacion,
-            publication_price: req.body.precio,
-            publication_description: req.body.descripcion,
-            region_id: req.body.Region,
-            comuna_id: req.body.Ciudad,
-            keyword1: req.body.kw1,
-            keyword2: req.body.kw2,
-            publication_qty: req.body.unidades,
-            user_id: currentUserId,
-            imgdir: imgdir,
-        }
-        const response = await fetch('https://api-qcc.onrender.com/api/v1/publicaciones', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
+            imgdir = '/pubimg/' + nombreArchivo
 
-        res.render('index', { isLoggedIn: req.user });
+            // Enviar formulario a la API
+            const data = {
+                publication_name: req.body.nombre_publicacion,
+                publication_price: req.body.precio,
+                publication_description: req.body.descripcion,
+                region_id: req.body.Region,
+                comuna_id: req.body.Ciudad,
+                keyword1: req.body.kw1,
+                keyword2: req.body.kw2,
+                publication_qty: req.body.unidades,
+                user_id: currentUserId,
+                imgdir: imgdir,
+            }
+            const response =  fetch('https://api-qcc.onrender.com/api/v1/publicaciones', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            res.render('index', { isLoggedIn: req.user });
+        });
     }
     catch (error) {
         console.log(error)
-    }});
+    }
+});
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
 });
