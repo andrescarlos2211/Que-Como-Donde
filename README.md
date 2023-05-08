@@ -1,4 +1,4 @@
-# www.quecomodonde.ml
+# https://que-como-donde.onrender.com
 ## 
 
 Instrucciones
@@ -13,7 +13,7 @@ Instrucciones
 
 
 
-[![](https://quecomodonde.netlify.app/img/Logo/Logo%20colores.png)](www.quecomodonde.ml)
+[![](https://que-como-donde.onrender.com/img/Logo/Logo%20colores.png)](www.quecomodonde.ml)
 
 
 
