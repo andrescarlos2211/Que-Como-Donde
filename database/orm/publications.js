@@ -13,7 +13,7 @@ Publications.init({
         autoIncrement: true
     },
     publication_name: {
-        type: DataTypes.STRING(20),
+        type: DataTypes.STRING(50),
         allowNull: false,
     },
     publication_price: {
@@ -24,11 +24,11 @@ Publications.init({
         allowNull: false,
     },
     keyword1: {
-        type: DataTypes.STRING(15),
+        type: DataTypes.STRING(20),
         allowNull: false,
     },
     keyword2: {
-        type: DataTypes.STRING(15),
+        type: DataTypes.STRING(20),
         allowNull: true,
     },
     publication_qty: {
