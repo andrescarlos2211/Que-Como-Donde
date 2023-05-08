@@ -425,4 +425,8 @@ a {
 .dropdown-menu {
   min-width: 200px !important; /* Ancho mínimo del menú */
   padding: 1rem !important; /* Aumentar espacio dentro del menú */
+  background-color: #1d1d1fb8!important
+}
+.dropdown-item{
+  color: black!important
 }
