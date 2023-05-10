@@ -152,12 +152,12 @@ background: radial-gradient(circle, rgba(241,241,241,1) 0%, rgba(231,185,235,0.8
 </head>
 
 <body>
-<br><br><br><br>
+<br>
     <div class="contenedor">
         <form id="form" method="POST" enctype="multipart/form-data">
 
             <header>
-                <br><br>
+                <br>
                 <h2>Publica tu producto:</h2>
                 <!-- <div>This form breaks at 600px and goes from a left-label form to a top-label form. At above 1200px, the labels align right.</div> -->
             </header>
@@ -273,7 +273,7 @@ background: radial-gradient(circle, rgba(241,241,241,1) 0%, rgba(231,185,235,0.8
                     });
                 }
             };
-            xhttp.open("GET", `http://localhost:4000/api/v1/ciudades?region=${regionSeleccionada}`, true);
+            xhttp.open("GET", `https://api-qcc.onrender.com/api/v1/ciudades?region=${regionSeleccionada}`, true);
             xhttp.send();
         }
     </script>
