@@ -257,7 +257,7 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
         
             
         });
-        res.render('index')
+        res.render('index', { isLoggedIn: req.user });
     }
     catch (error) {
         console.log(error)
