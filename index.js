@@ -254,19 +254,10 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
                 body: JSON.stringify(data)
             });
 
-            res.set('Content-Type', 'application/javascript');
-            res.send(`
-              Swal.fire({
-                title: '¡Has publicado tu producto exitoso!',
-                icon: 'success',
-                timer: 7000,
-                timerProgressBar: true,
-              }).then(() => {
-                window.location.href = '/ingresar';
-              });
-            `);
+        
             
         });
+        res.render('index')
     }
     catch (error) {
         console.log(error)
