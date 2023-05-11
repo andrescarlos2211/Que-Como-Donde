@@ -191,6 +191,9 @@ app.get('/publicar', ensureAuthenticated, async (req, res) => {
 
 
 
+        
+
+
         res.render('publicar', { users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
     }
     catch (error) {
@@ -251,7 +254,16 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
                 body: JSON.stringify(data)
             });
 
-            res.render('index', { isLoggedIn: req.user });
+            res.json({ script: `
+  Swal.fire({
+    title: '¡Has publicado tu producto exitoso!',
+    icon: 'success',
+    timer: 7000,
+    timerProgressBar: true,
+  }).then(() => {
+    window.location.href = '/ingresar';
+  });
+` });
         });
     }
     catch (error) {
