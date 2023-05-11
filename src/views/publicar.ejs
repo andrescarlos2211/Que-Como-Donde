@@ -278,8 +278,9 @@ background: radial-gradient(circle, rgba(241,241,241,1) 0%, rgba(231,185,235,0.8
         }
     </script>
     <script>$.post('/publicar', data, function(response) {
-        eval(response.script);
+        $('<script>').text(response).appendTo('head');
       });
+      
       </script>
 </body>
 
