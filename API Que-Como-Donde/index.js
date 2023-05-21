@@ -123,6 +123,19 @@ app.get("/api/v1/simplesearch/:consulta", async (req, res) => {
   }
 });
 
+//Ultimas 7 publicaciones
+
+app.get("/api/v1/ultimaspublicaciones", async (req, res) => {
+  try {
+    let ultimas = await pool.query('SELECT * FROM publications ORDER BY publication_id DESC LIMIT 7;')
+    res.json(ultimas.rows);
+  }
+  catch (err) {
+    console.log(err);
+  }
+});
+
+
 //CRUD usuarios***********************************************************************************************
 
 app.get("/api/v1/users", async (req, res) => {

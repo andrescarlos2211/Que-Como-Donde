@@ -8,13 +8,12 @@
 		<main id="fullpage">
 			<section class="section">
 <br><br><br><br><br><br><br><br>
-				<div class="contenedor-texto mx-auto" style="width: 70%;">
-					<div class="row d-flex justify-content-center align-items-center">
-						<h1 class="texto-color1">Encuentra alimentos artesanales en tu localidad</h1>
-						<h2 class="texto-color2">e infórmate</h2>
-					</div>
-				</div>
-				<br>
+<!-- //Mapa -->
+<!-- <div id='map' class="map">
+	<script src="/js/mapa.js">
+</script>
+</div>  -->
+<div class="logo-inicio"><img class="logo" src="/img/logo_up.png" alt="Quecomocuando"><br></div><h1 class="texto-color3">QuéComoDónde</h1><br><br>
 
 				<div class="contenedor-busqueda mx-auto" style="width: 70%;">
 					<div class="row height d-flex justify-content-center align-items-center">
@@ -32,16 +31,14 @@
 				</div>
 
 			</div>
-			<!-- Script del mapa -->
-			<div id='map' class="map">
-				<script src="/js/mapa.js">
-</script>
-			</div>
+
+			<%- include('./partials/cardscarrousel.ejs'); %>
+
+
 		</section>
 
-
 		</main>
-
+	<br><br><br><br>
 		<script>
 			document.getElementById("boton-busqueda").addEventListener("click", function() {
 			  document.getElementById("formulario-busqueda").submit();

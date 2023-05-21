@@ -9,8 +9,9 @@
 }
 
 body {
-  background-image: url(/img/bosque.jpg);
-  background-repeat: no-repeat;
+  /* background-image: url(/img/bosque.jpg);
+  background-repeat: no-repeat; */
+  background-color: #fdfcfa;
   font-family: "Lato", sans-serif;
   font-size: 18px;
   background-size: cover;
@@ -75,21 +76,21 @@ h5 {
 .texto-color1 {
   font-weight: 300;
   font-size: 5vmin;
-  color: #e5d2ab;
-  background: #1d1d1fb8;
+  color: #50354e;
+  background: #e0e0d1;
 }
 
 .texto-color2 {
   font-weight: 700;
   font-size: 7vmin;
-  color: #c3af87;
-  background: #1d1d1fb8;
+  color: #50354e;
+  background: #e0e0d1;
 }
 
 .texto-color3 {
   font-weight: 900;
-  font-size: 5vmin;
-  color: #e5d2ab;
+  font-size: 7vmin;
+  color: #50354e;
 }
 
 .nav {
@@ -106,6 +107,16 @@ h5 {
 
 .loguito {
   width: 30%;
+}
+
+.logo-inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+.logo{
+  width: 130px;
 }
 
 /*estilo barra busqueda*/
@@ -153,7 +164,7 @@ h5 {
 }
 
 .form-control {
-  background-color: #e5d2ab !important;
+  background-color: #f1eaed !important;
 }
 
 #map {
@@ -407,7 +418,7 @@ body {
   font-size: 13px;
 }
 a {
-  color: #e5d2ab!important;
+  color: #fcfdfc!important;
   text-decoration: none !important;
   background-color: transparent;
 }

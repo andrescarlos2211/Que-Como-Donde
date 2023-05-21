@@ -1,6 +1,8 @@
 <header class="sticky top-0 z-10 bg-teal-700 text-white">
     <section class="nav mx-auto flex max-w-4xl items-center justify-between p-4" id="navbarro">
-        <div><a href=""><img class="loguito" src="/img/Logo/Logo colores.png" alt="Quecomocuando"></a></div>
+        <div>
+            <img class="loguito" src="/img/Logo/Logo colores.png" alt="Quecomocuando">
+        </div>
         <div>
             <button id="hamburger-button" class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
                 <div class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all
@@ -27,13 +29,13 @@
                                 aria-labelledby="dropdownMenuButton">
                                 <li><a class="dropdown-item" href="/index">Inicio</a></li>
                                 <li><a class="dropdown-item" href="/dash">Ir a mi panel</a></li>
-                                <% if (isLoggedIn.isadmin == true) { %>
-                                <li><a class="dropdown-item" href="/modusr">Modificar Usuarios</a></li>
-                                <li><a class="dropdown-item" href="/modpub">Modificar Publicaciones</a></li>
-                                <% } %>
-                                <form action="/salir" method="post">
-                                    <li><button type="submit" class="dropdown-item">Cerrar Sesion</button></li>
-                                </form>
+                                <% if (isLoggedIn.isadmin==true) { %>
+                                    <li><a class="dropdown-item" href="/modusr">Modificar Usuarios</a></li>
+                                    <li><a class="dropdown-item" href="/modpub">Modificar Publicaciones</a></li>
+                                    <% } %>
+                                        <form action="/salir" method="post">
+                                            <li><button type="submit" class="dropdown-item">Cerrar Sesion</button></li>
+                                        </form>
                             </div>
                         </div>
                         <% } %>
@@ -51,7 +53,8 @@
 
                 <% } else { %>
                     <br>
-                    <a href="/dash" class="w-full py-6 text-center hover:opacity-90">Ir al panel de <%= isLoggedIn.nameuser%>
+                    <a href="/dash" class="w-full py-6 text-center hover:opacity-90">Ir al panel de <%=
+                            isLoggedIn.nameuser%>
                     </a>
                     <a href="/publicar" class="w-full py-6 text-center hover:opacity-90">Publicar un producto</a>
                     <form action="/salir" class="w-full py-6 text-center hover:opacity-90" method="post">

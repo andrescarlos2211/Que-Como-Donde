@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Carrusel Cards Swiper</title>
+  <!-- Link Swiper's CSS -->
+  <style>
+    h1 {
+      font-size: 20px;
+      color: #50354e;
+    }
+
+    .container {
+      width: 90%;
+      background-color: #e0e0d1;
+      padding: 10px 40px;
+      margin-top: 20%;
+    }
+
+    .container .swiper-container {
+      width: 100%;
+      height: 70%;
+    }
+
+    .container .swiper-slide {
+      position: relative;
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      border-radius: 15px;
+      text-align: start;
+      box-shadow: 0px 4px 4px rgba(196, 196, 196, 0.25);
+
+    }
+
+    .container .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+
+    }
+
+    .container .swiper-slide .card-description {
+      padding: 1rem 1rem;
+    }
+
+    .container .swiper-slide .card-title,
+    .container .swiper-slide .card-text {
+      margin-bottom: .5rem;
+    }
+
+    .container .swiper-slide .card-link {
+      text-align: center;
+
+    }
+
+    .container .swiper-slide .card-link a {
+      text-decoration: none;
+      color: #1d6ce2;
+    }
+
+    .swiper-button-next {
+      right: 26px !important;
+    }
+
+    .swiper-button-prev {
+      left: 26px !important;
+    }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+
+<body>
+  <!-- Swiper -->
+  <div class="container">
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-container mySwiper">
+      <h1>Ultimas publicaciones</h1>
+      <% data.forEach(function(data) { %>
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <img src="<%= data.imgdir %>" alt="">
+          <div class="card-description">
+            <div class="card-title">
+              <h4><%= data.publication_name %></h4>
+            </div>
+            <div class="card-text">
+              <p><%= data.publication_description %></p>
+            </div>
+            <div class="card-link">
+              <a href="#">Ver más</a>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+      <% }); %>
+    </div>
+
+
+
+  </div>
+
+  </div>
+  <!-- Swiper JS -->
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>var swiper = new Swiper('.swiper-container', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      slidesPerView: 1,
+      spaceBetween: 10,
+      // init: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+
+
+      breakpoints: {
+        620: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        680: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        920: {
+          slidesPerView: 3,
+          spaceBetween: 40,
+        },
+        1240: {
+          slidesPerView: 4,
+          spaceBetween: 50,
+        },
+      }
+    });</script>
+</body>
+
+</html>
