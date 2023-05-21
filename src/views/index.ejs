@@ -8,13 +8,8 @@
 		<main id="fullpage">
 			<section class="section">
 <br><br><br><br><br><br><br><br>
-<!-- //Mapa -->
-<!-- <div id='map' class="map">
-	<script src="/js/mapa.js">
-</script>
-</div>  -->
-<div class="logo-inicio"><img class="logo" src="/img/logo_up.png" alt="Quecomocuando"><br></div><h1 class="texto-color3">QuéComoDónde</h1><br><br>
 
+<div class="logo-inicio"><img class="logo" src="/img/logo_up.png" alt="Quecomocuando"><br></div><h1 class="texto-color3">QuéComoDónde</h1><br><br>
 				<div class="contenedor-busqueda mx-auto" style="width: 70%;">
 					<div class="row height d-flex justify-content-center align-items-center">
 						<div class="col-md-6 wrapper">
@@ -29,16 +24,16 @@
 						</div>
 			 		</div>
 				</div>
-
 			</div>
 
+			<!-- //Mapa -->
+ <div id='map' class="map">
+	<script src="/js/mapa.js">
+</script>
+</div>  
 			<%- include('./partials/cardscarrousel.ejs'); %>
-
-
 		</section>
-
 		</main>
-	<br><br><br><br>
 		<script>
 			document.getElementById("boton-busqueda").addEventListener("click", function() {
 			  document.getElementById("formulario-busqueda").submit();

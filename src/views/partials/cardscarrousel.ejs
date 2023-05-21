@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Carrusel Cards Swiper</title>
+  <title>Carrusel Cards</title>
   <!-- Link Swiper's CSS -->
   <style>
     h1 {
@@ -15,8 +15,12 @@
       width: 90%;
       background-color: #e0e0d1;
       padding: 10px 40px;
-      margin-top: 20%;
+      margin-top: 10%;
+      position: relative;
+      overflow: hidden;
     }
+
+
 
     .container .swiper-container {
       width: 100%;
@@ -46,11 +50,16 @@
 
     .container .swiper-slide .card-description {
       padding: 1rem 1rem;
+
     }
 
     .container .swiper-slide .card-title,
     .container .swiper-slide .card-text {
       margin-bottom: .5rem;
+      overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1; /* Número de líneas máximo a mostrar */
     }
 
     .container .swiper-slide .card-link {
@@ -64,55 +73,67 @@
     }
 
     .swiper-button-next {
-      right: 26px !important;
+      right: 26px;
     }
 
     .swiper-button-prev {
-      left: 26px !important;
+      left: 26px;
     }
   </style>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
 <body>
-  <!-- Swiper -->
-  <div class="container">
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-container mySwiper">
-      <h1>Ultimas publicaciones</h1>
 
-      <div class="swiper-wrapper">
+  <section>
+    <div class="container">
+      <p class="texto-color1">Ultimas Publicaciones</p>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-container mySwiper">
 
-        <div class="swiper-slide">
+        <div class="swiper-wrapper">
           <% data.forEach(function(data) { %>
-            <img src="<%= data.imgdir %>" alt="">
-            <div class="card-description">
-              <div class="card-title">
-                <h4>
-                  <%= data.publication_name %>
-                </h4>
+
+
+
+            <div class="swiper-slide">
+              <img src="<%= data.imgdir %>" alt="">
+
+              <div class="card-description">
+                <div class="card-title">
+                  <h4>
+                    <%= data.publication_name %>
+                  </h4>
+                </div>
+                <div class="card-text">
+                  <p>$<%= data.publication_price %>
+                  </p>
+                </div>
+                <div class="card-link">
+                  <a href="#">Ver más</a>
+                </div>
               </div>
-              <div class="card-text">
-                <p>$<%= data.publication_price %>
-                </p>
-              </div>
-              <div class="card-link">
-                <a href="#">Ver más</a>
-              </div>
+
             </div>
+
             <% }); %>
+
+
+
+
         </div>
 
       </div>
 
+
+
     </div>
+  </section>
 
 
 
-  </div>
 
-  </div>
   <!-- Swiper JS -->
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
