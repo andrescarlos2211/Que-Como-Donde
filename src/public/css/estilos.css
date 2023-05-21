@@ -11,7 +11,7 @@
 body {
   /* background-image: url(/img/bosque.jpg);
   background-repeat: no-repeat; */
-  background-color: #fdfcfa;
+  background-color: #f1eaed;
   font-family: "Lato", sans-serif;
   font-size: 18px;
   background-size: cover;
@@ -163,9 +163,9 @@ h5 {
   color: #e5d2ab !important;
 }
 
-.form-control {
+/* .form-control {
   background-color: #f1eaed !important;
-}
+} */
 
 #map {
   display: flex;
