@@ -81,9 +81,9 @@
     <div class="swiper-button-prev"></div>
     <div class="swiper-container mySwiper">
       <h1>Ultimas publicaciones</h1>
-      <% data.forEach(function(data) { %>
-      <div class="swiper-wrapper">
 
+      <div class="swiper-wrapper">
+        <% data.forEach(function(data) { %>
         <div class="swiper-slide">
           <img src="<%= data.imgdir %>" alt="">
           <div class="card-description">
@@ -98,9 +98,9 @@
             </div>
           </div>
         </div>
-      
+        <% }); %>
       </div>
-      <% }); %>
+   
     </div>
 
 
