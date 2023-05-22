@@ -2,10 +2,10 @@
     <section class="nav mx-auto flex max-w-4xl items-center justify-between p-4" id="navbarro">
         
         <% if (!condicion) { %>
-   
+<!--    
         <div>
             <img class="loguito" src="/img/Logo/Logo colores.png" alt="Quecomocuando">
-        </div>
+        </div> -->
         
         <% } else { %>
         <div>
@@ -26,9 +26,7 @@
             <nav class="hidden space-x-8 text-xl md:block" aria-label="main">
                 <% if (!isLoggedIn) { %>
                     <a href="/ingresar" class="hover:opacity-90">Ingresar</a>
-                    <% if (!condicion) { %>       
                     <a href="/" class="hover:opacity-90">Inicio</a>
-                    <% } %>
                     <% } else { %>
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle text-xl" type="button"
@@ -58,9 +56,7 @@
             animate-open-menu flex-col bg-black text-3xl">
         <nav class="flex min-h-screen flex-col items-center py-8" aria-label="mobile">
             <% if (!isLoggedIn) { %>
-                <% if (!condicion) { %> 
                 <a href="/" class="w-full py-6 text-center hover:opacity-90">Inicio</a>
-                <% } %>
                 
                 <a href="/publicar" class="w-full py-6 text-center hover:opacity-90">Publicar un producto</a>
                 <a href="/ingresar" class="w-full py-6 text-center hover:opacity-90">Ingresar</a>

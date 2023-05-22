@@ -37,8 +37,8 @@ switch (process.argv[2]) {
 const storage = new Storage({
     projectId: 'potent-app-387504',
     keyFilename: 'src/public/js/potent-app-387504-a3246eee8fc0.json',
-  });
-  
+});
+
 // Nombre del bucket en Google Cloud Storage
 const bucketName = 'bucketqcc';
 
@@ -210,7 +210,7 @@ app.get('/publicar', ensureAuthenticated, async (req, res) => {
 
 
 
-        
+
 
 
         res.render('publicar', { users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
@@ -244,44 +244,44 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
         archivo = req.files.archivo;
         nombreArchivo = uuidv4() + archivo.name;
 
-        uploadPath = __dirname + '/src/public/pubimg/' + nombreArchivo
+        const fileUploadPath = path.join(__dirname, 'src/public/pubimg', nombreArchivo);
+        await archivo.mv(fileUploadPath);
 
-        archivo.mv(uploadPath, function (err) {
-            if (err) {
-                console.log(err);
-                return res.status(500).send(err);
-            }
-
-            imgdir = '/pubimg/' + nombreArchivo
-
-            // Enviar formulario a la API
-            const data = {
-                publication_name: req.body.nombre_publicacion,
-                publication_price: req.body.precio,
-                publication_description: req.body.descripcion,
-                region_id: req.body.Region,
-                comuna_id: req.body.Ciudad,
-                keyword1: req.body.kw1,
-                keyword2: req.body.kw2,
-                publication_qty: req.body.unidades,
-                user_id: currentUserId,
-                imgdir: imgdir,
-            }
-            const response =  fetch('https://api-qcc.onrender.com/api/v1/publicaciones', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-
-        
-            
+        const bucket = storage.bucket(bucketName);
+        await bucket.upload(fileUploadPath, {
+            destination: nombreArchivo,
         });
+
+        imgdir = bucket.file(nombreArchivo).publicUrl();
+
+        // Enviar formulario a la API
+        const data = {
+            publication_name: req.body.nombre_publicacion,
+            publication_price: req.body.precio,
+            publication_description: req.body.descripcion,
+            region_id: req.body.Region,
+            comuna_id: req.body.Ciudad,
+            keyword1: req.body.kw1,
+            keyword2: req.body.kw2,
+            publication_qty: req.body.unidades,
+            user_id: currentUserId,
+            imgdir: imgdir,
+        };
+
+        const response = await fetch('https://api-qcc.onrender.com/api/v1/publicaciones', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+
         res.render('index', { isLoggedIn: req.user });
-    }
-    catch (error) {
-        console.log(error)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error.message);
     }
 });
+
+
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
 });
