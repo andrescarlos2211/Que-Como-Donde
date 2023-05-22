@@ -273,15 +273,12 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         });
-        res.render('publicado');
+        res.render('publicado', { successMessage: 'Publicado exitosamente' });
     } catch (error) {
         console.log(error);
         res.status(500).send(error.message);
     }
 });
-
-// app.get('/publicate', async (req, res) => {
-// });
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
 });
