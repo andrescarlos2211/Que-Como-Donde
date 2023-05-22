@@ -273,17 +273,15 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         });
-
-        let users_ = await profiledata(currentUserId);
-        console.log(currentUserId);
-        console.log(users_);
-
-        res.render('index', { isLoggedIn: req.user, users_, data });
+        res.render('publicado');
     } catch (error) {
         console.log(error);
         res.status(500).send(error.message);
     }
 });
+
+// app.get('/publicate', async (req, res) => {
+// });
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
 });
