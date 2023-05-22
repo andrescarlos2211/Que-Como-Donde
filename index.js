@@ -205,12 +205,6 @@ app.get('/publicar', ensureAuthenticated, async (req, res) => {
         comunas.rows.forEach((comuna) => {
             comunas_.push(comuna.nombre_comuna);
         });
-
-
-
-
-
-
         res.render('publicar', { users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
     }
     catch (error) {
@@ -230,7 +224,6 @@ app.get('/ciudades', async (req, res) => {
 });
 app.post('/publicar', ensureAuthenticated, async function (req, res) {
     let archivo;
-    let uploadPath;
     let nombreArchivo
     let imgdir
 
@@ -271,10 +264,8 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         });
-        let resp = await fetch(`https://api-qcc.onrender.com/api/v1/ultimaspublicaciones`)
-        let dataa = await resp.json();
 
-        res.render('dash', { isLoggedIn: req.user });
+        res.render('dash', { isLoggedIn: req.user, users_ });
     } catch (error) {
         console.log(error);
         res.status(500).send(error.message);
