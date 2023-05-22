@@ -15,7 +15,7 @@
       width: 90%;
       background-color: #e0e0d1;
       padding: 10px 40px;
-      margin-top: 14%;
+      margin-top: 4%; 
       position: relative;
       overflow: hidden;
       border-radius: 25px;
@@ -92,34 +92,48 @@
 
     @media (max-width: 636px) {
       .container {
-        margin-top: 45%;
+        margin-top: 10%;
       }
 
     }
     p {
-      color: #50354e; 
+      color: #dc6e00; 
     }
     .card-text{
       text-align:right;
     }
+    /* .swipper-slide{
+      width: 50%;
+    } */
   </style>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
 <body>
-
-  <section>
-    <div class="container">
+  <section >
+    <div class="container" >
       <p class="texto-color1">Ultimas Publicaciones</p>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
       <div class="swiper-container mySwiper">
-
         <div class="swiper-wrapper">
           <% data.forEach(function(data) { %>
-
-
-
+            <div class="swiper-slide">
+              <img src="<%= data.imgdir %>" alt="">
+              <div class="card-description">
+                <div class="card-title">
+                  <h4>
+                    <%= data.publication_name %>
+                  </h4>
+                </div>
+                <div class="card-text">
+                  <p>$<%= data.publication_price %>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+<% data.forEach(function(data) { %>
             <div class="swiper-slide">
               <img src="<%= data.imgdir %>" alt="">
 
@@ -133,28 +147,14 @@
                   <p>$<%= data.publication_price %>
                   </p>
                 </div>
-                <div class="card-link">
-                  <a href="#">Ver más</a>
-                </div>
               </div>
 
             </div>
-
             <% }); %>
-
-
-
-
         </div>
-
       </div>
-
-
-
     </div>
   </section>
-
-
 
 
   <!-- Swiper JS -->

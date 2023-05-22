@@ -309,6 +309,7 @@ h4{
 }
 
 
+
 /* Estilo de blog*/
 
 /* Header/Blog Title */
@@ -472,4 +473,18 @@ a {
 }
 .dropdown-item{
   color: black!important
+}
+
+
+
+#scroll-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+#scroll-indicator.hide {
+  opacity: 0;
 }

@@ -18,6 +18,8 @@ import { User_credentials } from './database/orm/user_credentials.js'
 import { timeStamp } from 'console';
 import { UUID } from 'sequelize';
 import bcrypt from 'bcryptjs';
+import storagePackage from '@google-cloud/storage';
+const { Storage } = storagePackage;
 
 switch (process.argv[2]) {
     case 'sync':
@@ -30,6 +32,18 @@ switch (process.argv[2]) {
         break
 }
 //Inicializaciones
+
+// Crea una instancia del cliente de Google Cloud Storage
+const storage = new Storage({
+    projectId: 'potent-app-387504',
+    keyFilename: 'src/public/js/potent-app-387504-a3246eee8fc0.json',
+  });
+  
+// Nombre del bucket en Google Cloud Storage
+const bucketName = 'bucketqcc';
+
+
+
 
 const app = express();
 const PassportLocal = passportLocal.Strategy
@@ -112,6 +126,8 @@ function ensureAuthenticated(req, res, next) {
 //Rutas *******************************************************************************************
 app.get('/', async function (req, res) {
     // let users_ = await profiledata(currentUserId);
+    // Esta condicion es para que no se muestre el logo en el index
+    res.locals.condicion = true;
     let correouser = false
     if (correouser) {
         correouser = req.user.email
@@ -121,7 +137,9 @@ app.get('/', async function (req, res) {
     }
     let response = await fetch(`https://api-qcc.onrender.com/api/v1/ultimaspublicaciones`)
     let data = await response.json();
-    res.render('index', { currentUserId, isLoggedIn: correouser, data })
+    const reversedata = data.reverse();
+    console.log(reversedata);
+    res.render('index', { currentUserId, isLoggedIn: correouser, data, reversedata, condicion: res.locals.condicion })
 });
 app.post('/catalogo', async function (req, res) {
     let busqueda = req.body.busqueda;
@@ -163,7 +181,6 @@ app.post('/registro', async function (req, res) {
 app.get('/registro', function (req, res) {
     res.render('registro')
 });
-
 app.get('/publicar', ensureAuthenticated, async (req, res) => {
     try {
         const regionesJSON = await fetch("https://api-qcc.onrender.com/api/v1/regiones",

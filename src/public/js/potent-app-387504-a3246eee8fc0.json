@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "potent-app-387504",
+  "private_key_id": "a3246eee8fc0ed3ca85a313c20a38d3efae0b680",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCs4BWPohqETcUc\nDZiUNC7/JJnm6J12Ckk4wF9qfVyGwZJdQdZ1PzEhTNiCp3Qu1X6x4E3P5Hg0s5PD\ncS5KNZ00/oqtGttStplTd8R2dQkMItg+fLb6pEqvm01fPRzRarXcZTr6NjBjval+\nX/ZlxHCzUtJEOTFBNNM0QDw5IxOwq4xwgWUETNyW4VMXh2cU6cO4GQks9CyGcyWt\n/2ZlhmC2G0U12PB5e5t/u8MFsW8AqkaMSW8uXVU6NI0L30QE9hRChMp/T6eG73qo\ner4+B/kP6qjkUq0HiMpV/KtB/pQ9L8I4afXnGJuN9qeQBv8v2FT7tsbXxhhz+ucS\nqf0JYtPhAgMBAAECggEAClwtfpuY2jfs6Zb4/1y3OkwfuwJSuWm5ZKDGtxOHMX41\nPsh8yS79y0CXMxFE+a+Kta87CovnFkVyxAIq44CeCLh+aAxVe3n8608go3a1EZie\n+/OuZYvl++sjMmNvsC8kce5RIACSWs/ZcfzfP88Lb/u1JSiGRqGbTKTS1xu+iNZN\ntCzGutZxmyEV4A88os5iQgns5BfRDB+xhLiPgrWwrKIifuyjZ1s2GY9sCB2ZhEXd\nkSGS30JWPmZSNn3d+M/RqU9xmRpmJVDzY/Mjv1456n+ZjZWtF8RMgz3ne0LnMcgV\nHmNok4V5EK/6PxSgtyimiWJHFpISc2z9KxiCkXUKoQKBgQDmxZb7sxiyJNOauQxW\nIIqnOy2rosvCjn4vae2OLLSpj5snyw8tHkTjKokGyU+rHCZr/bL+ss/13PWb+b9w\nmzS+Hy8dp5j7uRWyOqCkJWwQoCri4rQK2mivY8DS6loNo3UV094TR/UkemWg8hxn\niHDZUHVMRQXuGj/2s4Fi4D9CeQKBgQC/xjIE9oZtrOZiBt6eO4QISWoEd9QPXswm\nLgiCMox3vYnJMus+tmUhz6wx4sgPDhvE+25zS9vAwy90Ka6kA7oza6WHQzKpm0N+\nY7bbyD32iJ1jDIXJrg+xpJuuB2EZNsxgbPxTUyqYzB/5FoKb1uXKu1XI3bLmTR8d\n3OHFmzMCqQKBgEcFHh8eEgaZEMo4EtTatPEcZETDGCQrCCh9WA9+MKdSO7S2aFhB\nTX//0iXVhIArbKOlcxWxYBDRTIERDlqQWV39aNmef5VQc53jLxb1MVm4gRpMHI6O\ngtMfRvNiDg7OdDUge+LBLW9pf6dVe2pdciVe/opXX6jUSUUaH0KXssA5AoGAYMB1\na9uUZrDcaohcuCf+rM+dFTP/YOHKzVhcIpOuGpsdcMynsrQCwdQsY96uYCoWCINx\nbenPrKjMwCZnXYgj4N1mXZ+hZ8BVhOZ50thrqn2yKc6fkOioMk+B24MNkdL7uYpC\noydKTlxtpRWeP1FkDawF05lGMLqoAED4BuIOEkECgYAQ6fgiDyl4u5efFCJFC2oX\nd4jdgfWYsVJjQEvL3hImRO0TgCCcto3xehGfyZ8VuYJ6LxZ21hgB4M1tgPi4f5wv\nCwKCjH4MG//S1heDCKcooYZA+jujfQv4wI9g/2E2dt8vkTUYzDXz9U0vLMYsCjwq\n3VVtJIAlhPKKXPpRf9tFAw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "bucketqcc@potent-app-387504.iam.gserviceaccount.com",
+  "client_id": "112338534155615295157",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bucketqcc%40potent-app-387504.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
