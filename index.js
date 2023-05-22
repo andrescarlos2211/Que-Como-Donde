@@ -188,9 +188,7 @@ app.get('/publicar', ensureAuthenticated, async (req, res) => {
                     'Access-Control-Allow-Origin': '*',
                 }
             });
-            let users_ = await profiledata(currentUserId);
-            console.log(currentUserId);
-            console.log(users_);
+
 
         const comunas = await regionesJSON.json()
         const regiones = [];
@@ -208,6 +206,11 @@ app.get('/publicar', ensureAuthenticated, async (req, res) => {
         comunas.rows.forEach((comuna) => {
             comunas_.push(comuna.nombre_comuna);
         });
+
+        let users_ = await profiledata(currentUserId);
+        console.log(currentUserId);
+        console.log(users_);
+
         res.render('publicar', { users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
     }
     catch (error) {
