@@ -137,9 +137,8 @@ app.get('/', async function (req, res) {
     }
     let response = await fetch(`https://api-qcc.onrender.com/api/v1/ultimaspublicaciones`)
     let data = await response.json();
-    const reversedata = data.reverse();
     console.log(reversedata);
-    res.render('index', { currentUserId, isLoggedIn: correouser, data, reversedata, condicion: res.locals.condicion })
+    res.render('index', { currentUserId, isLoggedIn: correouser, data, condicion: res.locals.condicion })
 });
 app.post('/catalogo', async function (req, res) {
     let busqueda = req.body.busqueda;
