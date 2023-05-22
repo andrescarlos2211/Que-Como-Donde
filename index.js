@@ -278,7 +278,7 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
         console.log(currentUserId);
         console.log(users_);
 
-        res.render('dash', { isLoggedIn: req.user, users_ });
+        res.render('index', { isLoggedIn: req.user, users_, data });
     } catch (error) {
         console.log(error);
         res.status(500).send(error.message);
