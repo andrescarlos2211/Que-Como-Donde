@@ -188,7 +188,10 @@ app.get('/publicar', ensureAuthenticated, async (req, res) => {
                     'Access-Control-Allow-Origin': '*',
                 }
             });
-        let users_ = await profiledata(currentUserId);
+            let users_ = await profiledata(currentUserId);
+            console.log(currentUserId);
+            console.log(users_);
+
         const comunas = await regionesJSON.json()
         const regiones = [];
         comunas.rows.forEach((comuna) => {
