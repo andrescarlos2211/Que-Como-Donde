@@ -675,5 +675,6 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
 
 div#map.mapboxgl-map{
     width: 70vw!important;
+    margin-top: 10vh;
 
 }

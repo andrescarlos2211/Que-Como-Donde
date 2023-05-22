@@ -2,6 +2,15 @@
 /* Estilos Generales */
 /* ------------------------- */
 
+@font-face {
+  font-family: 'Sunset';
+  src: url('/css/Delight Sunset.ttf');
+}
+.Sunset {
+  font-family: 'Sunset', sans-serif;
+}
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -74,10 +83,17 @@ h5 {
 }
 
 .texto-color1 {
-  font-weight: 300;
+  /* ultimas publicaciones */
+  font-weight: bold;
   font-size: 20px;
   color: #50354e;
   background: #e0e0d1;
+  padding-bottom: 25px;
+  font-style: italic;
+}
+
+h4{
+  color: #50354e;
 }
 
 .texto-color2 {
@@ -89,7 +105,7 @@ h5 {
 
 .texto-color3 {
   font-weight: 900;
-  font-size: 7vmin;
+  font-size: 10vmin;
   color: #50354e;
 }
 
@@ -344,6 +360,22 @@ h5 {
   background: #ddd;
   margin-top: 20px;
 }
+
+/* Controla el tamaño de la letra*/
+@media (max-width: 636px) {
+  .texto-color3 {
+    font-size: 14vmin;
+}}
+
+ /* {
+  font-weight: 900;
+  font-size: 10vmin;
+  color: #50354e;
+} */
+
+
+
+
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {

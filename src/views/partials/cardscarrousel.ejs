@@ -15,9 +15,10 @@
       width: 90%;
       background-color: #e0e0d1;
       padding: 10px 40px;
-      margin-top: 25%;
+      margin-top: 14%;
       position: relative;
       overflow: hidden;
+      border-radius: 25px;
     }
 
 
@@ -38,6 +39,11 @@
 
     }
 
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #50354e !important;
+    }
+
     .container .swiper-slide img {
       display: block;
       width: 100%;
@@ -45,6 +51,8 @@
       object-fit: cover;
       border-top-left-radius: 15px;
       border-top-right-radius: 15px;
+
+
 
     }
 
@@ -57,9 +65,11 @@
     .container .swiper-slide .card-text {
       margin-bottom: .5rem;
       overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1; /* Número de líneas máximo a mostrar */
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      /* Número de líneas máximo a mostrar */
+
     }
 
     .container .swiper-slide .card-link {
@@ -69,7 +79,7 @@
 
     .container .swiper-slide .card-link a {
       text-decoration: none;
-      color: #1d6ce2;
+      color: #50354e;
     }
 
     .swiper-button-next {
@@ -78,6 +88,19 @@
 
     .swiper-button-prev {
       left: 26px;
+    }
+
+    @media (max-width: 636px) {
+      .container {
+        margin-top: 45%;
+      }
+
+    }
+    p {
+      color: #50354e; 
+    }
+    .card-text{
+      text-align:right;
     }
   </style>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
