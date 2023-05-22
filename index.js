@@ -210,7 +210,11 @@ app.get('/publicar', ensureAuthenticated, async (req, res) => {
         let users_ = await profiledata(currentUserId);
         // console.log(currentUserId);
         // console.log(users_);
-        res.render('publicar', { users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
+
+        const response = await fetch(`https://api-qcc.onrender.com/api/v1/publications/${currentUserId}`);
+        const data = await response.json();
+
+        res.render('publicar', {data, users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
     }
     catch (error) {
         console.error(error);
