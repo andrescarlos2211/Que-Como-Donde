@@ -40,7 +40,7 @@ const storage = new Storage({
 });
 
 // Nombre del bucket en Google Cloud Storage
-const bucketName = 'bucketqcc';
+const bucketName = 'bucketquecomodonde';
 
 
 
@@ -278,8 +278,6 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
         res.status(500).send(error.message);
     }
 });
-
-
 app.get('/catalogo', function (req, res) {
     res.render('catalogo')
 });
