@@ -208,9 +208,8 @@ app.get('/publicar', ensureAuthenticated, async (req, res) => {
         });
 
         let users_ = await profiledata(currentUserId);
-        console.log(currentUserId);
-        console.log(users_);
-
+        // console.log(currentUserId);
+        // console.log(users_);
         res.render('publicar', { users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
     }
     catch (error) {
@@ -270,6 +269,10 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         });
+
+        let users_ = await profiledata(currentUserId);
+        console.log(currentUserId);
+        console.log(users_);
 
         res.render('dash', { isLoggedIn: req.user, users_ });
     } catch (error) {
