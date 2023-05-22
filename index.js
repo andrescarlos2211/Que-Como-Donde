@@ -295,8 +295,8 @@ app.get('/index', async function (req, res) {
 app.get('/dash', ensureAuthenticated, async function (req, res) {
     const response = await fetch(`https://api-qcc.onrender.com/api/v1/publications/${currentUserId}`);
     const data = await response.json();
-    let users_ = await profiledata(currentUserId);
-    let correouser = req.user.email
+    const users_ = await profiledata(currentUserId);
+    const correouser = req.user.email
     res.render('dash', { data, users_, isLoggedIn: req.user, correouser: correouser })
 });
 app.get('/modusr', ensureAuthenticated, async function (req, res) {
