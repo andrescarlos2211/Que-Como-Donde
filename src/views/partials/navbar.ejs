@@ -30,6 +30,8 @@
                                 aria-labelledby="dropdownMenuButton">
                                 <li><a class="dropdown-item" href="/index">Inicio</a></li>
                                 <li><a class="dropdown-item" href="/dash">Ir a mi panel</a></li>
+                                <li><a class="dropdown-item" href="/publicar">Publicar un producto</a></li>
+
                                 <% if (isLoggedIn.isadmin==true) { %>
                                     <li><a class="dropdown-item" href="/modusr">Modificar Usuarios</a></li>
                                     <li><a class="dropdown-item" href="/modpub">Modificar Publicaciones</a></li>
@@ -55,8 +57,9 @@
 
                 <% } else { %>
                     <br>
-                    <a href="/dash" class="w-full py-6 text-center hover:opacity-90">Ir al panel de <%=
-                            isLoggedIn.nameuser%>
+                    <a href="/ingresar" class="w-full py-6 text-center hover:opacity-90">Ingresar</a>
+
+                    <a href="/dash" class="w-full py-6 text-center hover:opacity-90">Ir al panel de <%=isLoggedIn.nameuser%>
                     </a>
                     <a href="/publicar" class="w-full py-6 text-center hover:opacity-90">Publicar un producto</a>
                     <form action="/salir" class="w-full py-6 text-center hover:opacity-90" method="post">
