@@ -16,7 +16,8 @@
                         after:translate-y-3 after:rounded after:bg-white after:transition-all
                         after:duration-500 after:content-['']"></div>
             </button>
-            <nav class="hidden space-x-8 text-xl md:block" aria-label="main">
+            <nav class=" space-x-8 text-xl md:block" aria-label="main">
+                <!-- se elimina clase hidden por asuntos de responsividad -->
                 <% if (!isLoggedIn) { %>
                     <a href="/ingresar" class="hover:opacity-90">Ingresar</a>
                     <a href="/" class="hover:opacity-90">Inicio</a>
