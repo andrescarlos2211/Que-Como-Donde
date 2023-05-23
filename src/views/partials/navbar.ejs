@@ -28,16 +28,15 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-right position-absolute"
                                 aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="/index">Inicio</a></li>
+                                <li><a class="dropdown-item" href="/index">Página Principal / Buscar</a></li>
                                 <li><a class="dropdown-item" href="/dash">Ir a mi panel</a></li>
                                 <li><a class="dropdown-item" href="/publicar">Publicar un producto</a></li>
-
                                 <% if (isLoggedIn.isadmin==true) { %>
                                     <li><a class="dropdown-item" href="/modusr">Modificar Usuarios</a></li>
                                     <li><a class="dropdown-item" href="/modpub">Modificar Publicaciones</a></li>
                                     <% } %>
                                         <form action="/salir" method="post">
-                                            <li><button type="submit" class="dropdown-item">Cerrar Sesion</button></li>
+                                            <li><button type="submit" class="dropdown-item">Cerrar Sesión</button></li>
                                         </form>
                             </div>
                         </div>
