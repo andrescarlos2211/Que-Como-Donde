@@ -280,7 +280,7 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
     }
 });
 app.get('/catalogo', function (req, res) {
-    res.render('catalogo')
+    res.render('catalogo', {isLoggedIn: req.user});
 });
 app.get('/contacto', function (req, res) {
     res.render('contacto')
