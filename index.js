@@ -290,7 +290,7 @@ app.get('/index', async function (req, res) {
     let response = await fetch(`https://api-qcc.onrender.com/api/v1/ultimaspublicaciones`)
     let data = await response.json();
     res.render('index', { isLoggedIn: req.user, data });
-})
+});
 app.get('/dash', ensureAuthenticated, async function (req, res) {
     const response = await fetch(`https://api-qcc.onrender.com/api/v1/publications/${currentUserId}`);
     const data = await response.json();
