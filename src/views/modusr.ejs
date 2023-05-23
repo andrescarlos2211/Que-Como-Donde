@@ -40,7 +40,6 @@
     }
   </style>
 </head>
-
 <body>
   <%- include('./partials/navbar.ejs'); %>
     <div class="app-container">
@@ -227,14 +226,24 @@
           //MOSTRAR
           let tablaArticulos = $('#tablaArticulos').DataTable({
             responsive: true,
-            scrollY: '50vh',
-            scrollCollapse: true,
-            paging: false,
             "pageLength": 1,
+            "columnDefs": [
+      {
+        "targets": "_all", // Aplica la personalización a todas las columnas
+        "render": function(data, type, row, meta) {
+          if (type === 'display' && data.length > 50) { // Limita a 50 caracteres
+            return data.substr(0, 50) + '...';
+          } else {
+            return data;
+          }
+        }
+      }
+    ],
             "ajax": {
               "url": url,
               "dataSrc": ""
             },
+            
             "columns": [
               { "data": "user_id" },
               { "data": "email" },
