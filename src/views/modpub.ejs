@@ -405,7 +405,7 @@
                         if (opcion == 'editar') {
                             console.log("EDITAR");
                             $.ajax({
-                                url: url + '/' + user_id,
+                                url: url + '/' + publication_id,
                                 method: 'put',
                                 contentType: 'application/json',
                                 data: JSON.stringify({ publication_id: publication_id, publication_name: publication_name, publication_price: publication_price, publication_description: publication_description, keyword1: keyword1, keyword2: keyword2, publication_qty: publication_qty, comuna_id: comuna_id, region_id: region_id, user_id: user_id, imgdir: imgdir }),
