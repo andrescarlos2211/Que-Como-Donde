@@ -147,10 +147,19 @@ background: radial-gradient(circle, rgba(241,241,241,1) 0%, rgba(231,185,235,0.8
 }
 
     </style>
-
+        <link rel="stylesheet" type="text/css"
+        href="css/bootstrap.min.css">
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var script = document.createElement('script');
+          script.src = 'js/bootstrap.bundle.min.js';
+          document.head.appendChild(script);
+        });
+      </script>
 </head>
 
 <body>
+    <%- include('./partials/navbar.ejs'); %>
 <br>
     <div class="contenedor">
         <form id="form" method="POST" enctype="multipart/form-data">
