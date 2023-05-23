@@ -283,6 +283,9 @@
                     //MOSTRAR
                     let tablaArticulos = $('#tablaArticulos').DataTable({
                         responsive: true,
+                        scrollY: 200,
+                        deferRender: true,
+                        scroller: true,
                         "ajax": {
                             "url": url,
                             "dataSrc": ""
