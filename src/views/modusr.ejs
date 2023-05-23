@@ -40,6 +40,7 @@
     }
   </style>
 </head>
+
 <body>
   <%- include('./partials/navbar.ejs'); %>
     <div class="app-container">
@@ -226,6 +227,9 @@
           //MOSTRAR
           let tablaArticulos = $('#tablaArticulos').DataTable({
             responsive: true,
+            scrollY: '50vh',
+            scrollCollapse: true,
+            paging: false,
             "pageLength": 1,
             "ajax": {
               "url": url,
