@@ -20,7 +20,6 @@ import { UUID } from 'sequelize';
 import bcrypt from 'bcryptjs';
 import storagePackage from '@google-cloud/storage';
 const { Storage } = storagePackage;
-
 switch (process.argv[2]) {
     case 'sync':
         syncTables()
@@ -32,19 +31,13 @@ switch (process.argv[2]) {
         break
 }
 //Inicializaciones
-
 // Crea una instancia del cliente de Google Cloud Storage
 const storage = new Storage({
     projectId: 'potent-app-387504',
     keyFilename: 'src/public/js/potent-app-387504-a3246eee8fc0.json',
 });
-
 // Nombre del bucket en Google Cloud Storage
 const bucketName = 'bucketquecomodonde';
-
-
-
-
 const app = express();
 const PassportLocal = passportLocal.Strategy
 let currentUserId = null
@@ -139,10 +132,14 @@ app.get('/', async function (req, res) {
     let data = await response.json();
     res.render('index', { currentUserId, isLoggedIn: correouser, data, condicion: res.locals.condicion })
 });
+app.get('/catalogo', function (req, res) {
+    res.render('catalogo', {isLoggedIn: req.user});
+});
 app.post('/catalogo', async function (req, res) {
     let busqueda = req.body.busqueda;
     const response = await fetch(`https://api-qcc.onrender.com/api/v1/simplesearch/${busqueda}`)
     const data = await response.json(); // Convertir la respuesta en formato JSON
+    console.log(data)
     res.render('catalogo', { data, isLoggedIn: req.user });
 })
 app.get('/nosotros', function (req, res) {
@@ -220,17 +217,6 @@ app.get('/publicar', ensureAuthenticated, async (req, res) => {
         console.error(error);
     }
 });
-app.get('/ciudades', async (req, res) => {
-    try {
-        const regionSeleccionada = req.query.region;
-        const ciudadesJSON = await fetch(`https://api-qcc.onrender.com/api/v1/ciudades?region=${regionSeleccionada}`);
-        const ciudades = await ciudadesJSON.json();
-        res.send(ciudades);
-    } catch (error) {
-        console.error(error);
-        res.sendStatus(500);
-    }
-});
 app.post('/publicar', ensureAuthenticated, async function (req, res) {
     let archivo;
     let nombreArchivo
@@ -279,9 +265,19 @@ app.post('/publicar', ensureAuthenticated, async function (req, res) {
         res.status(500).send(error.message);
     }
 });
-app.get('/catalogo', function (req, res) {
-    res.render('catalogo', {isLoggedIn: req.user});
+app.get('/ciudades', async (req, res) => {
+    try {
+        const regionSeleccionada = req.query.region;
+        const ciudadesJSON = await fetch(`https://api-qcc.onrender.com/api/v1/ciudades?region=${regionSeleccionada}`);
+        const ciudades = await ciudadesJSON.json();
+        res.send(ciudades);
+    } catch (error) {
+        console.error(error);
+        res.sendStatus(500);
+    }
 });
+
+
 app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
