@@ -116,22 +116,28 @@ function ensureAuthenticated(req, res, next) {
     }
     res.redirect('/ingresar');
 }
+
+
 //Rutas *******************************************************************************************
-// app.get('/', async function (req, res) {
-//     // let users_ = await profiledata(currentUserId);
+ app.get('/', async function (req, res) {
+      let users_ = await profiledata(currentUserId);
 //     // Esta condicion es para que no se muestre el logo en el index
-//     res.locals.condicion = true;
-//     let correouser = false
-//     if (correouser) {
-//         correouser = req.user.email
-//     }
-//     else {
-//         correouser = false
-//     }
-//     let response = await fetch(`https://api-qcc.onrender.com/api/v1/ultimaspublicaciones`)
-//     let data = await response.json();
-//     res.render('index', { currentUserId, isLoggedIn: correouser, data, condicion: res.locals.condicion })
-// });
+    res.locals.condicion = true;
+    let correouser = false
+    if (correouser) {
+        correouser = req.user.email
+    }
+    else {
+        correouser = false
+    }
+    let response = await fetch(`https://api-qcc.onrender.com/api/v1/ultimaspublicaciones`)
+    let data = await response.json();
+    res.render('index', { currentUserId, isLoggedIn: correouser, data, condicion: res.locals.condicion })
+});
+
+
+
+
 app.get('/catalogo', function (req, res) {
     res.render('catalogo', {isLoggedIn: req.user});
 });
