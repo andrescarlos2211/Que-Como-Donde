@@ -138,7 +138,7 @@ app.get('/catalogo', function (req, res) {
 app.post('/catalogo', async function (req, res) {
     let busqueda = req.body.busqueda;
     const response = await fetch(`https://api-qcc.onrender.com/api/v1/simplesearch/${busqueda}`)
-    const data = await response.json(); // Convertir la respuesta en formato JSON
+    const data = await response.json(); 
     res.render('catalogo', { data, isLoggedIn: req.user });
 })
 app.get('/nosotros', function (req, res) {
@@ -171,8 +171,8 @@ app.post('/registro', async function (req, res) {
     catch (err) {
         res.send(err)
     }
-});
-app.get('/registro', function (req, res) {
+});  
+app.get('/regidstro', function (req, res) {
     res.render('registro')
 });
 app.get('/publicar', ensureAuthenticated, async (req, res) => {
@@ -275,8 +275,6 @@ app.get('/ciudades', async (req, res) => {
         res.sendStatus(500);
     }
 });
-
-
 app.get('/contacto', function (req, res) {
     res.render('contacto')
 });
