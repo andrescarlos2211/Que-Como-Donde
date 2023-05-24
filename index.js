@@ -139,7 +139,6 @@ app.post('/catalogo', async function (req, res) {
     let busqueda = req.body.busqueda;
     const response = await fetch(`https://api-qcc.onrender.com/api/v1/simplesearch/${busqueda}`)
     const data = await response.json(); // Convertir la respuesta en formato JSON
-    console.log(data)
     res.render('catalogo', { data, isLoggedIn: req.user });
 })
 app.get('/nosotros', function (req, res) {
