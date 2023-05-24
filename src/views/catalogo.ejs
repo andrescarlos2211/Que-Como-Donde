@@ -79,7 +79,16 @@
             </nav>
         </section>
     </header> -->
-
+    <% if (data.length === 0) { %>
+        <div>
+        <p style="padding-top: 10%;
+        padding-left: 35%;
+        color: #50354e;
+        font-size: 2rem;">No se encontraron resultados.</p>
+        <p style="color: #50354e;
+        font-size: 1rem;">Puede que también te interese...</p>
+    </div>
+     <% } else {%>
 
 <% data.forEach(function(data) { %>
     <div class="max-w-6xl mx-auto">
@@ -129,15 +138,6 @@
         </div>
     </div>
     <% }); %>
-    <% if (data.length === 0) { %>
-        <div>
-        <p style="padding-top: 10%;
-        padding-left: 35%;
-        color: #50354e;
-        font-size: 2rem;">No se encontraron resultados.</p>
-        <p style="color: #50354e;
-        font-size: 1rem;">Puede que también te interese...</p>
-    </div>
-     <% } %>
+    <% } %>
 
 
