@@ -134,10 +134,6 @@ function ensureAuthenticated(req, res, next) {
     let data = await response.json();
     res.render('index', { currentUserId, isLoggedIn: correouser, data, condicion: res.locals.condicion })
 });
-
-
-
-
 app.get('/catalogo', function (req, res) {
     res.render('catalogo', {isLoggedIn: req.user});
 });
