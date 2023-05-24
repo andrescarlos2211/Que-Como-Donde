@@ -79,6 +79,11 @@
             </nav>
         </section>
     </header> -->
+    <% if (data.length === 0) { %>
+        <p>No se encontraron resultados.</p>
+     <% } else { %>
+
+
 <% data.forEach(function(data) { %>
     <div class="max-w-6xl mx-auto">
         <div class="flex items-center justify-center">
@@ -127,5 +132,5 @@
         </div>
     </div>
     <% }); %>
-
+    <% } %>
 
