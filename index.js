@@ -132,15 +132,15 @@ app.get('/', async function (req, res) {
     let data = await response.json();
     res.render('index', { currentUserId, isLoggedIn: correouser, data, condicion: res.locals.condicion })
 });
-app.get('/catalogo', function (req, res) {
-    res.render('catalogo', {isLoggedIn: req.user});
-});
-app.post('/catalogo', async function (req, res) {
-    let busqueda = req.body.busqueda;
-    const response = await fetch(`https://api-qcc.onrender.com/api/v1/simplesearch/${busqueda}`)
-    const data = await response.json(); 
-    res.render('catalogo', { data, isLoggedIn: req.user });
-})
+// app.get('/catalogo', function (req, res) {
+//     res.render('catalogo', {isLoggedIn: req.user});
+// });
+// app.post('/catalogo', async function (req, res) {
+//     let busqueda = req.body.busqueda;
+//     const response = await fetch(`https://api-qcc.onrender.com/api/v1/simplesearch/${busqueda}`)
+//     const data = await response.json(); 
+//     res.render('catalogo', { data, isLoggedIn: req.user });
+// })
 app.get('/nosotros', function (req, res) {
     res.render('nosotros')
 });
