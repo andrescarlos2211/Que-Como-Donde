@@ -192,7 +192,7 @@ background: radial-gradient(circle, rgba(241,241,241,1) 0%, rgba(231,185,235,0.8
 
             <div class="campo">
                 <label for="nombre_producto">Nombre de publicación:</label>
-                <input type="text" id="nombre_producto" name="nombre_publicacion" required>
+                <input type="text" id="nombre_producto" name="nombre_publicacion" maxlength="50" required>
             </div>
 
 
@@ -200,7 +200,7 @@ background: radial-gradient(circle, rgba(241,241,241,1) 0%, rgba(231,185,235,0.8
 
             <div class="campo">
                 <label for="precio">Precio:</label>
-                <input type="number" id="precio" name="precio" required>
+                <input type="number" id="precio" name="precio"  required>
             </div>
             <div class="campo">
                 <label for="precio">Unidades:</label>
@@ -208,15 +208,15 @@ background: radial-gradient(circle, rgba(241,241,241,1) 0%, rgba(231,185,235,0.8
             </div>
            <div class="campo">
                 <label for="descripcion">Descripción:</label>
-                <textarea type="text" id="descripcion" name="descripcion" required></textarea>
+                <textarea type="text" id="descripcion" name="descripcion" maxlength="500" required></textarea>
             </div>
             <div class="campo">
                 <label for="palabra_clave_1">Palabra clave 1:</label>
-                <input type="text" id="palabra_clave_1" name="kw1" required>
+                <input type="text" id="palabra_clave_1" name="kw1" maxlength="25" required>
             </div>
             <div class="campo">
                 <label for="palabra_clave_2">Palabra clave 2:</label>
-                <input type="text" id="palabra_clave_2" name="kw2" required>
+                <input type="text" id="palabra_clave_2" name="kw2" maxlength="25" required>
             </div>
             <div class="campo">
                 <label for="imagen">Imagen:</label>
@@ -251,16 +251,6 @@ background: radial-gradient(circle, rgba(241,241,241,1) 0%, rgba(231,185,235,0.8
             <br>
         </form>
     </div>
-
-
- 
-
-
-
-
-
-
-
     <script>
         function cambiaCiudad() {
             const regionSeleccionada = document.getElementById("Region").value;
