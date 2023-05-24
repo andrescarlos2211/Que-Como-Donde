@@ -139,16 +139,7 @@ app.post('/catalogo', async function (req, res) {
     let busqueda = req.body.busqueda;
     const response = await fetch(`https://api-qcc.onrender.com/api/v1/simplesearch/${busqueda}`)
     const data = await response.json(); // Convertir la respuesta en formato JSON
-    let nada = {}
-    if (Object.keys(data).length === 0) {
-        // JSON vacío
-        console.log('El JSON está vacío');
-        res.render('catalogo', { data: nada, isLoggedIn: req.user });
-    } else {
-        // JSON con datos
-        console.log(data);
-        res.render('catalogo', { data, isLoggedIn: req.user });
-    }
+    res.render('catalogo', { data, isLoggedIn: req.user });
 })
 app.get('/nosotros', function (req, res) {
     res.render('nosotros')
