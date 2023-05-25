@@ -17,6 +17,8 @@ Instrucciones
 
 * La branch main esta diseñada para  ser ejecutada de forma local en node
 ** El sitio esta levantado en Render.com , dispone de un branch dedicado y las nuevas caracteristicas seran commiteadas ahi.
+*** La ubicacihttps://github.com/andrescarlos-gm/API-QCC
+
 https://github.com/andrescarlos-gm/Que-Como-Donde/
 
 
