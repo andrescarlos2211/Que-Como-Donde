@@ -134,6 +134,12 @@ function ensureAuthenticated(req, res, next) {
     let data = await response.json();
     res.render('index', { currentUserId, isLoggedIn: correouser, data, condicion: res.locals.condicion })
 });
+app.get('/index', async function (req, res) {
+    const users_ = await profiledata(currentUserId);
+    let response = await fetch(`https://api-qcc.onrender.com/api/v1/ultimaspublicaciones`)
+    let data = await response.json();
+    res.render('index', { isLoggedIn: req.user, data });
+});
 app.get('/catalogo', function (req, res) {
     res.render('catalogo', {isLoggedIn: req.user});
 });
@@ -142,7 +148,13 @@ app.post('/catalogo', async function (req, res) {
     const response = await fetch(`https://api-qcc.onrender.com/api/v1/simplesearch/${busqueda}`)
     const data = await response.json(); 
     res.render('catalogo', { data, isLoggedIn: req.user });
-})
+});
+app.get('/producto/:id', async function (req, res) {
+   let pubId = req.params['id']
+   const response = await fetch(`https://api-qcc.onrender.com/api/v1/publication/${pubId}`)
+    const data = await response.json();
+  res.render('catalogo', { data, isLoggedIn: req.user});
+});
 app.get('/nosotros', function (req, res) {
     res.render('nosotros')
 });
@@ -279,12 +291,6 @@ app.get('/ciudades', async (req, res) => {
 });
 app.get('/contacto', function (req, res) {
     res.render('contacto')
-});
-app.get('/index', async function (req, res) {
-    const users_ = await profiledata(currentUserId);
-    let response = await fetch(`https://api-qcc.onrender.com/api/v1/ultimaspublicaciones`)
-    let data = await response.json();
-    res.render('index', { isLoggedIn: req.user, data });
 });
 app.get('/dash', ensureAuthenticated, async function (req, res) {
     const response = await fetch(`https://api-qcc.onrender.com/api/v1/publications/${currentUserId}`);
