@@ -121,6 +121,7 @@
       <div class="swiper-container mySwiper">
         <div class="swiper-wrapper">
           <% data.forEach(function(data) { %>
+            <a class="pubLink" href="/producto/<%= data.publication_id %>">
             <div class="swiper-slide">
               <a title="" href="/producto/<%= data.publication_id %>">
               <img src="<%= data.imgdir %>" alt=""></a>
@@ -137,6 +138,7 @@
                 </div>
               </div>
             </div>
+          </a>
             <% }); %>
         </div>
       </div>
