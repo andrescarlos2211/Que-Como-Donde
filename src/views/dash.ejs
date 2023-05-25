@@ -45,7 +45,7 @@
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                 <polyline points="9 22 9 12 15 12 15 22" />
               </svg>
-              <span>Inicio</span>
+              <span>Página Principal / Buscar</span>
             </a>
           </li>
 
@@ -262,11 +262,6 @@
                 </svg>
               </button></div>
           </div>
-
-
-
-
-
           <% data.forEach(function(publication) { %>
             <div class="products-row">
               <button class="cell-more-button">
@@ -300,19 +295,10 @@
               </div>
             </div>
             <% }); %>
-
-
-
-
-
-
-
-
-
-
         </div>
       </div>
     </div>
+    <%- include('./partials/footer.ejs'); %>
     <script src="/js/dash.js"></script>
 </body>
 
