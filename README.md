@@ -1,6 +1,8 @@
 # https://que-como-donde.onrender.com
 ## 
 
+[![](https://que-como-donde.onrender.com/img/Logo/Logo%20colores.png)](www.quecomodonde.ml)
+
 * La branch main esta diseñada para ser ejecutada de forma local en node
 * El sitio esta levantado en Render.com , dispone de un branch dedicado y las nuevas caracteristicas seran subidas ahi.
 * La ubicación del API es https://github.com/andrescarlos-gm/API-QCC
@@ -18,9 +20,6 @@ Instrucciones
 6. Levantar la API que se encuentra en la carpeta `API Que-Como-Donde/` con el comando `node index.js`
 7. Levantar el servidor en la carpeta raiz ejecutando `node index.js`
 
-
-
-[![](https://que-como-donde.onrender.com/img/Logo/Logo%20colores.png)](www.quecomodonde.ml)
 
 https://github.com/andrescarlos-gm/Que-Como-Donde/
 
