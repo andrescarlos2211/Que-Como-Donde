@@ -122,7 +122,8 @@
         <div class="swiper-wrapper">
           <% data.forEach(function(data) { %>
             <div class="swiper-slide">
-              <img src="<%= data.imgdir %>" alt="">
+              <a title="" href="/producto/<%= data.publication_id %>">
+              <img src="<%= data.imgdir %>" alt=""></a>
               <div class="card-description">
                 <div class="card-title">
                   <!-- <h4>
