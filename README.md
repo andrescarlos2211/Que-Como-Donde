@@ -1,6 +1,13 @@
 # https://que-como-donde.onrender.com
 ## 
 
+* La branch main esta diseñada para ser ejecutada de forma local en node
+* El sitio esta levantado en Render.com , dispone de un branch dedicado y las nuevas caracteristicas seran subidas ahi.
+* La ubicación del API es https://github.com/andrescarlos-gm/API-QCC
+
+
+
+
 Instrucciones
 
 1. Ejecutar `npm i` para instalar modulos, tanto en la carpeta raiz `/` como dentro de la API que se ubica en el directorio `API Que-Como-Donde`
@@ -14,10 +21,6 @@ Instrucciones
 
 
 [![](https://que-como-donde.onrender.com/img/Logo/Logo%20colores.png)](www.quecomodonde.ml)
-
-* La branch main esta diseñada para  ser ejecutada de forma local en node
-** El sitio esta levantado en Render.com , dispone de un branch dedicado y las nuevas caracteristicas seran commiteadas ahi.
-*** La ubicacihttps://github.com/andrescarlos-gm/API-QCC
 
 https://github.com/andrescarlos-gm/Que-Como-Donde/
 
