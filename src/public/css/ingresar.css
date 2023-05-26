@@ -142,18 +142,6 @@
     border: none;
     cursor: pointer;
   }
-
-  .clkbtn2 {
-    height: 60px;
-    width: 150px;
-    border-radius: 50px;
-    background-image: linear-gradient(to right,
-        rgb(86, 84, 197),
-        rgb(12, 15, 99));
-    font-size: 22px;
-    border: none;
-    cursor: pointer;
-  }
   
   /* For Responsiveness of the page */
   
