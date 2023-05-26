@@ -3,8 +3,8 @@
 
 [![](https://que-como-donde.onrender.com/img/Logo/Logo%20colores.png)](www.quecomodonde.ml)
 
-* La branch main esta diseñada para ser ejecutada de forma local en node, sin embargo est bastante desactualizada
-* El sitio esta levantado en Render.com , dispone de un branch dedicado y las nuevas caracteristicas seran subidas ahi.
+* La branch main esta diseñada para ser ejecutada de forma local en nodeJS, sin embargo está bastante desactualizada
+* El sitio esta levantado en Render.com , dispone de un branch dedicado y las nuevas caracteristicas seran agregadas ahí.
 * La ubicación del API es https://github.com/andrescarlos-gm/API-QCC
 
 
