@@ -145,18 +145,18 @@ app.get('/catalogo', function (req, res) {
 });
 app.post('/catalogo', async function (req, res) {
     let busqueda = req.body.busqueda;
-    if (!busqueda === NaN) {
+    // if (busqueda !== " " &&  /^[A-Za-z0-9]*$/ ) {
         const response = await fetch(`https://api-qcc.onrender.com/api/v1/simplesearch/${busqueda}`)
         const data = await response.json();
         res.render('catalogo', { data, isLoggedIn: req.user });
-    }
-    else {
-        res.render('404');
-    }
+    // }
+    // else {
+    //     res.render('404');
+    // }
 });
 app.get('/producto/:id', async function (req, res) {
-    let pubId = req.params['id']
-    const response = await fetch(`https://api-qcc.onrender.com/api/v1/publication/${pubId}`)
+    let pubId = req.params['id'];
+    const response = await fetch(`https://api-qcc.onrender.com/api/v1/publication/${pubId}`);
     const data = await response.json();
     res.render('catalogo', { data, isLoggedIn: req.user });
 });
