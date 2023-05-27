@@ -469,7 +469,7 @@ a {
 .dropdown-menu {
   min-width: 200px !important; /* Ancho mínimo del menú */
   padding: 1rem !important; /* Aumentar espacio dentro del menú */
-  background-color: #e5d2ab !important
+  background-color: #ffffff !important
 }
 .dropdown-item{
   color: black!important
