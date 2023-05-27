@@ -119,9 +119,9 @@ function ensureAuthenticated(req, res, next) {
 
 
 //Rutas *******************************************************************************************
- app.get('/', async function (req, res) {
-      let users_ = await profiledata(currentUserId);
-//     // Esta condicion es para que no se muestre el logo en el index
+app.get('/', async function (req, res) {
+    let users_ = await profiledata(currentUserId);
+    //     // Esta condicion es para que no se muestre el logo en el index
     res.locals.condicion = true;
     let correouser = false
     if (correouser) {
@@ -141,19 +141,24 @@ app.get('/index', async function (req, res) {
     res.render('index', { isLoggedIn: req.user, data });
 });
 app.get('/catalogo', function (req, res) {
-    res.render('catalogo', {isLoggedIn: req.user});
+    res.render('catalogo', { isLoggedIn: req.user });
 });
 app.post('/catalogo', async function (req, res) {
     let busqueda = req.body.busqueda;
-    const response = await fetch(`https://api-qcc.onrender.com/api/v1/simplesearch/${busqueda}`)
-    const data = await response.json(); 
-    res.render('catalogo', { data, isLoggedIn: req.user });
+    if (!busqueda === NaN) {
+        const response = await fetch(`https://api-qcc.onrender.com/api/v1/simplesearch/${busqueda}`)
+        const data = await response.json();
+        res.render('catalogo', { data, isLoggedIn: req.user });
+    }
+    else {
+        res.render('404');
+    }
 });
 app.get('/producto/:id', async function (req, res) {
-   let pubId = req.params['id']
-   const response = await fetch(`https://api-qcc.onrender.com/api/v1/publication/${pubId}`)
+    let pubId = req.params['id']
+    const response = await fetch(`https://api-qcc.onrender.com/api/v1/publication/${pubId}`)
     const data = await response.json();
-  res.render('catalogo', { data, isLoggedIn: req.user});
+    res.render('catalogo', { data, isLoggedIn: req.user });
 });
 app.get('/nosotros', function (req, res) {
     res.render('nosotros')
@@ -185,7 +190,7 @@ app.post('/registro', async function (req, res) {
     catch (err) {
         res.send(err)
     }
-});  
+});
 app.get('/regidstro', function (req, res) {
     res.render('registro')
 });
@@ -224,7 +229,7 @@ app.get('/publicar', ensureAuthenticated, async (req, res) => {
         const response = await fetch(`https://api-qcc.onrender.com/api/v1/publications/${currentUserId}`);
         const data = await response.json();
 
-        res.render('publicar', {data, users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
+        res.render('publicar', { data, users_, regiones: regionesUnicas, ciudades: listaCiudades, isLoggedIn: req.user });
     }
     catch (error) {
         console.error(error);
@@ -317,7 +322,10 @@ app.get('/modpub', ensureAuthenticated, async function (req, res) {
     // let correouser = req.user.email
     res.render('modpub', { users_, isLoggedIn: req.user })
 });
+app.use((req, res) => {
+    res.status(404).render('404');
 
+});
 //Starting the server
 app.listen(app.get('port'), () => {
     console.log(`listening on port ${app.get('port')}`)
