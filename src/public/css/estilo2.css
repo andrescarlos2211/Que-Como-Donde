@@ -9,8 +9,7 @@
   }
   
   body {
-    background: rgb(242,228,145);
-    background: linear-gradient(90deg, rgba(242,228,145,1) 0%, rgba(9,121,112,0.742734593837535) 100%);
+    background: #f1eaed;
     font-family: "Lato", sans-serif;
     font-size: 18px;
     background-size: cover;
