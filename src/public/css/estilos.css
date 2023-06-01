@@ -91,6 +91,11 @@ h5 {
   padding-bottom: 25px;
   font-style: italic;
 }
+.texto-color4{
+  font-size: 20px;
+  color: #50354e;
+  background: #e0e0d1;
+}
 
 h4{
   color: #50354e;
@@ -487,3 +492,4 @@ a {
 #scroll-indicator.hide {
   opacity: 0;
 }
+
