@@ -1,7 +1,6 @@
-# https://que-como-donde.onrender.com
-## 
 
-Instrucciones
+
+## Instrucciones
 
 1. Ejecutar `npm i` para instalar modulos, tanto en la carpeta raiz `/` como dentro de la API que se ubica en el directorio `API Que-Como-Donde`
 2. Instalar Docker, abrirlo y ejecutar `docker-compose up -d` en la carpeta `database/`
